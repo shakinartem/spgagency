@@ -1,0 +1,22 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#090909"/>
+  <rect x="34" y="34" width="1132" height="562" rx="28" stroke="rgba(240,122,31,0.35)" stroke-width="2"/>
+  <path d="M0 120H1200" stroke="rgba(255,255,255,0.08)"/>
+  <path d="M0 280H1200" stroke="rgba(255,255,255,0.08)"/>
+  <path d="M0 440H1200" stroke="rgba(255,255,255,0.08)"/>
+  <path d="M240 0V630" stroke="rgba(255,255,255,0.05)"/>
+  <path d="M600 0V630" stroke="rgba(255,255,255,0.05)"/>
+  <path d="M960 0V630" stroke="rgba(255,255,255,0.05)"/>
+  <circle cx="1030" cy="130" r="140" fill="url(#paint0_radial)"/>
+  <text x="90" y="168" fill="#D7C5AB" font-family="Arial, sans-serif" font-size="28" letter-spacing="6">SOCIAL PROGRAMMING GROUP</text>
+  <text x="90" y="300" fill="#F4EDE2" font-family="Georgia, serif" font-size="78" font-weight="700">SPG — спецгруппа роста</text>
+  <text x="90" y="386" fill="#F4EDE2" font-family="Georgia, serif" font-size="78" font-weight="700">для бизнеса с длинным циклом доверия</text>
+  <text x="90" y="470" fill="#D7C5AB" font-family="Arial, sans-serif" font-size="30">Стоматологии, медицина, эксперты, девелопмент, B2B.</text>
+  <text x="90" y="516" fill="#D7C5AB" font-family="Arial, sans-serif" font-size="30">Системный digital-маркетинг без лишнего шума.</text>
+  <defs>
+    <radialGradient id="paint0_radial" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1030 130) rotate(90) scale(140)">
+      <stop stop-color="#F07A1F" stop-opacity="0.42"/>
+      <stop offset="1" stop-color="#F07A1F" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+</svg>
