@@ -1,4 +1,4 @@
-﻿import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { SectionHeading } from "./SectionHeading";
 
 type ProcessItem = { code: string; title: string; text: string; cue: string };
@@ -22,7 +22,7 @@ export function Process({ items }: ProcessProps) {
               whileHover={{ y: -8, boxShadow: "0 24px 60px rgba(240,122,31,0.08)" }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: index * 0.05 }}
-              className="process-card panel-card grid gap-4 p-6 sm:grid-cols-[auto_1fr]"
+              className="panel-card grid gap-4 p-6 sm:grid-cols-[auto_1fr]"
             >
               <div className="flex h-16 w-16 items-center justify-center rounded-full border border-ember/25 bg-ember/10 font-display text-3xl text-ember">{item.code}</div>
               <div>

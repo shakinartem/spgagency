@@ -1,4 +1,4 @@
-﻿import { Send } from "lucide-react";
+import { Send } from "lucide-react";
 import type { ContactLink } from "../types";
 import { AuditForm } from "./AuditForm";
 
@@ -20,6 +20,13 @@ export function CTA({ contacts }: CTAProps) {
               <div className="mt-8 space-y-5 text-base leading-7 text-sand/82 sm:text-lg">
                 <p>Если вы стоматология, предложим, как собрать поток записей без хаоса, скидочной гонки и разрозненных подрядчиков.</p>
                 <p>Если у вас другой бизнес, соберем рабочую digital-систему под вашу задачу: от позиции и упаковки до сайта, воронки, контента и репутации.</p>
+              </div>
+              <div className="mt-6 rounded-[1.7rem] border border-dashed border-ember/30 bg-ember/8 p-5">
+                <p className="text-xs uppercase tracking-[0.28em] text-sand/58">Формат и бюджет</p>
+                <p className="mt-3 text-base leading-7 text-paper/90">
+                  Ориентир для отдельной единицы работы начинается от 35 000 ₽. Чаще всего мы собираем не разовые
+                  услуги, а пакетную систему под задачу бизнеса: контент, репутация, сайт, лидогенерация и контроль цифр.
+                </p>
               </div>
               <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                 <a href="https://t.me/spg_marketing" className="btn-primary">

@@ -1,4 +1,4 @@
-﻿import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowDownRight, ArrowRight, ScanSearch, ShieldCheck, Siren, Sparkles } from "lucide-react";
 
 type HeroProps = {
@@ -105,13 +105,8 @@ export function Hero({ facts }: HeroProps) {
                 { icon: ShieldCheck, title: "Система", text: "Собираем связки, которые выдерживают рост и нагрузку." },
                 { icon: Sparkles, title: "Присутствие", text: "Усиливаем образ бренда так, чтобы он выглядел дороже и точнее." },
                 { icon: Siren, title: "Контроль", text: "Смотрим на цифры и усиливаем только то, что уже работает." },
-              ].map((item, index) => (
-                <motion.div
-                  key={item.title}
-                  animate={{ y: [0, index % 2 === 0 ? -4 : 4, 0] }}
-                  transition={{ duration: 4 + index, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
-                  className="grid grid-cols-[auto_1fr] gap-4 rounded-3xl border border-white/10 bg-black/28 p-4"
-                >
+              ].map((item) => (
+                <div key={item.title} className="grid grid-cols-[auto_1fr] gap-4 rounded-3xl border border-white/10 bg-black/28 p-4">
                   <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-ember/30 bg-ember/10 text-ember">
                     <item.icon size={18} />
                   </div>
@@ -119,7 +114,7 @@ export function Hero({ facts }: HeroProps) {
                     <p className="text-xs uppercase tracking-[0.28em] text-sand/60">{item.title}</p>
                     <p className="mt-2 text-sm leading-6 text-paper/88">{item.text}</p>
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
 
