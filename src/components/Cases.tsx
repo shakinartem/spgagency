@@ -1,7 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, Filter, ImagePlus } from "lucide-react";
 import { useMemo, useState } from "react";
-import { caseCategories } from "../data/cases";
 import { createCaseLogoSources, createCaseReviewSources } from "../lib/assets";
 import type { CaseStudy } from "../types";
 import { CaseModal } from "./CaseModal";
@@ -9,6 +8,7 @@ import { FallbackImage } from "./FallbackImage";
 import { SectionHeading } from "./SectionHeading";
 
 type CasesProps = { items: CaseStudy[] };
+const caseCategories = ["Все", "Стоматологии", "Медицина", "Недвижимость", "Авто", "Эксперты", "B2B", "Другое"] as const;
 
 function CaseLogo({ item }: { item: CaseStudy }) {
   const basePath = import.meta.env.BASE_URL;

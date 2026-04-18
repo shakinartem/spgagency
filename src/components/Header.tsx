@@ -30,7 +30,7 @@ export function Header({ links, primaryHref, logoPaths = [] }: HeaderProps) {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4">
-      <div className={`glass-nav mx-auto max-w-7xl rounded-[1.8rem] px-4 py-3 transition-all duration-500 sm:px-6 ${scrolled ? "border-ember/30 shadow-panel" : "border-white/15"}`}>
+      <div className={`glass-nav mx-auto max-w-7xl rounded-[1.8rem] px-4 py-3 transition-all duration-500 sm:px-6 ${scrolled ? "border-ember/28 shadow-panel" : "border-white/15"}`}>
         <div className="flex items-center justify-between gap-4">
           <a href="#top" className="flex min-w-0 items-center gap-3">
             {logoPaths.length > 0 ? (

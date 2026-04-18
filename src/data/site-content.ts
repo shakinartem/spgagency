@@ -1,4 +1,4 @@
-﻿import {
+import {
   Activity,
   Crosshair,
   FileSearch,
@@ -44,6 +44,13 @@ export const missionStats = [
     suffix: "",
     note: "Проекты, где особенно важны корректная подача, экспертность и длинное решение о покупке.",
   },
+];
+
+export const dentalClients = [
+  { name: "Биомед", city: "Салават", channels: ["карты", "VK"] },
+  { name: "Интердент", city: "Нефтекамск", channels: ["карты", "VK"] },
+  { name: "Дентал-про", city: "Уфа", channels: ["стоматология"] },
+  { name: "IbraDent", city: "Уфа", channels: ["стоматология"] },
 ];
 
 export const niches = [

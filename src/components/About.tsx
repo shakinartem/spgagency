@@ -2,17 +2,32 @@ import { motion } from "framer-motion";
 import { AnimatedNumber } from "./AnimatedNumber";
 import { SectionHeading } from "./SectionHeading";
 
-type AboutProps = {
-  stats: { title: string; value: number; suffix?: string; note: string; decimals?: number }[];
+type StatItem = {
+  title: string;
+  value: number;
+  suffix?: string;
+  note: string;
+  decimals?: number;
 };
 
-export function About({ stats }: AboutProps) {
+type DentalClient = {
+  name: string;
+  city: string;
+  channels: string[];
+};
+
+type AboutProps = {
+  stats: StatItem[];
+  dentalClients: DentalClient[];
+};
+
+export function About({ stats, dentalClients }: AboutProps) {
   return (
     <section id="about" className="section-shell px-4">
       <div className="mx-auto max-w-7xl">
         <SectionHeading
           eyebrow="О нас"
-          title="Небольшая сильная команда, которая вникает в задачу и не продаёт лишнее."
+          title="Небольшая сильная команда, которая вникает в задачу и не продает лишнее."
           description="SPG работает как отдельный агентский отдел роста. Мы не распыляемся на декоративную активность, а собираем рабочие связки под конкретный бизнес. Сейчас особенно сильны в стоматологиях и медицине, но уверенно работаем и в недвижимости, авто, wellness, юриспруденции, локальном сервисе, B2B и нишах, где решение созревает не за один клик."
         />
 
@@ -52,6 +67,43 @@ export function About({ stats }: AboutProps) {
                     </span>
                   ))}
                 </div>
+              </div>
+            </div>
+
+            <div className="mt-5 rounded-[1.8rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02))] p-5">
+              <div className="flex items-center justify-between gap-4">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.28em] text-sand/55">Стоматологии в фокусе</p>
+                  <p className="mt-2 text-sm leading-6 text-sand/78">Отдельно усиливаем проекты, где важны карты, локальная выдача, VK, доверие к врачам и путь пациента до записи.</p>
+                </div>
+                <div className="agent-marker hidden text-xs uppercase tracking-[0.24em] text-sand/70 sm:block">dental desk</div>
+              </div>
+              <div className="mt-5 grid gap-3 sm:grid-cols-2">
+                {dentalClients.map((client, index) => (
+                  <motion.div
+                    key={client.name}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.4, delay: index * 0.04 }}
+                    className="rounded-[1.4rem] border border-white/10 bg-black/20 p-4"
+                  >
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <p className="font-display text-2xl text-paper">{client.name}</p>
+                        <p className="mt-1 text-sm uppercase tracking-[0.22em] text-sand/56">{client.city}</p>
+                      </div>
+                      <span className="rounded-full border border-ember/25 bg-ember/10 px-3 py-1 text-[0.65rem] uppercase tracking-[0.24em] text-sand/72">стоматология</span>
+                    </div>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {client.channels.map((channel) => (
+                        <span key={channel} className="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs uppercase tracking-[0.16em] text-sand/70">
+                          {channel}
+                        </span>
+                      ))}
+                    </div>
+                  </motion.div>
+                ))}
               </div>
             </div>
           </div>

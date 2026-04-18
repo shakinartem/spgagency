@@ -1,4 +1,5 @@
-﻿import { FormEvent, useMemo, useState } from "react";
+import { FormEvent, useMemo, useState } from "react";
+import { siteConfig } from "../data/site-config";
 
 type FormState = {
   name: string;
@@ -17,6 +18,9 @@ const initialState: FormState = {
 export function AuditForm() {
   const [form, setForm] = useState<FormState>(initialState);
   const [copied, setCopied] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
 
   const message = useMemo(
     () =>
@@ -32,12 +36,49 @@ export function AuditForm() {
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
+    setError("");
+    setSubmitted(false);
 
-    if (navigator.clipboard?.writeText) {
-      await navigator.clipboard.writeText(message);
-      setCopied(true);
-      window.open("https://t.me/spg_marketing", "_blank", "noopener,noreferrer");
+    if (siteConfig.auditWebhookUrl) {
+      try {
+        setSubmitting(true);
+        const response = await fetch(siteConfig.auditWebhookUrl, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            ...form,
+            message,
+            source: "spgagency-site",
+            createdAt: new Date().toISOString(),
+          }),
+        });
+
+        if (!response.ok) {
+          throw new Error("Webhook error");
+        }
+
+        setSubmitted(true);
+        setForm(initialState);
+        return;
+      } catch {
+        setError("Webhook не ответил. Открываем безопасный fallback через Telegram.");
+      } finally {
+        setSubmitting(false);
+      }
     }
+
+    try {
+      if (navigator.clipboard?.writeText) {
+        await navigator.clipboard.writeText(message);
+        setCopied(true);
+      }
+    } catch {
+      setError("Не удалось скопировать текст автоматически. Его можно выделить вручную после открытия Telegram.");
+    }
+
+    window.open(`https://t.me/${siteConfig.telegramUsername}`, "_blank", "noopener,noreferrer");
   };
 
   return (
@@ -45,10 +86,10 @@ export function AuditForm() {
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(240,122,31,0.18),transparent_34%)]" />
       <div className="relative">
         <p className="text-xs uppercase tracking-[0.28em] text-sand/55">Форма аудита</p>
-        <h3 className="mt-3 font-display text-4xl text-paper">Соберем вводные и откроем Telegram.</h3>
+        <h3 className="mt-3 font-display text-4xl text-paper">Соберем вводные и запустим заявку в работу.</h3>
         <p className="mt-3 text-sm leading-6 text-sand/72">
-          Сайт остается полностью статическим, поэтому я не стал вшивать в браузер токен Telegram-бота. Форма готовит
-          сообщение, копирует его и открывает чат с вами без риска светить секреты на фронтенде.
+          Форма уже готова к реальной отправке через внешний webhook. Пока URL не подключен, она остается полностью
+          статичной: собирает сообщение, копирует его и открывает Telegram без риска светить токены на фронтенде.
         </p>
 
         <div className="mt-6 grid gap-4">
@@ -71,9 +112,21 @@ export function AuditForm() {
         </div>
 
         <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-          <button type="submit" className="btn-primary justify-center">Получить аудит</button>
-          <p className="text-sm leading-6 text-sand/66">{copied ? "Текст заявки скопирован. Telegram открыт в новой вкладке." : "После клика сообщение скопируется, а чат @spg_marketing откроется автоматически."}</p>
+          <button type="submit" disabled={submitting} className="btn-primary justify-center disabled:cursor-wait disabled:opacity-70">
+            {submitting ? "Отправляем..." : "Получить аудит"}
+          </button>
+          <p className="text-sm leading-6 text-sand/66">
+            {submitted
+              ? "Заявка отправлена через webhook."
+              : copied
+                ? "Текст заявки скопирован. Telegram открыт в новой вкладке."
+                : siteConfig.auditWebhookUrl
+                  ? "Если webhook подключен, форма отправит заявку напрямую."
+                  : `Пока webhook не подключен, форма откроет Telegram @${siteConfig.telegramUsername}.`}
+          </p>
         </div>
+
+        {error ? <p className="mt-3 text-sm leading-6 text-ember">{error}</p> : null}
       </div>
     </form>
   );
