@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+﻿import { useMemo } from "react";
 import { About } from "./components/About";
 import { Cases } from "./components/Cases";
 import { CTA } from "./components/CTA";
@@ -10,21 +10,9 @@ import { Niches } from "./components/Niches";
 import { Process } from "./components/Process";
 import { ScrollToTopButton } from "./components/ScrollToTopButton";
 import { Services } from "./components/Services";
-import { SocialProof } from "./components/SocialProof";
 import { WhyUs } from "./components/WhyUs";
 import { caseStudies } from "./data/cases";
-import {
-  contacts,
-  evidenceHighlights,
-  heroFacts,
-  missionStats,
-  navigation,
-  niches,
-  processSteps,
-  reasons,
-  services,
-  socialEvidence,
-} from "./data/site-content";
+import { contacts, heroFacts, missionStats, navigation, niches, processSteps, reasons, services } from "./data/site-content";
 
 function App() {
   const totals = useMemo(() => {
@@ -44,23 +32,24 @@ function App() {
       value: totals.reach,
       suffix: " млн",
       decimals: 1,
-      note: "сумма по кейсам, где метрика раскрыта публично",
+      note: "Сумма по кейсам, где метрика раскрыта публично и может быть показана на сайте.",
     },
     {
       title: "Заявок и обращений в открытых кейсах",
       value: totals.leads,
       suffix: "",
-      note: "сумма по проектам, где показатель раскрыт в материалах кейса",
+      note: "Суммарный показатель по проектам, где заявки или обращения описаны в кейсах.",
     },
   ];
 
   const basePath = import.meta.env.BASE_URL;
+  const brandLogoPath = `${basePath}assets/brand/logo-main.svg`;
 
   return (
     <div className="relative min-h-screen bg-ink text-paper">
       <div className="fixed inset-0 -z-20 bg-noise opacity-80" />
       <div className="grid-overlay fixed inset-0 -z-10" />
-      <Header links={navigation} primaryHref="#cta" />
+      <Header links={navigation} primaryHref="#cta" logoPath={brandLogoPath} />
       <main>
         <Hero facts={heroFacts} />
         <About stats={statsWithAggregate} />
@@ -69,7 +58,6 @@ function App() {
         <Process items={processSteps} />
         <Cases items={caseStudies} />
         <WhyUs items={reasons} />
-        <SocialProof brands={socialEvidence} notes={evidenceHighlights} />
         <CTA contacts={contacts} />
       </main>
       <Footer privacyHref={`${basePath}privacy.html`} termsHref={`${basePath}terms.html`} />

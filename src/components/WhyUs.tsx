@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { CheckCircle2 } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
 
 type WhyUsProps = {
@@ -13,7 +12,7 @@ export function WhyUs({ items }: WhyUsProps) {
         <SectionHeading
           eyebrow="Почему SPG"
           title="Мы не продаём ощущение движения. Мы собираем рабочую опору для роста."
-          description="SPG подходит бизнесам, которым нужен взрослый маркетинг без лишней суеты: спокойный, точный, системный и понятный в управлении."
+          description="Этот блок я перевёл в более «агентскую» подачу: у карточек появился эффект удара, траектории и подчёркнутой точности. Не цирк, а дорогая намёк-эстетика."
         />
 
         <div className="mt-12 grid gap-4 lg:grid-cols-2">
@@ -24,11 +23,8 @@ export function WhyUs({ items }: WhyUsProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.55, delay: index * 0.05 }}
-              className="panel-card flex gap-4 p-6"
+              className="impact-card panel-card p-6"
             >
-              <div className="mt-1 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-ember/30 bg-ember/10 text-ember">
-                <CheckCircle2 size={18} />
-              </div>
               <p className="text-base leading-7 text-paper/88">{item}</p>
             </motion.div>
           ))}

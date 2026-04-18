@@ -1,4 +1,4 @@
-export type CaseCategory =
+﻿export type CaseCategory =
   | "Стоматологии"
   | "Медицина"
   | "Недвижимость"
@@ -28,6 +28,11 @@ export type CaseStudy = {
   artifacts: string[];
   spotlight: string;
   logo: string;
+  logoPath?: string;
+  reviewQuote?: string;
+  reviewAuthor?: string;
+  reviewRole?: string;
+  reviewImagePath?: string;
   accent: "ember" | "sand" | "paper";
   stats: {
     reach?: number;
