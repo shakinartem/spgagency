@@ -1,16 +1,16 @@
-﻿import { Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { FallbackImage } from "./FallbackImage";
 
 type HeaderProps = {
   links: { label: string; href: string }[];
   primaryHref: string;
-  logoPath?: string;
+  logoPaths?: string[];
 };
 
-export function Header({ links, primaryHref, logoPath }: HeaderProps) {
+export function Header({ links, primaryHref, logoPaths = [] }: HeaderProps) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [logoVisible, setLogoVisible] = useState(Boolean(logoPath));
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 18);
@@ -23,6 +23,7 @@ export function Header({ links, primaryHref, logoPath }: HeaderProps) {
     const onResize = () => {
       if (window.innerWidth >= 1024) setOpen(false);
     };
+
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
@@ -32,8 +33,13 @@ export function Header({ links, primaryHref, logoPath }: HeaderProps) {
       <div className={`glass-nav mx-auto max-w-7xl rounded-[1.8rem] px-4 py-3 transition-all duration-500 sm:px-6 ${scrolled ? "border-ember/30 shadow-panel" : "border-white/15"}`}>
         <div className="flex items-center justify-between gap-4">
           <a href="#top" className="flex min-w-0 items-center gap-3">
-            {logoVisible && logoPath ? (
-              <img src={logoPath} alt="SPG" className="h-11 w-11 rounded-full border border-white/10 bg-white/5 object-contain p-1.5" onError={() => setLogoVisible(false)} />
+            {logoPaths.length > 0 ? (
+              <FallbackImage
+                sources={logoPaths}
+                alt="SPG"
+                className="h-11 w-11 rounded-full border border-white/10 bg-white/5 object-contain p-1.5"
+                fallback={<div className="liquid-orb flex h-11 w-11 items-center justify-center rounded-full text-sm font-bold tracking-[0.25em] text-paper">SPG</div>}
+              />
             ) : (
               <div className="liquid-orb flex h-11 w-11 items-center justify-center rounded-full text-sm font-bold tracking-[0.25em] text-paper">SPG</div>
             )}
@@ -42,15 +48,47 @@ export function Header({ links, primaryHref, logoPath }: HeaderProps) {
               <p className="truncate text-sm text-paper">оперативный маркетинговый штаб</p>
             </div>
           </a>
-          <nav className="hidden items-center gap-7 lg:flex">{links.map((link) => (<a key={link.href} href={link.href} className="text-sm uppercase tracking-[0.18em] text-sand/72 transition hover:text-paper">{link.label}</a>))}</nav>
-          <div className="hidden lg:block"><a href={primaryHref} className="btn-primary">Обсудить проект</a></div>
-          <button type="button" className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-paper lg:hidden" onClick={() => setOpen((value) => !value)} aria-label={open ? "Закрыть меню" : "Открыть меню"}>{open ? <X size={18} /> : <Menu size={18} />}</button>
+
+          <nav className="hidden items-center gap-7 lg:flex">
+            {links.map((link) => (
+              <a key={link.href} href={link.href} className="text-sm uppercase tracking-[0.18em] text-sand/72 transition hover:text-paper">
+                {link.label}
+              </a>
+            ))}
+          </nav>
+
+          <div className="hidden lg:block">
+            <a href={primaryHref} className="btn-primary">
+              Обсудить проект
+            </a>
+          </div>
+
+          <button
+            type="button"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-paper lg:hidden"
+            onClick={() => setOpen((value) => !value)}
+            aria-label={open ? "Закрыть меню" : "Открыть меню"}
+          >
+            {open ? <X size={18} /> : <Menu size={18} />}
+          </button>
         </div>
+
         {open ? (
           <div className="glass-nav mt-4 rounded-[1.6rem] p-4 lg:hidden">
             <nav className="flex flex-col gap-3">
-              {links.map((link) => (<a key={link.href} href={link.href} className="rounded-2xl px-3 py-3 text-sm uppercase tracking-[0.18em] text-sand/75 transition hover:bg-white/5 hover:text-paper" onClick={() => setOpen(false)}>{link.label}</a>))}
-              <a href={primaryHref} className="btn-primary mt-2 justify-center text-center" onClick={() => setOpen(false)}>Обсудить проект</a>
+              {links.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="rounded-2xl px-3 py-3 text-sm uppercase tracking-[0.18em] text-sand/75 transition hover:bg-white/5 hover:text-paper"
+                  onClick={() => setOpen(false)}
+                >
+                  {link.label}
+                </a>
+              ))}
+              <a href={primaryHref} className="btn-primary mt-2 justify-center text-center" onClick={() => setOpen(false)}>
+                Обсудить проект
+              </a>
             </nav>
           </div>
         ) : null}

@@ -1,4 +1,4 @@
-﻿import { useMemo } from "react";
+import { useMemo } from "react";
 import { About } from "./components/About";
 import { Cases } from "./components/Cases";
 import { CTA } from "./components/CTA";
@@ -11,19 +11,24 @@ import { Process } from "./components/Process";
 import { ScrollToTopButton } from "./components/ScrollToTopButton";
 import { Services } from "./components/Services";
 import { WhyUs } from "./components/WhyUs";
+import { casePlaceholders } from "./data/case-placeholders";
 import { caseStudies } from "./data/cases";
 import { contacts, heroFacts, missionStats, navigation, niches, processSteps, reasons, services } from "./data/site-content";
+import { createBrandLogoSources } from "./lib/assets";
 
 function App() {
+  const basePath = import.meta.env.BASE_URL;
+  const enrichedCaseStudies = useMemo(() => caseStudies.map((item) => ({ ...casePlaceholders[item.id], ...item })), []);
+
   const totals = useMemo(() => {
-    const reach = caseStudies.reduce((sum, item) => sum + (item.stats.reach ?? 0), 0);
-    const leads = caseStudies.reduce((sum, item) => sum + (item.stats.leads ?? 0), 0);
+    const reach = enrichedCaseStudies.reduce((sum, item) => sum + (item.stats.reach ?? 0), 0);
+    const leads = enrichedCaseStudies.reduce((sum, item) => sum + (item.stats.leads ?? 0), 0);
 
     return {
       reach: Math.round(reach / 100000) / 10,
       leads,
     };
-  }, []);
+  }, [enrichedCaseStudies]);
 
   const statsWithAggregate = [
     ...missionStats,
@@ -42,21 +47,20 @@ function App() {
     },
   ];
 
-  const basePath = import.meta.env.BASE_URL;
-  const brandLogoPath = `${basePath}assets/brand/logo-main.svg`;
+  const brandLogoPaths = createBrandLogoSources(basePath);
 
   return (
     <div className="relative min-h-screen bg-ink text-paper">
       <div className="fixed inset-0 -z-20 bg-noise opacity-80" />
       <div className="grid-overlay fixed inset-0 -z-10" />
-      <Header links={navigation} primaryHref="#cta" logoPath={brandLogoPath} />
+      <Header links={navigation} primaryHref="#cta" logoPaths={brandLogoPaths} />
       <main>
         <Hero facts={heroFacts} />
         <About stats={statsWithAggregate} />
         <Niches items={niches} />
         <Services items={services} />
         <Process items={processSteps} />
-        <Cases items={caseStudies} />
+        <Cases items={enrichedCaseStudies} />
         <WhyUs items={reasons} />
         <CTA contacts={contacts} />
       </main>
