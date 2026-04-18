@@ -44,6 +44,10 @@ export function AuditForm() {
   const showSuccess = () => {
     setSubmitted(true);
     setSuccessPopupVisible(true);
+    const yandexWindow = window as unknown as { ym?: (...args: unknown[]) => void };
+    if (typeof yandexWindow.ym === "function") {
+      yandexWindow.ym(108662566, "reachGoal", "audit_form_submit");
+    }
     window.setTimeout(() => setSuccessPopupVisible(false), 3200);
   };
 
