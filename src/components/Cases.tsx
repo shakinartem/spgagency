@@ -1,5 +1,5 @@
 ﻿import { AnimatePresence, motion } from "framer-motion";
-import { ArrowUpRight, Filter } from "lucide-react";
+import { ArrowUpRight, Filter, ImagePlus } from "lucide-react";
 import { useMemo, useState } from "react";
 import { caseCategories } from "../data/cases";
 import type { CaseStudy } from "../types";
@@ -22,6 +22,25 @@ function CaseLogo({ item }: { item: CaseStudy }) {
   );
 }
 
+function ReviewWindow({ item }: { item: CaseStudy }) {
+  const [visible, setVisible] = useState(true);
+  const basePath = import.meta.env.BASE_URL;
+  const src = item.reviewImagePath ?? `${basePath}assets/cases/${item.id}/review.jpg`;
+
+  return (
+    <div className="mt-6 overflow-hidden rounded-[1.35rem] border border-dashed border-white/12 bg-black/20">
+      {visible ? (
+        <img src={src} alt={`Отзыв ${item.name}`} className="h-40 w-full object-cover" onError={() => setVisible(false)} />
+      ) : (
+        <div className="flex h-40 flex-col items-center justify-center gap-3 text-center text-sand/55">
+          <ImagePlus size={22} />
+          <p className="max-w-[16rem] text-xs uppercase tracking-[0.2em]">Окно под отзыв или скрин клиента</p>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export function Cases({ items }: CasesProps) {
   const [activeCategory, setActiveCategory] = useState<(typeof caseCategories)[number]>("Все");
   const [selectedCase, setSelectedCase] = useState<CaseStudy | null>(null);
@@ -30,7 +49,11 @@ export function Cases({ items }: CasesProps) {
   return (
     <section id="cases" className="section-shell px-4">
       <div className="mx-auto max-w-7xl">
-        <SectionHeading eyebrow="Кейсы" title="Кейсы, где видно не только эстетику, но и собранную логику роста." description="Логотипы кейсов кладите в public/assets/cases/<slug>/logo.svg. Если есть скрин отзыва, его можно положить рядом в public/assets/cases/<slug>/review.jpg и использовать в модалке кейса. Отдельный слабый блок соцдоказательства я убрал: отзывы лучше смотрятся прямо внутри кейсов." />
+        <SectionHeading
+          eyebrow="Кейсы"
+          title="Кейсы, где видно не только эстетику, но и собранную логику роста."
+          description="Логотипы кейсов кладите в public/assets/cases/<slug>/logo.svg. Фото или скрин отзыва можно положить в public/assets/cases/<slug>/review.jpg: карточка и модалка уже умеют показывать это окно."
+        />
         <div className="mt-10 flex flex-wrap items-center gap-3">
           <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.24em] text-sand/65"><Filter size={14} />фильтр</div>
           {caseCategories.map((category) => (
@@ -58,7 +81,8 @@ export function Cases({ items }: CasesProps) {
                   ))}
                 </div>
                 <div className="mt-6 flex flex-wrap gap-2">{item.tools.map((tool) => (<span key={tool} className="rounded-full border border-white/10 bg-black/20 px-3 py-2 text-xs uppercase tracking-[0.16em] text-sand/70">{tool}</span>))}</div>
-                {item.reviewQuote ? <div className="mt-6 rounded-[1.5rem] border border-dashed border-ember/30 bg-ember/8 p-4"><p className="text-sm leading-6 text-paper/88">«{item.reviewQuote}»</p><p className="mt-2 text-xs uppercase tracking-[0.24em] text-sand/58">{item.reviewAuthor}{item.reviewRole ? `, ${item.reviewRole}` : ''}</p></div> : null}
+                <ReviewWindow item={item} />
+                {item.reviewQuote ? <div className="mt-4 rounded-[1.25rem] border border-dashed border-ember/30 bg-ember/8 p-4"><p className="text-sm leading-6 text-paper/88">«{item.reviewQuote}»</p><p className="mt-2 text-xs uppercase tracking-[0.24em] text-sand/58">{item.reviewAuthor}{item.reviewRole ? `, ${item.reviewRole}` : ''}</p></div> : null}
                 <button type="button" className="mt-8 inline-flex items-center gap-2 text-left text-sm uppercase tracking-[0.2em] text-paper transition group-hover:text-ember" onClick={() => setSelectedCase(item)}>Смотреть кейс<ArrowUpRight size={16} /></button>
               </motion.article>
             ))}
