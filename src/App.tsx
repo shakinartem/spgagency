@@ -3,6 +3,7 @@ import { About } from "./components/About";
 import { Cases } from "./components/Cases";
 import { CTA } from "./components/CTA";
 import { CookieBanner } from "./components/CookieBanner";
+import { CustomCursor } from "./components/CustomCursor";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
@@ -10,7 +11,6 @@ import { Niches } from "./components/Niches";
 import { Process } from "./components/Process";
 import { ScrollToTopButton } from "./components/ScrollToTopButton";
 import { Services } from "./components/Services";
-import { SideOrnaments } from "./components/SideOrnaments";
 import { WhyUs } from "./components/WhyUs";
 import { casePlaceholders } from "./data/case-placeholders";
 import { caseStudies } from "./data/cases";
@@ -69,7 +69,7 @@ function App() {
     <div className="relative min-h-screen bg-ink text-paper">
       <div className="fixed inset-0 -z-20 bg-noise opacity-80" />
       <div className="grid-overlay fixed inset-0 -z-10" />
-      <SideOrnaments />
+      <CustomCursor />
       <Header links={navigation} primaryHref="#cta" logoPaths={brandLogoPaths} />
       <main>
         <Hero facts={heroFacts} />

@@ -28,7 +28,7 @@ export const heroFacts = [
 export const missionStats = [
   {
     title: "Открытые кейсы",
-    value: 18,
+    value: 22,
     suffix: "",
     note: "Показываем только те проекты, где есть предметный результат и понятная логика работы.",
   },

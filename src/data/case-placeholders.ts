@@ -93,4 +93,24 @@ export const casePlaceholders: Record<string, CasePlaceholder> = {
     reviewAuthor: "Имя клиента",
     reviewRole: "VOX",
   },
+  "biomed-salavat": {
+    reviewQuote: "Здесь можно показать отзыв о том, как карты и VK начали работать как управляемый канал доверия и записи в клинику.",
+    reviewAuthor: "Имя клиента",
+    reviewRole: "Биомед",
+  },
+  "interdent-neftekamsk": {
+    reviewQuote: "Сюда хорошо встанет отзыв о локальном потоке пациентов, усилении репутации и заметности клиники в городе.",
+    reviewAuthor: "Имя клиента",
+    reviewRole: "Интердент",
+  },
+  "dental-pro-ufa": {
+    reviewQuote: "Подходит отзыв о спокойной упаковке, маршруте пациента до записи и системной работе без хаоса подрядчиков.",
+    reviewAuthor: "Имя клиента",
+    reviewRole: "Дентал-про",
+  },
+  "ibradent-ufa": {
+    reviewQuote: "Здесь можно добавить отзыв о том, как digital-система усилила доверие к клинике и упростила входящий поток обращений.",
+    reviewAuthor: "Имя клиента",
+    reviewRole: "IbraDent",
+  },
 };
