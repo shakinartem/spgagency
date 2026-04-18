@@ -5,18 +5,18 @@ type NicheItem = { title: string; note: string; problem: string; result: string 
 type NichesProps = { items: NicheItem[] };
 
 const drift = [
-  { y: [0, -10, 0], rotate: [-1.4, 0.5, -1.4] },
-  { y: [0, 8, 0], rotate: [1.2, -0.4, 1.2] },
-  { y: [0, -6, 0], rotate: [-0.7, 0.7, -0.7] },
-  { y: [0, 11, 0], rotate: [1.1, -0.3, 1.1] },
-  { y: [0, -8, 0], rotate: [-1, 0.4, -1] },
-  { y: [0, 7, 0], rotate: [0.9, -0.2, 0.9] },
-  { y: [0, -9, 0], rotate: [-1.3, 0.2, -1.3] },
+  { y: [0, -8, 0], rotate: [-0.8, 0.3, -0.8] },
+  { y: [0, 6, 0], rotate: [0.7, -0.25, 0.7] },
+  { y: [0, -5, 0], rotate: [-0.5, 0.4, -0.5] },
+  { y: [0, 7, 0], rotate: [0.8, -0.2, 0.8] },
+  { y: [0, -6, 0], rotate: [-0.7, 0.25, -0.7] },
+  { y: [0, 5, 0], rotate: [0.6, -0.2, 0.6] },
+  { y: [0, -7, 0], rotate: [-0.8, 0.2, -0.8] },
 ];
 
 const layoutClasses = [
-  "xl:col-span-5 xl:row-span-2 ring-1 ring-ember/25",
-  "xl:col-span-3",
+  "xl:col-span-4",
+  "xl:col-span-4",
   "xl:col-span-4",
   "xl:col-span-4",
   "xl:col-span-4",
@@ -33,30 +33,34 @@ export function Niches({ items }: NichesProps) {
           title="Лучше всего работаем там, где маркетинг должен внушать доверие, а не шуметь."
           description="У SPG особенно сильная экспертиза в стоматологиях и медицинских проектах, но наша система хорошо работает и в других нишах, где важны экспертность, прозрачность и длинный цикл принятия решения."
         />
-        <div className="niche-swarm mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-12">
+
+        <div className="niche-swarm mt-12 grid auto-rows-fr gap-4 md:grid-cols-2 xl:grid-cols-12">
           {items.map((item, index) => (
             <motion.article
               key={item.title}
-              initial={{ opacity: 0, y: 34, rotate: index % 2 === 0 ? -3 : 3 }}
+              initial={{ opacity: 0, y: 28, rotate: index % 2 === 0 ? -2 : 2 }}
               whileInView={{ opacity: 1, y: 0, rotate: 0 }}
               viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.7, delay: index * 0.05 }}
+              transition={{ duration: 0.65, delay: index * 0.04 }}
               animate={drift[index % drift.length]}
-              whileHover={{ y: -12, rotate: index % 2 === 0 ? -1.4 : 1.4, scale: 1.01 }}
-              className={`panel-card niche-card p-6 xl:col-span-4 ${layoutClasses[index] ?? ""}`}
+              whileHover={{ y: -8, rotate: index % 2 === 0 ? -0.8 : 0.8, scale: 1.008 }}
+              className={`panel-card niche-card flex h-full flex-col p-5 xl:col-span-4 ${layoutClasses[index] ?? ""} ${index === 0 ? "ring-1 ring-ember/20" : ""}`}
             >
-              <div className="flex items-center justify-between gap-4">
-                <h3 className="font-display text-3xl leading-tight text-paper">{item.title}</h3>
-                <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[0.65rem] uppercase tracking-[0.24em] text-sand/68">{item.note}</span>
+              <div className="flex items-start justify-between gap-3">
+                <h3 className="max-w-[14rem] font-display text-[2rem] leading-[0.95] text-paper">{item.title}</h3>
+                <span className="shrink-0 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[0.58rem] uppercase tracking-[0.22em] text-sand/68">
+                  {item.note}
+                </span>
               </div>
-              <div className="mt-6 space-y-5">
+
+              <div className="mt-5 grid gap-4">
                 <div>
-                  <p className="text-xs uppercase tracking-[0.28em] text-sand/55">Типовая задача</p>
-                  <p className="mt-2 text-base leading-7 text-sand/82">{item.problem}</p>
+                  <p className="text-[0.58rem] uppercase tracking-[0.26em] text-sand/55">Типовая задача</p>
+                  <p className="mt-2 text-sm leading-6 text-sand/82">{item.problem}</p>
                 </div>
                 <div>
-                  <p className="text-xs uppercase tracking-[0.28em] text-sand/55">Типовой результат</p>
-                  <p className="mt-2 text-base leading-7 text-paper/88">{item.result}</p>
+                  <p className="text-[0.58rem] uppercase tracking-[0.26em] text-sand/55">Типовой результат</p>
+                  <p className="mt-2 text-sm leading-6 text-paper/88">{item.result}</p>
                 </div>
               </div>
             </motion.article>
