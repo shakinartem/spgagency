@@ -10,6 +10,7 @@ import { Hero } from "./components/Hero";
 import { Niches } from "./components/Niches";
 import { Process } from "./components/Process";
 import { ScrollToTopButton } from "./components/ScrollToTopButton";
+import { SeoHub } from "./components/SeoHub";
 import { Services } from "./components/Services";
 import { WhyUs } from "./components/WhyUs";
 import { casePlaceholders } from "./data/case-placeholders";
@@ -78,6 +79,7 @@ function App() {
         <About stats={statsWithAggregate} dentalClients={dentalClients} />
         <Niches items={niches} />
         <Services items={services} />
+        <SeoHub basePath={basePath} />
         <Process items={processSteps} />
         <Cases items={enrichedCaseStudies} />
         <WhyUs items={reasons} />

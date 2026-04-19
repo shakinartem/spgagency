@@ -1,4 +1,5 @@
 import { ArrowUpRight, Check, ChevronRight } from "lucide-react";
+import { CustomCursor } from "./components/CustomCursor";
 import { Footer } from "./components/Footer";
 import { CookieBanner } from "./components/CookieBanner";
 import { ScrollToTopButton } from "./components/ScrollToTopButton";
@@ -97,6 +98,7 @@ export function SeoPageApp({ page, basePath }: SeoPageAppProps) {
     <div className="relative min-h-screen bg-ink text-paper">
       <div className="fixed inset-0 -z-20 bg-noise opacity-80" />
       <div className="grid-overlay fixed inset-0 -z-10" />
+      <CustomCursor />
       <SeoHeader basePath={basePath} page={page} />
 
       <main>
