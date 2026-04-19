@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { ImagePlus, X } from "lucide-react";
+import { useState } from "react";
 import { createCaseReviewSources } from "../lib/assets";
 import type { CaseStudy } from "../types";
 import { FallbackImage } from "./FallbackImage";
@@ -7,30 +8,70 @@ import { FallbackImage } from "./FallbackImage";
 type CaseModalProps = { caseItem: CaseStudy | null; onClose: () => void };
 
 function ReviewPreview({ item }: { item: CaseStudy }) {
+  const [isZoomed, setIsZoomed] = useState(false);
   const basePath = import.meta.env.BASE_URL;
   const reviewSources = createCaseReviewSources(basePath, item.id, item.reviewImagePath);
 
   return (
-    <div className="rounded-[1.75rem] border border-white/10 bg-white/5 p-4">
-      <FallbackImage
-        sources={reviewSources}
-        alt={`Отзыв ${item.name}`}
-        className="mb-4 max-h-[24rem] w-full rounded-2xl border border-white/8 bg-black/20 object-contain p-2"
-        fallback={
-          <div className="mb-4 flex h-56 flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-white/12 bg-black/20 text-center text-sand/55">
-            <ImagePlus size={24} />
-            <p className="max-w-[15rem] text-xs uppercase tracking-[0.24em]">Зона под фото отзыва, благодарность или скрин переписки</p>
-          </div>
-        }
-      />
-      {item.reviewQuote ? <p className="text-base leading-7 text-paper/88">«{item.reviewQuote}»</p> : null}
-      {item.reviewAuthor || item.reviewRole ? (
-        <p className="mt-3 text-xs uppercase tracking-[0.24em] text-sand/58">
-          {item.reviewAuthor}
-          {item.reviewRole ? `, ${item.reviewRole}` : ""}
-        </p>
-      ) : null}
-    </div>
+    <>
+      <div className="rounded-[1.75rem] border border-white/10 bg-white/5 p-4">
+        <button
+          type="button"
+          onClick={() => setIsZoomed(true)}
+          className="mb-4 block w-full rounded-2xl text-left transition hover:opacity-95"
+        >
+          <FallbackImage
+            sources={reviewSources}
+            alt={`Отзыв ${item.name}`}
+            className="max-h-[24rem] w-full rounded-2xl border border-white/8 bg-black/20 object-contain p-2"
+            fallback={
+              <div className="flex h-56 flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-white/12 bg-black/20 text-center text-sand/55">
+                <ImagePlus size={24} />
+                <p className="max-w-[15rem] text-xs uppercase tracking-[0.24em]">Зона под фото отзыва, благодарность или скрин переписки</p>
+              </div>
+            }
+          />
+        </button>
+        {item.reviewQuote ? <p className="text-base leading-7 text-paper/88">«{item.reviewQuote}»</p> : null}
+        {item.reviewAuthor || item.reviewRole ? (
+          <p className="mt-3 text-xs uppercase tracking-[0.24em] text-sand/58">
+            {item.reviewAuthor}
+            {item.reviewRole ? `, ${item.reviewRole}` : ""}
+          </p>
+        ) : null}
+      </div>
+      <AnimatePresence>
+        {isZoomed ? (
+          <motion.button
+            type="button"
+            className="fixed inset-0 z-[80] flex items-center justify-center bg-black/85 p-4 backdrop-blur-md"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsZoomed(false)}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.96 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.96 }}
+              className="relative max-h-[92vh] max-w-5xl"
+            >
+              <FallbackImage
+                sources={reviewSources}
+                alt={`Увеличенный отзыв ${item.name}`}
+                className="max-h-[92vh] w-auto max-w-full rounded-3xl border border-white/10 bg-[#111] object-contain p-3 shadow-2xl shadow-black/50"
+                fallback={
+                  <div className="flex h-56 w-[22rem] flex-col items-center justify-center gap-3 rounded-3xl border border-dashed border-white/12 bg-black/20 text-center text-sand/55">
+                    <ImagePlus size={24} />
+                    <p className="max-w-[15rem] text-xs uppercase tracking-[0.24em]">Файл отзыва не найден</p>
+                  </div>
+                }
+              />
+            </motion.div>
+          </motion.button>
+        ) : null}
+      </AnimatePresence>
+    </>
   );
 }
 

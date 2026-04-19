@@ -15,11 +15,11 @@ function CaseLogo({ item }: { item: CaseStudy }) {
   const logoSources = createCaseLogoSources(basePath, item.id, item.logoPath);
 
   return (
-    <div className="flex h-12 min-w-[5.5rem] max-w-[8rem] items-center justify-center rounded-2xl border border-white/10 bg-white/5 px-3">
+    <div className="flex h-12 min-w-[6.75rem] max-w-[9.5rem] items-center justify-start rounded-2xl px-0">
       <FallbackImage
         sources={logoSources}
         alt={item.name}
-        className="h-8 w-full object-contain object-left"
+        className="h-10 w-full object-contain object-left"
         fallback={<div className="logo-badge !h-11 !min-w-11 !px-2 text-[0.62rem]">{item.badge}</div>}
       />
     </div>
