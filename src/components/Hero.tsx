@@ -3,9 +3,10 @@ import { ArrowDownRight, ArrowRight, ScanSearch, ShieldCheck, Siren, Sparkles } 
 
 type HeroProps = {
   facts: string[];
+  materialsHref: string;
 };
 
-export function Hero({ facts }: HeroProps) {
+export function Hero({ facts, materialsHref }: HeroProps) {
   return (
     <section id="top" className="relative overflow-hidden px-4 pb-12 pt-32 sm:pt-36">
       <div className="spotlight" />
@@ -54,6 +55,10 @@ export function Hero({ facts }: HeroProps) {
             <a href="#cases" className="btn-secondary">
               Смотреть кейсы
               <ArrowDownRight size={18} />
+            </a>
+            <a href={materialsHref} className="btn-secondary">
+              Материалы
+              <ArrowRight size={18} />
             </a>
           </motion.div>
 

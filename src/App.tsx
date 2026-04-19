@@ -10,7 +10,6 @@ import { Hero } from "./components/Hero";
 import { Niches } from "./components/Niches";
 import { Process } from "./components/Process";
 import { ScrollToTopButton } from "./components/ScrollToTopButton";
-import { SeoHub } from "./components/SeoHub";
 import { Services } from "./components/Services";
 import { WhyUs } from "./components/WhyUs";
 import { casePlaceholders } from "./data/case-placeholders";
@@ -67,19 +66,20 @@ function App() {
   ];
 
   const brandLogoPaths = createBrandLogoSources(basePath);
+  const materialsHref = `${basePath}materialy.html`;
+  const navigationWithMaterials = [...navigation, { label: "Материалы", href: materialsHref }];
 
   return (
     <div className="relative min-h-screen bg-ink text-paper">
       <div className="fixed inset-0 -z-20 bg-noise opacity-80" />
       <div className="grid-overlay fixed inset-0 -z-10" />
       <CustomCursor />
-      <Header links={navigation} primaryHref="#cta" logoPaths={brandLogoPaths} />
+      <Header links={navigationWithMaterials} primaryHref="#cta" secondaryHref={materialsHref} logoPaths={brandLogoPaths} />
       <main>
-        <Hero facts={heroFacts} />
+        <Hero facts={heroFacts} materialsHref={materialsHref} />
         <About stats={statsWithAggregate} dentalClients={dentalClients} />
         <Niches items={niches} />
         <Services items={services} />
-        <SeoHub basePath={basePath} />
         <Process items={processSteps} />
         <Cases items={enrichedCaseStudies} />
         <WhyUs items={reasons} />
@@ -88,14 +88,7 @@ function App() {
       <Footer
         privacyHref={`${basePath}privacy.html`}
         termsHref={`${basePath}terms.html`}
-        extraLinks={[
-          { label: "Маркетинг для стоматологии", href: `${basePath}marketing-dlya-stomatologii.html` },
-          { label: "Маркетинг для медицины", href: `${basePath}marketing-dlya-meditsiny.html` },
-          { label: "Маркетинг для экспертов", href: `${basePath}marketing-dlya-ekspertov.html` },
-          { label: "Маркетинг для недвижимости", href: `${basePath}marketing-dlya-nedvizhimosti.html` },
-          { label: "Как стоматологии получать записи", href: `${basePath}kak-stomatologii-poluchat-zapisi-bez-haosa.html` },
-          { label: "Как работать с отзывами и картами", href: `${basePath}kak-klinike-rabotat-s-otzyvami-i-kartami.html` },
-        ]}
+        extraLinks={[{ label: "Материалы", href: materialsHref }]}
       />
       <CookieBanner />
       <ScrollToTopButton />

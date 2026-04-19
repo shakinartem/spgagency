@@ -11,6 +11,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, "index.html"),
+        materials: resolve(__dirname, "materialy.html"),
         dental: resolve(__dirname, "marketing-dlya-stomatologii.html"),
         medical: resolve(__dirname, "marketing-dlya-meditsiny.html"),
         expert: resolve(__dirname, "marketing-dlya-ekspertov.html"),

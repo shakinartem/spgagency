@@ -14,7 +14,7 @@ const iconMap = {
   "telegram-for-experts": Send,
 } as const;
 
-export function SeoHub({ basePath }: { basePath: string }) {
+export function SeoHub({ basePath, title, description }: { basePath: string; title?: string; description?: string }) {
   const items = seoPageOrder.map((key) => seoPages[key]);
 
   return (
@@ -22,8 +22,11 @@ export function SeoHub({ basePath }: { basePath: string }) {
       <div className="mx-auto max-w-7xl">
         <SectionHeading
           eyebrow="Контентный штаб"
-          title="Отдельные страницы и разборы, которые помогают находить SPG не только по бренду, но и по реальному спросу."
-          description="Это первый слой многостраничной структуры: посадочные под ниши и материалы под вопросы, с которых обычно начинается поиск подрядчика."
+          title={title ?? "Отдельные страницы и разборы, которые помогают находить SPG не только по бренду, но и по реальному спросу."}
+          description={
+            description ??
+            "Это первый слой многостраничной структуры: посадочные под ниши и материалы под вопросы, с которых обычно начинается поиск подрядчика."
+          }
         />
 
         <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
