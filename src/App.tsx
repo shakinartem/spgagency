@@ -83,7 +83,18 @@ function App() {
         <WhyUs items={reasons} />
         <CTA contacts={contacts} />
       </main>
-      <Footer privacyHref={`${basePath}privacy.html`} termsHref={`${basePath}terms.html`} />
+      <Footer
+        privacyHref={`${basePath}privacy.html`}
+        termsHref={`${basePath}terms.html`}
+        extraLinks={[
+          { label: "Маркетинг для стоматологии", href: `${basePath}marketing-dlya-stomatologii.html` },
+          { label: "Маркетинг для медицины", href: `${basePath}marketing-dlya-meditsiny.html` },
+          { label: "Маркетинг для экспертов", href: `${basePath}marketing-dlya-ekspertov.html` },
+          { label: "Маркетинг для недвижимости", href: `${basePath}marketing-dlya-nedvizhimosti.html` },
+          { label: "Как стоматологии получать записи", href: `${basePath}kak-stomatologii-poluchat-zapisi-bez-haosa.html` },
+          { label: "Как работать с отзывами и картами", href: `${basePath}kak-klinike-rabotat-s-otzyvami-i-kartami.html` },
+        ]}
+      />
       <CookieBanner />
       <ScrollToTopButton />
     </div>
