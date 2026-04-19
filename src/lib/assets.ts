@@ -2,6 +2,8 @@ export function createCaseLogoSources(basePath: string, caseId: string, customPa
   return [
     customPath,
     `${basePath}assets/cases/${caseId}/logo.png`,
+    `${basePath}assets/cases/${caseId}/logo.jpg`,
+    `${basePath}assets/cases/${caseId}/logo.jpeg`,
     `${basePath}assets/cases/${caseId}/logo.svg`,
     `${basePath}assets/cases/${caseId}/logo.webp`,
   ].filter(Boolean) as string[];

@@ -13,6 +13,7 @@ import { ScrollToTopButton } from "./components/ScrollToTopButton";
 import { Services } from "./components/Services";
 import { WhyUs } from "./components/WhyUs";
 import { casePlaceholders } from "./data/case-placeholders";
+import { caseOverrides } from "./data/case-overrides";
 import { caseStudies } from "./data/cases";
 import { contacts, dentalClients, heroFacts, missionStats, navigation, niches, processSteps, reasons, services } from "./data/site-content";
 import { createBrandLogoSources } from "./lib/assets";
@@ -30,6 +31,7 @@ function App() {
         return {
           ...casePlaceholders[item.id],
           ...item,
+          ...caseOverrides[item.id],
           category: (categoryOverrides[item.id] ?? item.category) as typeof item.category,
         };
       }),

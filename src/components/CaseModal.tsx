@@ -15,7 +15,7 @@ function ReviewPreview({ item }: { item: CaseStudy }) {
       <FallbackImage
         sources={reviewSources}
         alt={`Отзыв ${item.name}`}
-        className="mb-4 max-h-[18rem] w-full rounded-2xl object-cover"
+        className="mb-4 max-h-[24rem] w-full rounded-2xl border border-white/8 bg-black/20 object-contain p-2"
         fallback={
           <div className="mb-4 flex h-56 flex-col items-center justify-center gap-3 rounded-2xl border border-dashed border-white/12 bg-black/20 text-center text-sand/55">
             <ImagePlus size={24} />
