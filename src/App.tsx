@@ -67,14 +67,14 @@ function App() {
 
   const brandLogoPaths = createBrandLogoSources(basePath);
   const materialsHref = `${basePath}materialy.html`;
-  const navigationWithMaterials = [...navigation, { label: "Материалы", href: materialsHref }];
+  const navigationWithMaterials = [...navigation, { label: "Материалы дел", href: materialsHref }];
 
   return (
     <div className="relative min-h-screen bg-ink text-paper">
       <div className="fixed inset-0 -z-20 bg-noise opacity-80" />
       <div className="grid-overlay fixed inset-0 -z-10" />
       <CustomCursor />
-      <Header links={navigationWithMaterials} primaryHref="#cta" secondaryHref={materialsHref} logoPaths={brandLogoPaths} />
+      <Header links={navigationWithMaterials} primaryHref="#cta" logoPaths={brandLogoPaths} />
       <main>
         <Hero facts={heroFacts} materialsHref={materialsHref} />
         <About stats={statsWithAggregate} dentalClients={dentalClients} />
@@ -88,7 +88,7 @@ function App() {
       <Footer
         privacyHref={`${basePath}privacy.html`}
         termsHref={`${basePath}terms.html`}
-        extraLinks={[{ label: "Материалы", href: materialsHref }]}
+        extraLinks={[{ label: "Материалы дел", href: materialsHref }]}
       />
       <CookieBanner />
       <ScrollToTopButton />

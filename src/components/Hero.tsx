@@ -57,7 +57,7 @@ export function Hero({ facts, materialsHref }: HeroProps) {
               <ArrowDownRight size={18} />
             </a>
             <a href={materialsHref} className="btn-secondary">
-              Материалы
+              Материалы дел
               <ArrowRight size={18} />
             </a>
           </motion.div>

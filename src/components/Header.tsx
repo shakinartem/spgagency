@@ -5,11 +5,10 @@ import { FallbackImage } from "./FallbackImage";
 type HeaderProps = {
   links: { label: string; href: string }[];
   primaryHref: string;
-  secondaryHref?: string;
   logoPaths?: string[];
 };
 
-export function Header({ links, primaryHref, secondaryHref, logoPaths = [] }: HeaderProps) {
+export function Header({ links, primaryHref, logoPaths = [] }: HeaderProps) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -59,16 +58,9 @@ export function Header({ links, primaryHref, secondaryHref, logoPaths = [] }: He
           </nav>
 
           <div className="hidden lg:block">
-            <div className="flex items-center gap-3">
-              {secondaryHref ? (
-                <a href={secondaryHref} className="btn-secondary">
-                  Материалы
-                </a>
-              ) : null}
-              <a href={primaryHref} className="btn-primary">
-                Обсудить проект
-              </a>
-            </div>
+            <a href={primaryHref} className="btn-primary">
+              Обсудить проект
+            </a>
           </div>
 
           <button
@@ -94,15 +86,6 @@ export function Header({ links, primaryHref, secondaryHref, logoPaths = [] }: He
                   {link.label}
                 </a>
               ))}
-              {secondaryHref ? (
-                <a
-                  href={secondaryHref}
-                  className="rounded-2xl px-3 py-3 text-sm uppercase tracking-[0.18em] text-sand/75 transition hover:bg-white/5 hover:text-paper"
-                  onClick={() => setOpen(false)}
-                >
-                  Материалы
-                </a>
-              ) : null}
               <a href={primaryHref} className="btn-primary mt-2 justify-center text-center" onClick={() => setOpen(false)}>
                 Обсудить проект
               </a>

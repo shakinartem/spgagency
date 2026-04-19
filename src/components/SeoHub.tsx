@@ -14,22 +14,34 @@ const iconMap = {
   "telegram-for-experts": Send,
 } as const;
 
-export function SeoHub({ basePath, title, description }: { basePath: string; title?: string; description?: string }) {
+export function SeoHub({
+  basePath,
+  title,
+  description,
+  showHeading = true,
+}: {
+  basePath: string;
+  title?: string;
+  description?: string;
+  showHeading?: boolean;
+}) {
   const items = seoPageOrder.map((key) => seoPages[key]);
 
   return (
     <section className="section-shell px-4">
       <div className="mx-auto max-w-7xl">
-        <SectionHeading
-          eyebrow="Контентный штаб"
-          title={title ?? "Отдельные страницы и разборы, которые помогают находить SPG не только по бренду, но и по реальному спросу."}
-          description={
-            description ??
-            "Это первый слой многостраничной структуры: посадочные под ниши и материалы под вопросы, с которых обычно начинается поиск подрядчика."
-          }
-        />
+        {showHeading ? (
+          <SectionHeading
+            eyebrow="Материалы дел"
+            title={title ?? "Отдельные страницы и разборы, которые помогают находить SPG не только по бренду, но и по реальному спросу."}
+            description={
+              description ??
+              "Это первый слой многостраничной структуры: посадочные под ниши и материалы под вопросы, с которых обычно начинается поиск подрядчика."
+            }
+          />
+        ) : null}
 
-        <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <div className={`${showHeading ? "mt-8" : ""} grid gap-4 md:grid-cols-2 xl:grid-cols-3`}>
           {items.map((item) => {
             const Icon = iconMap[item.key as keyof typeof iconMap] ?? FileText;
 
@@ -37,14 +49,14 @@ export function SeoHub({ basePath, title, description }: { basePath: string; tit
               <a
                 key={item.key}
                 href={`${basePath}${item.slug}`}
-                className="panel-card group relative overflow-hidden p-6 transition hover:-translate-y-1"
+                className="panel-card group relative overflow-hidden p-5 transition hover:-translate-y-1"
               >
                 <div className="absolute right-4 top-4 rounded-full border border-white/10 bg-white/5 p-2 text-sand/60 transition group-hover:border-ember/30 group-hover:text-ember">
                   <Icon size={16} />
                 </div>
                 <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/55">{item.eyebrow}</p>
-                <h3 className="mt-4 max-w-[18rem] font-display text-3xl leading-tight text-paper">{item.title.replace(" | SPG", "")}</h3>
-                <p className="mt-4 text-sm leading-6 text-sand/78">{item.description}</p>
+                <h3 className="mt-3 max-w-[16rem] font-display text-[2rem] leading-tight text-paper">{item.title.replace(" | SPG", "")}</h3>
+                <p className="mt-3 text-sm leading-6 text-sand/78">{item.description}</p>
                 <div className="mt-5 inline-flex items-center gap-2 text-[0.68rem] uppercase tracking-[0.2em] text-paper transition group-hover:text-ember">
                   Открыть страницу
                   <ArrowUpRight size={14} />
