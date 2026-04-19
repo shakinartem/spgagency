@@ -12,31 +12,13 @@ import { Process } from "./components/Process";
 import { ScrollToTopButton } from "./components/ScrollToTopButton";
 import { Services } from "./components/Services";
 import { WhyUs } from "./components/WhyUs";
-import { casePlaceholders } from "./data/case-placeholders";
-import { caseOverrides } from "./data/case-overrides";
-import { caseStudies } from "./data/cases";
+import { getEnrichedCaseStudies } from "./data/enriched-cases";
 import { contacts, dentalClients, heroFacts, missionStats, navigation, niches, processSteps, reasons, services } from "./data/site-content";
 import { createBrandLogoSources } from "./lib/assets";
 
 function App() {
   const basePath = import.meta.env.BASE_URL;
-  const enrichedCaseStudies = useMemo(
-    () =>
-      caseStudies.map((item) => {
-        const categoryOverrides: Record<string, string> = {
-          "po-pyatam": "Медицина",
-          "divina-podology": "Медицина",
-        };
-
-        return {
-          ...casePlaceholders[item.id],
-          ...item,
-          ...caseOverrides[item.id],
-          category: (categoryOverrides[item.id] ?? item.category) as typeof item.category,
-        };
-      }),
-    [],
-  );
+  const enrichedCaseStudies = useMemo(() => getEnrichedCaseStudies(), []);
 
   const totals = useMemo(() => {
     const reach = enrichedCaseStudies.reduce((sum, item) => sum + (item.stats.reach ?? 0), 0);

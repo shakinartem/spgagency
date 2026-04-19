@@ -1,10 +1,9 @@
 import { ArrowUpRight, Check, ChevronRight } from "lucide-react";
+import { CookieBanner } from "./components/CookieBanner";
 import { CustomCursor } from "./components/CustomCursor";
 import { Footer } from "./components/Footer";
-import { CookieBanner } from "./components/CookieBanner";
 import { ScrollToTopButton } from "./components/ScrollToTopButton";
-import { casePlaceholders } from "./data/case-placeholders";
-import { caseStudies } from "./data/cases";
+import { getEnrichedCaseStudies } from "./data/enriched-cases";
 import { contacts } from "./data/site-content";
 import type { SeoPageConfig } from "./data/seo-pages";
 import type { ContactLink } from "./types";
@@ -17,6 +16,7 @@ type SeoPageAppProps = {
 function SeoHeader({ basePath, page }: { basePath: string; page: SeoPageConfig }) {
   const homeHref = `${basePath}#top`;
   const auditHref = `${basePath}#audit-form`;
+  const casesHref = `${basePath}keisy.html`;
 
   return (
     <header className="sticky top-0 z-50 px-4 pt-4">
@@ -27,7 +27,7 @@ function SeoHeader({ basePath, page }: { basePath: string; page: SeoPageConfig }
         </a>
         <nav className="hidden items-center gap-6 lg:flex">
           <a href={homeHref} className="text-sm uppercase tracking-[0.18em] text-sand/72 transition hover:text-paper">Главная</a>
-          <a href={`${basePath}#cases`} className="text-sm uppercase tracking-[0.18em] text-sand/72 transition hover:text-paper">Кейсы</a>
+          <a href={casesHref} className="text-sm uppercase tracking-[0.18em] text-sand/72 transition hover:text-paper">Кейсы</a>
           <a href={auditHref} className="text-sm uppercase tracking-[0.18em] text-sand/72 transition hover:text-paper">Аудит</a>
         </nav>
         <a href={auditHref} className="btn-primary">
@@ -39,9 +39,10 @@ function SeoHeader({ basePath, page }: { basePath: string; page: SeoPageConfig }
 }
 
 function RelatedCases({ basePath, caseIds }: { basePath: string; caseIds: string[] }) {
-  const items = caseStudies
+  const casesHref = `${basePath}keisy.html`;
+  const items = getEnrichedCaseStudies()
     .filter((item) => caseIds.includes(item.id))
-    .map((item) => ({ ...casePlaceholders[item.id], ...item }));
+    .slice(0, 3);
 
   return (
     <section className="section-shell px-4">
@@ -53,14 +54,14 @@ function RelatedCases({ basePath, caseIds }: { basePath: string; caseIds: string
               Проекты, где уже видно, как эта логика работает на практике.
             </h2>
           </div>
-          <a href={`${basePath}#cases`} className="hidden items-center gap-2 text-sm uppercase tracking-[0.2em] text-sand/70 transition hover:text-paper sm:inline-flex">
+          <a href={casesHref} className="hidden items-center gap-2 text-sm uppercase tracking-[0.2em] text-sand/70 transition hover:text-paper sm:inline-flex">
             Все кейсы
             <ArrowUpRight size={14} />
           </a>
         </div>
         <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {items.map((item) => (
-            <a key={item.id} href={`${basePath}#cases`} className="panel-card p-5 transition hover:-translate-y-1">
+            <a key={item.id} href={casesHref} className="panel-card p-5 transition hover:-translate-y-1">
               <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/55">{item.category}</p>
               <h3 className="mt-3 font-display text-3xl text-paper">{item.name}</h3>
               <p className="mt-3 text-sm leading-6 text-sand/78">{item.summary}</p>
@@ -113,7 +114,7 @@ export function SeoPageApp({ page, basePath }: SeoPageAppProps) {
               <p className="mt-4 max-w-2xl text-sm uppercase tracking-[0.18em] text-sand/58">{page.heroNote}</p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <a href={`${basePath}#audit-form`} className="btn-primary">{page.primaryLabel}</a>
-                <a href={`${basePath}#cases`} className="btn-secondary">{page.secondaryLabel}</a>
+                <a href={`${basePath}keisy.html`} className="btn-secondary">{page.secondaryLabel}</a>
               </div>
             </div>
 
@@ -131,8 +132,8 @@ export function SeoPageApp({ page, basePath }: SeoPageAppProps) {
               <div className="mt-6 rounded-[1.5rem] border border-ember/30 bg-ember/8 p-4">
                 <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/55">Формат работы</p>
                 <p className="mt-3 text-base leading-7 text-paper/86">
-                  Базовая единица работ начинается от 35 000 ₽, но сильнее всего SPG работает через пакет связок: аналитика, упаковка,
-                  контент, сайт, репутация и воронка.
+                  Базовая единица работ начинается от 35 000 ₽, но сильнее всего SPG работает через пакет связок:
+                  аналитика, упаковка, контент, сайт, репутация и воронка.
                 </p>
               </div>
             </aside>
@@ -235,6 +236,7 @@ export function SeoPageApp({ page, basePath }: SeoPageAppProps) {
           { label: "Маркетинг для медицины", href: `${basePath}marketing-dlya-meditsiny.html` },
           { label: "Маркетинг для экспертов", href: `${basePath}marketing-dlya-ekspertov.html` },
           { label: "Маркетинг для недвижимости", href: `${basePath}marketing-dlya-nedvizhimosti.html` },
+          { label: "Кейсы", href: `${basePath}keisy.html` },
         ]}
       />
       <CookieBanner />
