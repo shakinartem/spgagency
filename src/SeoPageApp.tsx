@@ -8,8 +8,8 @@ import { Footer } from "./components/Footer";
 import { ScrollToTopButton } from "./components/ScrollToTopButton";
 import { getEnrichedCaseStudies } from "./data/enriched-cases";
 import { contacts } from "./data/site-content";
-import { createCaseLogoSources } from "./lib/assets";
 import type { SeoPageConfig } from "./data/seo-pages";
+import { createCaseLogoSources } from "./lib/assets";
 import type { CaseStudy, ContactLink } from "./types";
 
 type SeoPageAppProps = {
@@ -154,18 +154,56 @@ export function SeoPageApp({ page, basePath }: SeoPageAppProps) {
                 <a href="#related-cases" className="btn-secondary">{page.secondaryLabel}</a>
               </div>
             </div>
+
             <aside className="panel-card dossier-card relative max-w-none overflow-hidden p-7 sm:p-8 xl:p-9">
               <div className="agent-corner agent-corner-top" />
               <div className="agent-corner agent-corner-bottom" />
-              <p className="text-[0.62rem] uppercase tracking-[0.24em] text-sand/55">Кому подходит</p>
-              <div className="mt-5 grid gap-4">
-                {page.audience.map((item) => (
-                  <div key={item} className="rounded-[1.35rem] border border-white/10 bg-white/5 px-5 py-4 text-[0.95rem] text-paper/88">
-                    {item}
-                  </div>
-                ))}
+
+              <div className="flex items-start justify-between gap-4 border-b border-white/8 pb-5">
+                <div>
+                  <p className="text-[0.62rem] uppercase tracking-[0.24em] text-sand/55">Оперативное досье</p>
+                  <h2 className="mt-3 font-display text-[2.05rem] leading-none text-paper sm:text-[2.45rem]">Профиль задачи</h2>
+                </div>
+                <div className="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-[0.58rem] uppercase tracking-[0.22em] text-emerald-200">
+                  active
+                </div>
               </div>
-              <div className="mt-7 rounded-[1.7rem] border border-ember/30 bg-ember/8 p-5 sm:p-6">
+
+              <div className="mt-6 grid gap-4 sm:grid-cols-[1.1fr_0.9fr]">
+                <div className="rounded-[1.5rem] border border-ember/25 bg-ember/8 p-5 sm:p-6">
+                  <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/55">Ключевой вывод</p>
+                  <p className="mt-3 text-[1.08rem] leading-8 text-paper/90">
+                    Сильнее всего эта страница работает там, где бизнесу нужна не активность ради отчета, а управляемая система роста с понятной логикой.
+                  </p>
+                </div>
+                <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
+                  <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/55">Контур задачи</p>
+                  <div className="mt-4 space-y-3 text-sm leading-6 text-paper/84">
+                    <div className="rounded-[1rem] border border-white/8 bg-black/15 px-4 py-3">
+                      Спрос должен приходить без хаоса, случайных подрядчиков и разрозненных площадок.
+                    </div>
+                    <div className="rounded-[1rem] border border-white/8 bg-black/15 px-4 py-3">
+                      В приоритете доверие, управляемость воронки и взрослая подача, а не громкий шум.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-5 rounded-[1.55rem] border border-white/10 bg-white/5 p-5 sm:p-6">
+                <div className="flex items-center justify-between gap-4">
+                  <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/55">Кому подходит</p>
+                  <p className="text-[0.58rem] uppercase tracking-[0.2em] text-sand/42">field access</p>
+                </div>
+                <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                  {page.audience.map((item) => (
+                    <div key={item} className="rounded-[1.15rem] border border-white/10 bg-black/15 px-4 py-4 text-[0.95rem] text-paper/88">
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mt-5 rounded-[1.7rem] border border-ember/30 bg-ember/8 p-5 sm:p-6">
                 <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/55">Формат работы</p>
                 <p className="mt-3 text-[1.02rem] leading-8 text-paper/86">
                   Базовая единица работ начинается от 35 000 ₽, но сильнее всего SPG работает через пакет связок:
