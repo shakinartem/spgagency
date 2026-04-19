@@ -18,7 +18,7 @@ function MaterialsHeader({ basePath }: { basePath: string }) {
         </a>
         <nav className="hidden items-center gap-6 lg:flex">
           <a href={`${basePath}#top`} className="text-sm uppercase tracking-[0.18em] text-sand/72 transition hover:text-paper">Главная</a>
-          <a href={`${basePath}keisy.html`} className="text-sm uppercase tracking-[0.18em] text-sand/72 transition hover:text-paper">Кейсы</a>
+          <a href={`${basePath}#cases`} className="text-sm uppercase tracking-[0.18em] text-sand/72 transition hover:text-paper">Кейсы</a>
           <a href={`${basePath}#cta`} className="text-sm uppercase tracking-[0.18em] text-sand/72 transition hover:text-paper">Контакты</a>
         </nav>
         <a href={`${basePath}#audit-form`} className="btn-primary">
@@ -50,7 +50,7 @@ export function MaterialsPageApp({ basePath }: MaterialsPageAppProps) {
               </p>
               <div className="mt-7 flex flex-wrap gap-3">
                 <a href={`${basePath}#audit-form`} className="btn-primary">Получить аудит</a>
-                <a href={`${basePath}keisy.html`} className="btn-secondary">Открыть кейсы</a>
+                <a href={`${basePath}#cases`} className="btn-secondary">Открыть кейсы</a>
               </div>
             </div>
 
@@ -95,10 +95,7 @@ export function MaterialsPageApp({ basePath }: MaterialsPageAppProps) {
         termsHref={`${basePath}terms.html`}
         homeHref={`${basePath}#top`}
         contactHref={`${basePath}#cta`}
-        extraLinks={[
-          { label: "Материалы дел", href: `${basePath}materialy.html` },
-          { label: "Кейсы", href: `${basePath}keisy.html` },
-        ]}
+        extraLinks={[{ label: "Материалы дел", href: `${basePath}materialy.html` }]}
       />
       <CookieBanner />
       <ScrollToTopButton />

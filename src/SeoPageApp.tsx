@@ -1,12 +1,16 @@
-import { ArrowUpRight, Check, ChevronRight } from "lucide-react";
+import { Check, ChevronRight } from "lucide-react";
+import { useMemo, useState } from "react";
+import { CaseModal } from "./components/CaseModal";
 import { CookieBanner } from "./components/CookieBanner";
 import { CustomCursor } from "./components/CustomCursor";
+import { FallbackImage } from "./components/FallbackImage";
 import { Footer } from "./components/Footer";
 import { ScrollToTopButton } from "./components/ScrollToTopButton";
 import { getEnrichedCaseStudies } from "./data/enriched-cases";
 import { contacts } from "./data/site-content";
+import { createCaseLogoSources } from "./lib/assets";
 import type { SeoPageConfig } from "./data/seo-pages";
-import type { ContactLink } from "./types";
+import type { CaseStudy, ContactLink } from "./types";
 
 type SeoPageAppProps = {
   page: SeoPageConfig;
@@ -16,7 +20,7 @@ type SeoPageAppProps = {
 function SeoHeader({ basePath, page }: { basePath: string; page: SeoPageConfig }) {
   const homeHref = `${basePath}#top`;
   const auditHref = `${basePath}#audit-form`;
-  const casesHref = `${basePath}keisy.html`;
+  const relatedCasesHref = "#related-cases";
 
   return (
     <header className="sticky top-0 z-50 px-4 pt-4">
@@ -27,7 +31,7 @@ function SeoHeader({ basePath, page }: { basePath: string; page: SeoPageConfig }
         </a>
         <nav className="hidden items-center gap-6 lg:flex">
           <a href={homeHref} className="text-sm uppercase tracking-[0.18em] text-sand/72 transition hover:text-paper">Главная</a>
-          <a href={casesHref} className="text-sm uppercase tracking-[0.18em] text-sand/72 transition hover:text-paper">Кейсы</a>
+          <a href={relatedCasesHref} className="text-sm uppercase tracking-[0.18em] text-sand/72 transition hover:text-paper">Кейсы</a>
           <a href={auditHref} className="text-sm uppercase tracking-[0.18em] text-sand/72 transition hover:text-paper">Аудит</a>
         </nav>
         <a href={auditHref} className="btn-primary">
@@ -38,14 +42,33 @@ function SeoHeader({ basePath, page }: { basePath: string; page: SeoPageConfig }
   );
 }
 
-function RelatedCases({ basePath, caseIds }: { basePath: string; caseIds: string[] }) {
-  const casesHref = `${basePath}keisy.html`;
-  const items = getEnrichedCaseStudies()
-    .filter((item) => caseIds.includes(item.id))
-    .slice(0, 3);
+function RelatedCaseLogo({ item, basePath }: { item: CaseStudy; basePath: string }) {
+  const logoSources = createCaseLogoSources(basePath, item.id, item.logoPath);
 
   return (
-    <section className="section-shell px-4">
+    <div className="flex h-12 min-w-[6.75rem] max-w-[9.5rem] items-center justify-start rounded-2xl px-0">
+      <FallbackImage
+        sources={logoSources}
+        alt={item.name}
+        className="h-10 w-full object-contain object-left"
+        fallback={<div className="logo-badge !h-11 !min-w-11 !px-2 text-[0.62rem]">{item.badge}</div>}
+      />
+    </div>
+  );
+}
+
+function RelatedCases({ basePath, caseIds }: { basePath: string; caseIds: string[] }) {
+  const [selectedCase, setSelectedCase] = useState<CaseStudy | null>(null);
+  const items = useMemo(
+    () =>
+      getEnrichedCaseStudies()
+        .filter((item) => caseIds.includes(item.id))
+        .slice(0, 3),
+    [caseIds],
+  );
+
+  return (
+    <section id="related-cases" className="section-shell px-4">
       <div className="mx-auto max-w-7xl">
         <div className="flex items-end justify-between gap-6">
           <div>
@@ -54,16 +77,25 @@ function RelatedCases({ basePath, caseIds }: { basePath: string; caseIds: string
               Проекты, где уже видно, как эта логика работает на практике.
             </h2>
           </div>
-          <a href={casesHref} className="hidden items-center gap-2 text-sm uppercase tracking-[0.2em] text-sand/70 transition hover:text-paper sm:inline-flex">
-            Все кейсы
-            <ArrowUpRight size={14} />
-          </a>
+          <p className="hidden max-w-sm text-right text-sm leading-6 text-sand/72 sm:block">
+            По клику открывается тот же подробный кейс, что и на главной: с отзывом, цифрами и полной разборкой.
+          </p>
         </div>
         <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {items.map((item) => (
-            <a key={item.id} href={casesHref} className="panel-card p-5 transition hover:-translate-y-1">
-              <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/55">{item.category}</p>
-              <h3 className="mt-3 font-display text-3xl text-paper">{item.name}</h3>
+            <button
+              key={item.id}
+              type="button"
+              onClick={() => setSelectedCase(item)}
+              className="panel-card p-5 text-left transition hover:-translate-y-1"
+            >
+              <div className="flex items-start justify-between gap-3">
+                <RelatedCaseLogo item={item} basePath={basePath} />
+                <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[0.56rem] uppercase tracking-[0.18em] text-sand/65">
+                  {item.category}
+                </span>
+              </div>
+              <h3 className="mt-5 font-display text-3xl text-paper">{item.name}</h3>
               <p className="mt-3 text-sm leading-6 text-sand/78">{item.summary}</p>
               <div className="mt-4 grid grid-cols-2 gap-2">
                 {item.metrics.slice(0, 2).map((metric) => (
@@ -73,10 +105,15 @@ function RelatedCases({ basePath, caseIds }: { basePath: string; caseIds: string
                   </div>
                 ))}
               </div>
-            </a>
+              <span className="mt-4 inline-flex text-[0.68rem] uppercase tracking-[0.2em] text-paper transition hover:text-ember">
+                Открыть кейс
+              </span>
+            </button>
           ))}
         </div>
       </div>
+
+      <CaseModal caseItem={selectedCase} onClose={() => setSelectedCase(null)} />
     </section>
   );
 }
@@ -113,8 +150,8 @@ export function SeoPageApp({ page, basePath }: SeoPageAppProps) {
               <p className="mt-6 max-w-3xl text-lg leading-8 text-sand/80">{page.heroText}</p>
               <p className="mt-4 max-w-2xl text-sm uppercase tracking-[0.18em] text-sand/58">{page.heroNote}</p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <a href={`${basePath}#audit-form`} className="btn-primary">{page.primaryLabel}</a>
-                <a href={`${basePath}keisy.html`} className="btn-secondary">{page.secondaryLabel}</a>
+                <a href="#audit-form" className="btn-primary">{page.primaryLabel}</a>
+                <a href="#related-cases" className="btn-secondary">{page.secondaryLabel}</a>
               </div>
             </div>
 
@@ -236,7 +273,6 @@ export function SeoPageApp({ page, basePath }: SeoPageAppProps) {
           { label: "Маркетинг для медицины", href: `${basePath}marketing-dlya-meditsiny.html` },
           { label: "Маркетинг для экспертов", href: `${basePath}marketing-dlya-ekspertov.html` },
           { label: "Маркетинг для недвижимости", href: `${basePath}marketing-dlya-nedvizhimosti.html` },
-          { label: "Кейсы", href: `${basePath}keisy.html` },
         ]}
       />
       <CookieBanner />

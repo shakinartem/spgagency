@@ -12,7 +12,6 @@ export default defineConfig({
       input: {
         main: resolve(__dirname, "index.html"),
         materials: resolve(__dirname, "materialy.html"),
-        cases: resolve(__dirname, "keisy.html"),
         dental: resolve(__dirname, "marketing-dlya-stomatologii.html"),
         medical: resolve(__dirname, "marketing-dlya-meditsiny.html"),
         expert: resolve(__dirname, "marketing-dlya-ekspertov.html"),
