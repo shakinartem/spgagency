@@ -45,7 +45,7 @@ export function Header({ links, primaryHref, logoPaths = [] }: HeaderProps) {
             )}
             <div className="min-w-0">
               <p className="text-sm font-medium uppercase tracking-[0.28em] text-paper">SPG</p>
-              <p className="hidden truncate text-[0.7rem] uppercase tracking-[0.18em] text-sand/62 xl:block">оперативный маркетинговый штаб</p>
+              <p className="hidden truncate text-[0.7rem] uppercase tracking-[0.18em] text-sand/62 xl:block">оперативный штаб</p>
             </div>
           </a>
 
