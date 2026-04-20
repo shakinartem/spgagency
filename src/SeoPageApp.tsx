@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { Check, ChevronRight } from "lucide-react";
 import { useMemo, useState } from "react";
 import { CaseModal } from "./components/CaseModal";
@@ -16,6 +17,17 @@ type SeoPageAppProps = {
   page: SeoPageConfig;
   basePath: string;
 };
+
+function dossierMotion(index: number) {
+  return {
+    initial: { opacity: 0, y: 20 },
+    animate: { opacity: 1, y: 0 },
+    transition: {
+      duration: 0.42,
+      delay: 0.08 + index * 0.06,
+    },
+  };
+}
 
 function SeoHeader({ basePath, page }: { basePath: string; page: SeoPageConfig }) {
   const homeHref = `${basePath}#top`;
@@ -142,7 +154,12 @@ export function SeoPageApp({ page, basePath }: SeoPageAppProps) {
       <main>
         <section className="section-shell px-4 pt-24 sm:pt-28">
           <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.98fr_1.02fr] lg:items-end xl:gap-14">
-            <div className="max-w-[48rem]">
+            <motion.div
+              className="max-w-[48rem]"
+              initial={{ opacity: 0, y: 22 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.48, ease: "easeOut" }}
+            >
               <span className="label-chip">{page.eyebrow}</span>
               <h1 className="mt-6 max-w-[8.5ch] font-display text-[clamp(3rem,6.2vw,5.9rem)] leading-[0.92] text-paper">
                 {page.heroTitle}
@@ -153,13 +170,24 @@ export function SeoPageApp({ page, basePath }: SeoPageAppProps) {
                 <a href="#audit-form" className="btn-primary">{page.primaryLabel}</a>
                 <a href="#related-cases" className="btn-secondary">{page.secondaryLabel}</a>
               </div>
-            </div>
+            </motion.div>
 
-            <aside className="panel-card dossier-card relative max-w-none overflow-hidden p-7 sm:p-8 xl:p-9">
+            <motion.aside
+              className="panel-card dossier-card relative max-w-none overflow-hidden p-7 sm:p-8 xl:p-9"
+              initial={{ opacity: 0, y: 28, scale: 0.985 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.52, ease: "easeOut", delay: 0.08 }}
+            >
               <div className="agent-corner agent-corner-top" />
               <div className="agent-corner agent-corner-bottom" />
+              <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-ember/30 to-transparent" />
+              <div className="pointer-events-none absolute inset-y-10 right-0 w-px bg-gradient-to-b from-transparent via-white/10 to-transparent" />
+              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.035)_0,rgba(255,255,255,0)_24%,rgba(255,255,255,0)_100%)]" />
 
-              <div className="flex items-start justify-between gap-4 border-b border-white/8 pb-5">
+              <motion.div
+                className="flex items-start justify-between gap-4 border-b border-white/8 pb-5"
+                {...dossierMotion(0)}
+              >
                 <div>
                   <p className="text-[0.62rem] uppercase tracking-[0.24em] text-sand/55">Оперативное досье</p>
                   <h2 className="mt-3 font-display text-[2.05rem] leading-none text-paper sm:text-[2.45rem]">Профиль задачи</h2>
@@ -167,16 +195,22 @@ export function SeoPageApp({ page, basePath }: SeoPageAppProps) {
                 <div className="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-[0.58rem] uppercase tracking-[0.22em] text-emerald-200">
                   active
                 </div>
-              </div>
+              </motion.div>
 
               <div className="mt-6 grid gap-4 sm:grid-cols-[1.1fr_0.9fr]">
-                <div className="rounded-[1.5rem] border border-ember/25 bg-ember/8 p-5 sm:p-6">
+                <motion.div
+                  className="rounded-[1.5rem] border border-ember/25 bg-ember/8 p-5 sm:p-6"
+                  {...dossierMotion(1)}
+                >
                   <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/55">Ключевой вывод</p>
                   <p className="mt-3 text-[1.08rem] leading-8 text-paper/90">
                     Сильнее всего эта страница работает там, где бизнесу нужна не активность ради отчета, а управляемая система роста с понятной логикой.
                   </p>
-                </div>
-                <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-5">
+                </motion.div>
+                <motion.div
+                  className="rounded-[1.5rem] border border-white/10 bg-white/5 p-5"
+                  {...dossierMotion(2)}
+                >
                   <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/55">Контур задачи</p>
                   <div className="mt-4 space-y-3 text-sm leading-6 text-paper/84">
                     <div className="rounded-[1rem] border border-white/8 bg-black/15 px-4 py-3">
@@ -186,10 +220,13 @@ export function SeoPageApp({ page, basePath }: SeoPageAppProps) {
                       В приоритете доверие, управляемость воронки и взрослая подача, а не громкий шум.
                     </div>
                   </div>
-                </div>
+                </motion.div>
               </div>
 
-              <div className="mt-5 rounded-[1.55rem] border border-white/10 bg-white/5 p-5 sm:p-6">
+              <motion.div
+                className="mt-5 rounded-[1.55rem] border border-white/10 bg-white/5 p-5 sm:p-6"
+                {...dossierMotion(3)}
+              >
                 <div className="flex items-center justify-between gap-4">
                   <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/55">Кому подходит</p>
                   <p className="text-[0.58rem] uppercase tracking-[0.2em] text-sand/42">field access</p>
@@ -201,16 +238,19 @@ export function SeoPageApp({ page, basePath }: SeoPageAppProps) {
                     </div>
                   ))}
                 </div>
-              </div>
+              </motion.div>
 
-              <div className="mt-5 rounded-[1.7rem] border border-ember/30 bg-ember/8 p-5 sm:p-6">
+              <motion.div
+                className="mt-5 rounded-[1.7rem] border border-ember/30 bg-ember/8 p-5 sm:p-6"
+                {...dossierMotion(4)}
+              >
                 <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/55">Формат работы</p>
                 <p className="mt-3 text-[1.02rem] leading-8 text-paper/86">
                   Базовая единица работ начинается от 35 000 ₽, но сильнее всего SPG работает через пакет связок:
                   аналитика, упаковка, контент, сайт, репутация и воронка.
                 </p>
-              </div>
-            </aside>
+              </motion.div>
+            </motion.aside>
           </div>
         </section>
 
