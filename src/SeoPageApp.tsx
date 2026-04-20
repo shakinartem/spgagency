@@ -8,6 +8,7 @@ import { FallbackImage } from "./components/FallbackImage";
 import { Footer } from "./components/Footer";
 import { ScrollToTopButton } from "./components/ScrollToTopButton";
 import { getEnrichedCaseStudies } from "./data/enriched-cases";
+import { getRelatedSeoPages } from "./data/seo-helpers";
 import { contacts } from "./data/site-content";
 import type { SeoPageConfig } from "./data/seo-pages";
 import { createCaseLogoSources } from "./lib/assets";
@@ -38,12 +39,13 @@ function SeoHeader({ basePath, page }: { basePath: string; page: SeoPageConfig }
     <header className="sticky top-0 z-50 px-4 pt-4">
       <div className="glass-nav mx-auto flex max-w-7xl items-center justify-between gap-4 rounded-[1.8rem] px-4 py-3 sm:px-6">
         <a href={homeHref} className="min-w-0">
-          <p className="text-[0.65rem] uppercase tracking-[0.28em] text-sand/70">Social Programming Group</p>
-          <p className="text-sm text-paper">SEO-страницы и материалы SPG</p>
+          <p className="text-[0.65rem] uppercase tracking-[0.28em] text-sand/70">SPG</p>
+          <p className="text-sm text-paper">Материалы и SEO-страницы</p>
         </a>
         <nav className="hidden items-center gap-6 lg:flex">
           <a href={homeHref} className="text-sm uppercase tracking-[0.18em] text-sand/72 transition hover:text-paper">Главная</a>
           <a href={relatedCasesHref} className="text-sm uppercase tracking-[0.18em] text-sand/72 transition hover:text-paper">Кейсы</a>
+          <a href={`${basePath}materialy.html`} className="text-sm uppercase tracking-[0.18em] text-sand/72 transition hover:text-paper">Архив</a>
           <a href={auditHref} className="text-sm uppercase tracking-[0.18em] text-sand/72 transition hover:text-paper">Аудит</a>
         </nav>
         <a href={auditHref} className="btn-primary">
@@ -144,6 +146,8 @@ function ContactsInline({ items }: { items: ContactLink[] }) {
 }
 
 export function SeoPageApp({ page, basePath }: SeoPageAppProps) {
+  const relatedMaterials = useMemo(() => getRelatedSeoPages(page.key), [page.key]);
+
   return (
     <div className="relative min-h-screen bg-ink text-paper">
       <div className="fixed inset-0 -z-20 bg-noise opacity-80" />
@@ -158,7 +162,7 @@ export function SeoPageApp({ page, basePath }: SeoPageAppProps) {
               className="max-w-[48rem]"
               initial={{ opacity: 0, y: 22 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.48, ease: "easeOut" }}
+              transition={{ duration: 0.48 }}
             >
               <span className="label-chip">{page.eyebrow}</span>
               <h1 className="mt-6 max-w-[8.5ch] font-display text-[clamp(3rem,6.2vw,5.9rem)] leading-[0.92] text-paper">
@@ -167,7 +171,7 @@ export function SeoPageApp({ page, basePath }: SeoPageAppProps) {
               <p className="mt-6 max-w-3xl text-lg leading-8 text-sand/80">{page.heroText}</p>
               <p className="mt-4 max-w-2xl text-sm uppercase tracking-[0.18em] text-sand/58">{page.heroNote}</p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <a href="#audit-form" className="btn-primary">{page.primaryLabel}</a>
+                <a href={`${basePath}#audit-form`} className="btn-primary">{page.primaryLabel}</a>
                 <a href="#related-cases" className="btn-secondary">{page.secondaryLabel}</a>
               </div>
             </motion.div>
@@ -176,7 +180,7 @@ export function SeoPageApp({ page, basePath }: SeoPageAppProps) {
               className="panel-card dossier-card relative max-w-none overflow-hidden p-7 sm:p-8 xl:p-9"
               initial={{ opacity: 0, y: 28, scale: 0.985 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.52, ease: "easeOut", delay: 0.08 }}
+              transition={{ duration: 0.52, delay: 0.08 }}
             >
               <div className="agent-corner agent-corner-top" />
               <div className="agent-corner agent-corner-bottom" />
@@ -184,10 +188,7 @@ export function SeoPageApp({ page, basePath }: SeoPageAppProps) {
               <div className="pointer-events-none absolute inset-y-10 right-0 w-px bg-gradient-to-b from-transparent via-white/10 to-transparent" />
               <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.035)_0,rgba(255,255,255,0)_24%,rgba(255,255,255,0)_100%)]" />
 
-              <motion.div
-                className="flex items-start justify-between gap-4 border-b border-white/8 pb-5"
-                {...dossierMotion(0)}
-              >
+              <motion.div className="flex items-start justify-between gap-4 border-b border-white/8 pb-5" {...dossierMotion(0)}>
                 <div>
                   <p className="text-[0.62rem] uppercase tracking-[0.24em] text-sand/55">Оперативное досье</p>
                   <h2 className="mt-3 font-display text-[2.05rem] leading-none text-paper sm:text-[2.45rem]">Профиль задачи</h2>
@@ -198,19 +199,13 @@ export function SeoPageApp({ page, basePath }: SeoPageAppProps) {
               </motion.div>
 
               <div className="mt-6 grid gap-4 sm:grid-cols-[1.1fr_0.9fr]">
-                <motion.div
-                  className="rounded-[1.5rem] border border-ember/25 bg-ember/8 p-5 sm:p-6"
-                  {...dossierMotion(1)}
-                >
+                <motion.div className="rounded-[1.5rem] border border-ember/25 bg-ember/8 p-5 sm:p-6" {...dossierMotion(1)}>
                   <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/55">Ключевой вывод</p>
                   <p className="mt-3 text-[1.08rem] leading-8 text-paper/90">
                     Сильнее всего эта страница работает там, где бизнесу нужна не активность ради отчета, а управляемая система роста с понятной логикой.
                   </p>
                 </motion.div>
-                <motion.div
-                  className="rounded-[1.5rem] border border-white/10 bg-white/5 p-5"
-                  {...dossierMotion(2)}
-                >
+                <motion.div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-5" {...dossierMotion(2)}>
                   <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/55">Контур задачи</p>
                   <div className="mt-4 space-y-3 text-sm leading-6 text-paper/84">
                     <div className="rounded-[1rem] border border-white/8 bg-black/15 px-4 py-3">
@@ -223,10 +218,7 @@ export function SeoPageApp({ page, basePath }: SeoPageAppProps) {
                 </motion.div>
               </div>
 
-              <motion.div
-                className="mt-5 rounded-[1.55rem] border border-white/10 bg-white/5 p-5 sm:p-6"
-                {...dossierMotion(3)}
-              >
+              <motion.div className="mt-5 rounded-[1.55rem] border border-white/10 bg-white/5 p-5 sm:p-6" {...dossierMotion(3)}>
                 <div className="flex items-center justify-between gap-4">
                   <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/55">Кому подходит</p>
                   <p className="text-[0.58rem] uppercase tracking-[0.2em] text-sand/42">field access</p>
@@ -240,10 +232,7 @@ export function SeoPageApp({ page, basePath }: SeoPageAppProps) {
                 </div>
               </motion.div>
 
-              <motion.div
-                className="mt-5 rounded-[1.7rem] border border-ember/30 bg-ember/8 p-5 sm:p-6"
-                {...dossierMotion(4)}
-              >
+              <motion.div className="mt-5 rounded-[1.7rem] border border-ember/30 bg-ember/8 p-5 sm:p-6" {...dossierMotion(4)}>
                 <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/55">Формат работы</p>
                 <p className="mt-3 text-[1.02rem] leading-8 text-paper/86">
                   Базовая единица работ начинается от 35 000 ₽, но сильнее всего SPG работает через пакет связок:
@@ -275,9 +264,11 @@ export function SeoPageApp({ page, basePath }: SeoPageAppProps) {
               Не отдельные услуги ради галочки, а связки, которые двигают проект к реальному росту.
             </h2>
             <div className="mt-8 grid gap-4 lg:grid-cols-3">
-              {page.approach.map((step) => (
+              {page.approach.map((step, index) => (
                 <article key={step.title} className="panel-card p-6">
-                  <div className="mb-4 h-11 w-11 rounded-full border border-ember/35 bg-ember/10" />
+                  <div className="mb-4 flex h-11 w-11 items-center justify-center rounded-full border border-ember/35 bg-ember/10 text-sm uppercase tracking-[0.18em] text-ember">
+                    {String(index + 1).padStart(2, "0")}
+                  </div>
                   <h3 className="font-display text-3xl leading-tight text-paper">{step.title}</h3>
                   <p className="mt-4 text-base leading-7 text-sand/78">{step.text}</p>
                 </article>
@@ -298,6 +289,27 @@ export function SeoPageApp({ page, basePath }: SeoPageAppProps) {
         </section>
 
         <RelatedCases basePath={basePath} caseIds={page.relatedCases} />
+
+        <section className="section-shell px-4">
+          <div className="mx-auto max-w-7xl">
+            <span className="label-chip">Материалы по теме</span>
+            <h2 className="mt-6 max-w-4xl font-display text-4xl leading-[1.02] text-paper sm:text-5xl">
+              Связанные страницы и разборы, которые усиливают этот вход внутри общей структуры сайта.
+            </h2>
+            <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+              {relatedMaterials.map((item) => (
+                <a key={item.key} href={`${basePath}${item.slug}`} className="panel-card p-5 transition hover:-translate-y-1">
+                  <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/55">{item.eyebrow}</p>
+                  <h3 className="mt-3 max-w-[16rem] font-display text-[2rem] leading-tight text-paper">{item.title.replace(" | SPG", "")}</h3>
+                  <p className="mt-3 text-sm leading-6 text-sand/78">{item.description}</p>
+                  <span className="mt-5 inline-flex items-center gap-2 text-[0.68rem] uppercase tracking-[0.2em] text-paper">
+                    Открыть материал
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
 
         <section className="section-shell px-4">
           <div className="mx-auto max-w-7xl">
@@ -350,6 +362,7 @@ export function SeoPageApp({ page, basePath }: SeoPageAppProps) {
           { label: "Маркетинг для медицины", href: `${basePath}marketing-dlya-meditsiny.html` },
           { label: "Маркетинг для экспертов", href: `${basePath}marketing-dlya-ekspertov.html` },
           { label: "Маркетинг для недвижимости", href: `${basePath}marketing-dlya-nedvizhimosti.html` },
+          { label: "Материалы дел", href: `${basePath}materialy.html` },
         ]}
       />
       <CookieBanner />
