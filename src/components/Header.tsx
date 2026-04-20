@@ -12,6 +12,16 @@ export function Header({ links, primaryHref, logoPaths = [] }: HeaderProps) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
+  const getLinkClassName = (href: string) => {
+    const isMaterialsLink = href.includes("materialy.html");
+
+    if (isMaterialsLink) {
+      return "rounded-full border border-white/12 bg-white/8 px-4 py-2.5 text-sm uppercase tracking-[0.18em] text-paper shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_12px_24px_rgba(0,0,0,0.16)] backdrop-blur-xl transition hover:border-white/18 hover:bg-white/10";
+    }
+
+    return "text-sm uppercase tracking-[0.18em] text-sand/72 transition hover:text-paper";
+  };
+
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 18);
     onScroll();
@@ -51,7 +61,7 @@ export function Header({ links, primaryHref, logoPaths = [] }: HeaderProps) {
 
           <nav className="hidden items-center gap-6 xl:gap-7 lg:flex">
             {links.map((link) => (
-              <a key={link.href} href={link.href} className="text-sm uppercase tracking-[0.18em] text-sand/72 transition hover:text-paper">
+              <a key={link.href} href={link.href} className={getLinkClassName(link.href)}>
                 {link.label}
               </a>
             ))}
@@ -80,7 +90,9 @@ export function Header({ links, primaryHref, logoPaths = [] }: HeaderProps) {
                 <a
                   key={link.href}
                   href={link.href}
-                  className="rounded-2xl px-3 py-3 text-sm uppercase tracking-[0.18em] text-sand/75 transition hover:bg-white/5 hover:text-paper"
+                  className={`rounded-2xl px-3 py-3 text-sm uppercase tracking-[0.18em] transition hover:text-paper ${
+                    link.href.includes("materialy.html") ? "border border-white/12 bg-white/8 text-paper" : "text-sand/75 hover:bg-white/5"
+                  }`}
                   onClick={() => setOpen(false)}
                 >
                   {link.label}

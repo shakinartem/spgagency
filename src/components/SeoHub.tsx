@@ -10,6 +10,9 @@ const iconMap = {
   "real-estate-marketing": MonitorSmartphone,
   "article-dental-leads": FileText,
   "article-reputation-maps": FileText,
+  "article-medical-trust": FileText,
+  "article-local-leads": FileText,
+  "article-expert-telegram-system": FileText,
   "website-for-dentistry": MonitorSmartphone,
   "maps-reputation": LocateFixed,
   "telegram-for-experts": Send,
@@ -124,8 +127,8 @@ export function SeoHub({
         </div>
 
         <div className="mt-10">
-          <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/55">Страницы услуг</p>
-          <h3 className="mt-2 font-display text-[2.2rem] text-paper">Посадочные под реальный спрос</h3>
+          <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/55">Страницы услуг и ниш</p>
+          <h3 className="mt-2 font-display text-[2.2rem] text-paper">Посадочные под услуги, ниши и конкретный спрос</h3>
           <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {services.map((item) => renderCard(item))}
           </div>
