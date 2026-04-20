@@ -12,31 +12,13 @@ import { Process } from "./components/Process";
 import { ScrollToTopButton } from "./components/ScrollToTopButton";
 import { Services } from "./components/Services";
 import { WhyUs } from "./components/WhyUs";
-import { casePlaceholders } from "./data/case-placeholders";
-import { caseOverrides } from "./data/case-overrides";
-import { caseStudies } from "./data/cases";
+import { getEnrichedCaseStudies } from "./data/enriched-cases";
 import { contacts, dentalClients, heroFacts, missionStats, navigation, niches, processSteps, reasons, services } from "./data/site-content";
 import { createBrandLogoSources } from "./lib/assets";
 
 function App() {
   const basePath = import.meta.env.BASE_URL;
-  const enrichedCaseStudies = useMemo(
-    () =>
-      caseStudies.map((item) => {
-        const categoryOverrides: Record<string, string> = {
-          "po-pyatam": "Медицина",
-          "divina-podology": "Медицина",
-        };
-
-        return {
-          ...casePlaceholders[item.id],
-          ...item,
-          ...caseOverrides[item.id],
-          category: (categoryOverrides[item.id] ?? item.category) as typeof item.category,
-        };
-      }),
-    [],
-  );
+  const enrichedCaseStudies = useMemo(() => getEnrichedCaseStudies(), []);
 
   const totals = useMemo(() => {
     const reach = enrichedCaseStudies.reduce((sum, item) => sum + (item.stats.reach ?? 0), 0);
@@ -66,15 +48,17 @@ function App() {
   ];
 
   const brandLogoPaths = createBrandLogoSources(basePath);
+  const materialsHref = `${basePath}materialy.html`;
+  const navigationWithMaterials = [...navigation, { label: "Материалы дел", href: materialsHref }];
 
   return (
     <div className="relative min-h-screen bg-ink text-paper">
       <div className="fixed inset-0 -z-20 bg-noise opacity-80" />
       <div className="grid-overlay fixed inset-0 -z-10" />
       <CustomCursor />
-      <Header links={navigation} primaryHref="#cta" logoPaths={brandLogoPaths} />
+      <Header links={navigationWithMaterials} primaryHref="#cta" logoPaths={brandLogoPaths} />
       <main>
-        <Hero facts={heroFacts} />
+        <Hero facts={heroFacts} materialsHref={materialsHref} />
         <About stats={statsWithAggregate} dentalClients={dentalClients} />
         <Niches items={niches} />
         <Services items={services} />
@@ -83,7 +67,11 @@ function App() {
         <WhyUs items={reasons} />
         <CTA contacts={contacts} />
       </main>
-      <Footer privacyHref={`${basePath}privacy.html`} termsHref={`${basePath}terms.html`} />
+      <Footer
+        privacyHref={`${basePath}privacy.html`}
+        termsHref={`${basePath}terms.html`}
+        extraLinks={[{ label: "Материалы дел", href: materialsHref }]}
+      />
       <CookieBanner />
       <ScrollToTopButton />
     </div>

@@ -44,12 +44,12 @@ export function Header({ links, primaryHref, logoPaths = [] }: HeaderProps) {
               <div className="liquid-orb flex h-11 w-11 items-center justify-center rounded-full text-sm font-bold tracking-[0.25em] text-paper">SPG</div>
             )}
             <div className="min-w-0">
-              <p className="truncate text-[0.65rem] uppercase tracking-[0.28em] text-sand/70">Social Programming Group</p>
-              <p className="truncate text-sm text-paper">оперативный маркетинговый штаб</p>
+              <p className="text-sm font-medium uppercase tracking-[0.28em] text-paper">SPG</p>
+              <p className="hidden truncate text-[0.7rem] uppercase tracking-[0.18em] text-sand/62 xl:block">оперативный маркетинговый штаб</p>
             </div>
           </a>
 
-          <nav className="hidden items-center gap-7 lg:flex">
+          <nav className="hidden items-center gap-6 xl:gap-7 lg:flex">
             {links.map((link) => (
               <a key={link.href} href={link.href} className="text-sm uppercase tracking-[0.18em] text-sand/72 transition hover:text-paper">
                 {link.label}
