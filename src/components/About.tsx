@@ -27,8 +27,8 @@ export function About({ stats, dentalClients }: AboutProps) {
       <div className="mx-auto max-w-7xl">
         <SectionHeading
           eyebrow="О нас"
-          title="Небольшая сильная команда, которая вникает в задачу и не продает лишнее."
-          description="SPG работает как отдельный агентский отдел роста. Мы не распыляемся на декоративную активность, а собираем рабочие связки под конкретный бизнес. Сейчас особенно сильны в стоматологиях и медицине, но уверенно работаем и в недвижимости, авто, wellness, юриспруденции, локальном сервисе, B2B и нишах, где решение созревает не за один клик."
+          title="Небольшая, но очень собранная команда, которая мыслит системой, а не списком задач."
+          description="SPG работает как внешний маркетинговый штаб роста. Мы не размазываемся по декоративной активности, а собираем рабочие связки под конкретный бизнес, конкретный цикл сделки и конкретный уровень доверия на рынке."
         />
 
         <div className="mt-12 grid gap-6 lg:grid-cols-[1.08fr_0.92fr]">
@@ -36,9 +36,9 @@ export function About({ stats, dentalClients }: AboutProps) {
             <div className="grid gap-4 text-paper/88 sm:grid-cols-2">
               {[
                 "Вникаем в бизнес-модель, а не только в рекламные кабинеты.",
-                "Умеем собирать связки из контента, сайтов, соцсетей, карт, отзывов и аналитики.",
+                "Собираем связки из контента, сайта, соцсетей, карт, отзывов и аналитики.",
                 "Спокойно работаем с чувствительными тематиками, где важны доверие и корректная подача.",
-                "Можем быть внешним маркетинговым штабом на долгой дистанции, а не разовым исполнителем.",
+                "Можем быть внешним маркетинговым штабом на долгой дистанции, а не разовым подрядчиком.",
               ].map((item, index) => (
                 <motion.div
                   key={item}
@@ -56,7 +56,7 @@ export function About({ stats, dentalClients }: AboutProps) {
             <div className="mt-5 grid gap-4 sm:grid-cols-[1.15fr_0.85fr]">
               <div className="rounded-[1.8rem] border border-dashed border-ember/30 bg-[linear-gradient(135deg,rgba(240,122,31,0.08),rgba(255,255,255,0.03))] p-5">
                 <p className="text-xs uppercase tracking-[0.28em] text-sand/55">Сейчас сильнее всего</p>
-                <p className="mt-3 font-display text-3xl leading-tight text-paper">Стоматологии, медицина, репутационные и доверительные ниши.</p>
+                <p className="mt-3 font-display text-3xl leading-tight text-paper">Стоматология, медицина, локальные сервисы, эксперты и B2B с длинным циклом решения.</p>
               </div>
               <div className="rounded-[1.8rem] border border-white/10 bg-black/25 p-5">
                 <p className="text-xs uppercase tracking-[0.28em] text-sand/55">Формат</p>
@@ -73,8 +73,8 @@ export function About({ stats, dentalClients }: AboutProps) {
             <div className="mt-5 rounded-[1.8rem] border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.04),rgba(255,255,255,0.02))] p-5">
               <div className="flex items-center justify-between gap-4">
                 <div>
-                  <p className="text-xs uppercase tracking-[0.28em] text-sand/55">Стоматологии в фокусе</p>
-                  <p className="mt-2 text-sm leading-6 text-sand/78">Отдельно усиливаем проекты, где важны карты, локальная выдача, VK, доверие к врачам и путь пациента до записи.</p>
+                  <p className="text-xs uppercase tracking-[0.28em] text-sand/55">Стоматология в фокусе</p>
+                  <p className="mt-2 text-sm leading-6 text-sand/78">Отдельно усиливаем проекты, где важны карты, локальный поиск, VK, доверие к врачам и понятный путь пациента до записи.</p>
                 </div>
                 <div className="agent-marker hidden text-xs uppercase tracking-[0.24em] text-sand/70 sm:block">dental desk</div>
               </div>

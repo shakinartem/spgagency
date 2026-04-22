@@ -1,4 +1,4 @@
-﻿import { motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowUpRight, LucideIcon } from "lucide-react";
 import { SectionHeading } from "./SectionHeading";
 
@@ -17,8 +17,8 @@ export function Services({ items }: ServicesProps) {
       <div className="mx-auto max-w-7xl">
         <SectionHeading
           eyebrow="Оперативные направления"
-          title="Не список услуг, а рабочие контуры, из которых собирается система роста."
-          description="Каждое направление можно подключать отдельно, но сильнее всего они работают как единая операция роста: согласованно, точно и без лишнего шума."
+          title="Не набор услуг, а рабочие контуры, из которых складывается система роста."
+          description="Каждое направление можно подключать отдельно, но сильнее всего они работают вместе: как один собранный маршрут от внимания до заявки."
         />
         <div className="mt-12 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {items.map((item, index) => (

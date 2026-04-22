@@ -23,6 +23,8 @@ const relatedMaterialMap: Record<string, string[]> = {
   "article-medical-trust": ["medical-marketing", "article-reputation-maps", "maps-reputation"],
   "article-local-leads": ["maps-reputation", "real-estate-marketing", "medical-marketing"],
   "article-expert-telegram-system": ["telegram-for-experts", "expert-marketing", "article-reputation-maps"],
+  "article-conversion-gap": ["website-for-dentistry", "dental-marketing", "maps-reputation"],
+  "article-cards-reviews-system": ["maps-reputation", "medical-marketing", "dental-marketing"],
   "website-for-dentistry": ["dental-marketing", "article-dental-leads", "maps-reputation"],
   "maps-reputation": ["article-reputation-maps", "medical-marketing", "dental-marketing"],
   "telegram-for-experts": ["expert-marketing", "real-estate-marketing", "article-reputation-maps"],

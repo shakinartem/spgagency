@@ -21,6 +21,8 @@ export default defineConfig({
         articleMedicalTrust: resolve(__dirname, "kak-klinike-vystroit-doverie-v-digital.html"),
         articleLocalLeads: resolve(__dirname, "kak-lokalnomu-biznesu-sobirat-zayavki-bez-khaosa.html"),
         articleExpertTelegram: resolve(__dirname, "kak-ekspertu-prevratit-telegram-v-sistemu-progreva.html"),
+        articleConversionGap: resolve(__dirname, "pochemu-sait-ne-privodit-zayavki.html"),
+        articleCardsReviews: resolve(__dirname, "kak-sobrat-karty-i-otzyvy-v-odnu-sistemu.html"),
         dentistryWebsite: resolve(__dirname, "sait-dlya-stomatologii.html"),
         mapsReputation: resolve(__dirname, "reputatsiya-i-karty-dlya-biznesa.html"),
         expertsTelegram: resolve(__dirname, "telegram-dlya-ekspertov.html"),

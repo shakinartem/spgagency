@@ -69,7 +69,7 @@ export function SeoHub({
             title={title ?? "Отдельные страницы и разборы, которые помогают находить SPG не только по бренду, но и по реальному спросу."}
             description={
               description ??
-              "Это уже не просто набор статей, а рабочая структура: посадочные под ниши и услуги, разборы под конкретные вопросы и внутренняя сеть материалов, которая усиливает доверие и органический вход."
+              "Это не просто набор статей, а рабочая архитектура контента: посадочные под ниши и услуги, разборы под конкретные вопросы и внутренняя сеть материалов, которая усиливает доверие и органический вход."
             }
           />
         ) : null}
@@ -136,7 +136,7 @@ export function SeoHub({
 
         <div className="mt-10">
           <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/55">Разборы и статьи</p>
-          <h3 className="mt-2 font-display text-[2.2rem] text-paper">Материалы, которые разогревают интерес</h3>
+          <h3 className="mt-2 font-display text-[2.2rem] text-paper">Материалы, которые усиливают интерес и доверие</h3>
           <div className="mt-5 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
             {articles.map((item) => renderCard(item, true))}
           </div>

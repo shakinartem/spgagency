@@ -25,10 +25,10 @@ export function Hero({ facts, materialsHref }: HeroProps) {
             Подключаемся
             <br />
             как
-            <span className="block text-ember">спецгруппа роста,</span>
+            <span className="block text-ember">внешний штаб роста,</span>
             когда нужен
             <br />
-            не шум, а результат.
+            не шум, а управляемый результат.
           </motion.h1>
 
           <motion.p
@@ -38,8 +38,8 @@ export function Hero({ facts, materialsHref }: HeroProps) {
             className="mt-7 max-w-2xl text-lg leading-8 text-sand/82 sm:text-xl"
           >
             SPG собирает для бизнеса взрослую digital-систему: контент, соцсети, сайты, воронки, карты, отзывы,
-            аналитику и лидогенерацию. Особенно сильны там, где доверие решает больше охвата: стоматологии, медицина,
-            эксперты и локальные ниши.
+            аналитику и лидогенерацию. Мы усиливаем то, что уже работает, и убираем всё, что тормозит конверсию,
+            разрывает каналы и делает рост случайным.
           </motion.p>
 
           <motion.div
@@ -49,15 +49,15 @@ export function Hero({ facts, materialsHref }: HeroProps) {
             className="mt-10 flex flex-col gap-4 sm:flex-row"
           >
             <a href="#cta" className="btn-primary">
-              Обсудить проект
+              Обсудить задачу
               <ArrowRight size={18} />
             </a>
             <a href="#cases" className="btn-secondary">
-              Смотреть кейсы
+              Смотреть кейсы и цифры
               <ArrowDownRight size={18} />
             </a>
             <a href={materialsHref} className="btn-secondary">
-              Материалы дел
+              Материалы и разборы
               <ArrowRight size={18} />
             </a>
           </motion.div>
@@ -97,7 +97,7 @@ export function Hero({ facts, materialsHref }: HeroProps) {
             <div className="relative flex items-start justify-between gap-4">
               <div>
                 <p className="text-xs uppercase tracking-[0.3em] text-sand/65">Статус операции</p>
-                <p className="mt-2 max-w-[14rem] font-display text-3xl leading-tight text-paper">Лучше штатного отдела маркетинга</p>
+                <p className="mt-2 max-w-[14rem] font-display text-3xl leading-tight text-paper">Собранный рост вместо разрозненных подрядчиков</p>
               </div>
               <div className="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-xs uppercase tracking-[0.24em] text-emerald-200">
                 online
@@ -106,10 +106,10 @@ export function Hero({ facts, materialsHref }: HeroProps) {
 
             <div className="mt-8 grid gap-4">
               {[
-                { icon: ScanSearch, title: "Диагностика", text: "Находим слабые места, а не раздаем красивые слова." },
-                { icon: ShieldCheck, title: "Система", text: "Собираем связки, которые выдерживают рост и нагрузку." },
-                { icon: Sparkles, title: "Присутствие", text: "Усиливаем образ бренда так, чтобы он выглядел дороже и точнее." },
-                { icon: Siren, title: "Контроль", text: "Смотрим на цифры и усиливаем только то, что уже работает." },
+                { icon: ScanSearch, title: "Диагностика", text: "Находим не только ошибки, но и точки роста, где уже можно быстро усилить результат." },
+                { icon: ShieldCheck, title: "Система", text: "Собираем связки, которые выдерживают нагрузку и не ломаются при росте." },
+                { icon: Sparkles, title: "Присутствие", text: "Усиливаем образ бренда так, чтобы он выглядел дороже, чище и убедительнее." },
+                { icon: Siren, title: "Контроль", text: "Смотрим на цифры и подрубаем только то, что уже даёт заявки и движение к сделке." },
               ].map((item) => (
                 <div key={item.title} className="grid grid-cols-[auto_1fr] gap-4 rounded-3xl border border-white/10 bg-black/28 p-4">
                   <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-ember/30 bg-ember/10 text-ember">
@@ -126,8 +126,8 @@ export function Hero({ facts, materialsHref }: HeroProps) {
             <div className="mt-8 rounded-3xl border border-dashed border-ember/35 bg-ember/8 p-5">
               <p className="text-xs uppercase tracking-[0.28em] text-sand/65">Фокус сейчас</p>
               <p className="mt-3 text-base leading-7 text-paper/90">
-                Стоматологии и медицинские проекты, которым нужен не подрядчик на один канал, а взрослая система
-                привлечения и доверия.
+                Стоматологии, медицина, локальные сервисы и экспертные проекты, которым нужен не подрядчик на один канал,
+                а собранная система привлечения и доверия.
               </p>
             </div>
           </div>
