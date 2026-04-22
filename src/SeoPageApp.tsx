@@ -48,7 +48,7 @@ function SeoHeader({ basePath, page }: { basePath: string; page: SeoPageConfig }
           <a href={`${basePath}materialy.html`} className="text-sm uppercase tracking-[0.18em] text-sand/72 transition hover:text-paper">Архив</a>
           <a href={auditHref} className="text-sm uppercase tracking-[0.18em] text-sand/72 transition hover:text-paper">Аудит</a>
         </nav>
-        <a href={auditHref} className="btn-primary">
+        <a href={auditHref} className="liquid-glass-button liquid-glass-button--compact">
           {page.primaryLabel}
         </a>
       </div>
@@ -171,7 +171,7 @@ export function SeoPageApp({ page, basePath }: SeoPageAppProps) {
               <p className="mt-6 max-w-3xl text-lg leading-8 text-sand/80">{page.heroText}</p>
               <p className="mt-4 max-w-2xl text-sm uppercase tracking-[0.18em] text-sand/58">{page.heroNote}</p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <a href={`${basePath}#audit-form`} className="btn-primary">{page.primaryLabel}</a>
+                <a href={`${basePath}#audit-form`} className="liquid-glass-button">{page.primaryLabel}</a>
                 <a href="#related-cases" className="btn-secondary">{page.secondaryLabel}</a>
               </div>
             </motion.div>
@@ -339,7 +339,7 @@ export function SeoPageApp({ page, basePath }: SeoPageAppProps) {
                   <h2 className="mt-6 max-w-3xl font-display text-4xl leading-[1.02] text-paper sm:text-5xl">{page.ctaTitle}</h2>
                   <p className="mt-5 max-w-2xl text-lg leading-8 text-sand/80">{page.ctaText}</p>
                   <div className="mt-7 flex flex-wrap gap-3">
-                    <a href={`${basePath}#audit-form`} className="btn-primary">Получить аудит</a>
+                    <a href={`${basePath}#audit-form`} className="liquid-glass-button">Получить аудит</a>
                     <a href="https://t.me/spg_marketing" className="btn-secondary">Написать в Telegram</a>
                   </div>
                 </div>

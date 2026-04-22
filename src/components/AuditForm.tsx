@@ -132,7 +132,7 @@ export function AuditForm() {
           </div>
 
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
-            <button type="submit" disabled={submitting} className="btn-primary justify-center disabled:cursor-wait disabled:opacity-70">
+            <button type="submit" disabled={submitting} className="liquid-glass-button justify-center disabled:cursor-wait disabled:opacity-70">
               {submitting ? "Отправляем..." : "Получить аудит"}
             </button>
             <p className="text-sm leading-6 text-sand/66">

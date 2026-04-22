@@ -16,7 +16,7 @@ export function Header({ links, primaryHref, logoPaths = [] }: HeaderProps) {
     const isMaterialsLink = href.includes("materialy.html");
 
     if (isMaterialsLink) {
-      return "rounded-full border border-white/12 bg-white/8 px-4 py-2.5 text-sm uppercase tracking-[0.18em] text-paper shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_12px_24px_rgba(0,0,0,0.16)] backdrop-blur-xl transition hover:border-white/18 hover:bg-white/10";
+      return "liquid-glass-button liquid-glass-button--compact";
     }
 
     return "text-sm uppercase tracking-[0.18em] text-sand/72 transition hover:text-paper";
@@ -68,7 +68,7 @@ export function Header({ links, primaryHref, logoPaths = [] }: HeaderProps) {
           </nav>
 
           <div className="hidden lg:block">
-            <a href={primaryHref} className="btn-primary">
+            <a href={primaryHref} className="liquid-glass-button">
               Обсудить проект
             </a>
           </div>
@@ -90,15 +90,17 @@ export function Header({ links, primaryHref, logoPaths = [] }: HeaderProps) {
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`rounded-2xl px-3 py-3 text-sm uppercase tracking-[0.18em] transition hover:text-paper ${
-                    link.href.includes("materialy.html") ? "border border-white/12 bg-white/8 text-paper" : "text-sand/75 hover:bg-white/5"
+                  className={`text-sm uppercase tracking-[0.18em] transition hover:text-paper ${
+                    link.href.includes("materialy.html")
+                      ? "liquid-glass-button liquid-glass-button--compact"
+                      : "rounded-2xl px-3 py-3 text-sand/75 hover:bg-white/5"
                   }`}
                   onClick={() => setOpen(false)}
                 >
                   {link.label}
                 </a>
               ))}
-              <a href={primaryHref} className="btn-primary mt-2 justify-center text-center" onClick={() => setOpen(false)}>
+              <a href={primaryHref} className="liquid-glass-button mt-2 w-full justify-center text-center" onClick={() => setOpen(false)}>
                 Обсудить проект
               </a>
             </nav>

@@ -21,7 +21,7 @@ function MaterialsHeader({ basePath }: { basePath: string }) {
           <a href="#materials-archive" className="text-sm uppercase tracking-[0.18em] text-sand/72 transition hover:text-paper">Архив</a>
           <a href={`${basePath}#cta`} className="text-sm uppercase tracking-[0.18em] text-sand/72 transition hover:text-paper">Контакты</a>
         </nav>
-        <a href={`${basePath}#audit-form`} className="btn-primary">
+        <a href={`${basePath}#audit-form`} className="liquid-glass-button liquid-glass-button--compact">
           Получить аудит
         </a>
       </div>
@@ -49,7 +49,7 @@ export function MaterialsPageApp({ basePath }: MaterialsPageAppProps) {
                 по вопросам, с которых бизнес обычно начинает поиск подрядчика.
               </p>
               <div className="mt-7 flex flex-wrap gap-3">
-                <a href={`${basePath}#audit-form`} className="btn-primary">Получить аудит</a>
+                <a href={`${basePath}#audit-form`} className="liquid-glass-button">Получить аудит</a>
                 <a href="#materials-archive" className="btn-secondary">Открыть архив</a>
               </div>
             </div>
