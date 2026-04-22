@@ -11,12 +11,12 @@ type HeaderProps = {
 export function Header({ links, primaryHref, logoPaths = [] }: HeaderProps) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const materialsLink = links.find((link) => link.href.includes("materialy.html"));
+  const regularLinks = links.filter((link) => !link.href.includes("materialy.html"));
 
   const getLinkClassName = (href: string) => {
-    const isMaterialsLink = href.includes("materialy.html");
-
-    if (isMaterialsLink) {
-      return "liquid-glass-button liquid-glass-button--compact";
+    if (href.includes("materialy.html")) {
+      return "liquid-glass-button liquid-glass-button--compact liquid-glass-button--orange";
     }
 
     return "text-sm uppercase tracking-[0.18em] text-sand/72 transition hover:text-paper";
@@ -41,7 +41,7 @@ export function Header({ links, primaryHref, logoPaths = [] }: HeaderProps) {
   return (
     <header className="fixed inset-x-0 top-0 z-50 px-4 pt-4">
       <div className={`glass-nav mx-auto max-w-7xl rounded-[1.8rem] px-4 py-3 transition-all duration-500 sm:px-6 ${scrolled ? "border-ember/28 shadow-panel" : "border-white/15"}`}>
-        <div className="flex items-center justify-between gap-4">
+        <div className="flex items-center justify-between gap-5">
           <a href="#top" className="flex min-w-0 items-center gap-3">
             {logoPaths.length > 0 ? (
               <FallbackImage
@@ -55,20 +55,27 @@ export function Header({ links, primaryHref, logoPaths = [] }: HeaderProps) {
             )}
             <div className="min-w-0">
               <p className="text-sm font-medium uppercase tracking-[0.28em] text-paper">SPG</p>
-              <p className="hidden truncate text-[0.7rem] uppercase tracking-[0.18em] text-sand/62 xl:block">оперативный штаб</p>
+              <p className="hidden whitespace-nowrap text-[0.62rem] uppercase tracking-[0.18em] text-sand/62 xl:block">
+                оперативный штаб
+              </p>
             </div>
           </a>
 
           <nav className="hidden items-center gap-6 xl:gap-7 lg:flex">
-            {links.map((link) => (
+            {regularLinks.map((link) => (
               <a key={link.href} href={link.href} className={getLinkClassName(link.href)}>
                 {link.label}
               </a>
             ))}
           </nav>
 
-          <div className="hidden lg:block">
-            <a href={primaryHref} className="liquid-glass-button">
+          <div className="hidden items-center gap-4 lg:flex">
+            {materialsLink ? (
+              <a href={materialsLink.href} className="liquid-glass-button liquid-glass-button--compact liquid-glass-button--orange">
+                {materialsLink.label}
+              </a>
+            ) : null}
+            <a href={primaryHref} className="liquid-glass-button liquid-glass-button--orange">
               Обсудить проект
             </a>
           </div>
@@ -92,7 +99,7 @@ export function Header({ links, primaryHref, logoPaths = [] }: HeaderProps) {
                   href={link.href}
                   className={`text-sm uppercase tracking-[0.18em] transition hover:text-paper ${
                     link.href.includes("materialy.html")
-                      ? "liquid-glass-button liquid-glass-button--compact"
+                      ? "liquid-glass-button liquid-glass-button--compact liquid-glass-button--orange"
                       : "rounded-2xl px-3 py-3 text-sand/75 hover:bg-white/5"
                   }`}
                   onClick={() => setOpen(false)}
@@ -100,7 +107,7 @@ export function Header({ links, primaryHref, logoPaths = [] }: HeaderProps) {
                   {link.label}
                 </a>
               ))}
-              <a href={primaryHref} className="liquid-glass-button mt-2 w-full justify-center text-center" onClick={() => setOpen(false)}>
+              <a href={primaryHref} className="liquid-glass-button liquid-glass-button--orange mt-2 w-full justify-center text-center" onClick={() => setOpen(false)}>
                 Обсудить проект
               </a>
             </nav>
