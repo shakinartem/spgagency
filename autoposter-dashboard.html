@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Autoposter Dashboard</title>
+    <meta
+      name="description"
+      content="Static dashboard demo for Autoposter by SPG Agency showing connected TikTok account status, scheduling, and publishing workflow."
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#080706" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="topbar">
+        <div class="container">
+          <div class="topbar-inner">
+            <a class="brand" href="./autoposter.html" aria-label="Autoposter home">
+              <span class="brand-mark">SPG</span>
+              <span class="brand-copy">
+                <strong>Autoposter</strong>
+                <span>by SPG Agency</span>
+              </span>
+            </a>
+            <a class="topbar-link" href="./autoposter-login.html">Back to login</a>
+          </div>
+        </div>
+      </header>
+
+      <main class="dashboard-shell">
+        <div class="container">
+          <div class="dashboard-top">
+            <div class="profile">
+              <div class="avatar">AD</div>
+              <div class="brand-copy">
+                <strong>@demo_account</strong>
+                <span>TikTok publishing workspace</span>
+              </div>
+            </div>
+            <div class="legal-meta">
+              <span class="badge">Connected</span>
+              <span class="badge">API access active</span>
+              <span class="badge">Last sync 18:40 UTC+3</span>
+            </div>
+          </div>
+
+          <div class="dashboard-layout">
+            <aside class="sidebar">
+              <div>
+                <span class="eyebrow">Workspace</span>
+                <div class="spacer"></div>
+                <p>Autoposter by SPG Agency</p>
+              </div>
+              <nav aria-label="Sidebar navigation">
+                <a class="active" href="./autoposter-dashboard.html">Dashboard</a>
+                <a href="#upload">Upload</a>
+                <a href="#scheduled">Scheduled Posts</a>
+                <a href="#accounts">Accounts</a>
+                <a href="#settings">Settings</a>
+              </nav>
+              <div class="status-card">
+                <h3>Authorization health</h3>
+                <p>OAuth token state is active and the connected account is ready for publishing tasks.</p>
+                <div class="bar" aria-label="Authorization health">
+                  <span style="width: 88%"></span>
+                </div>
+                <p class="small">No interruptions detected in the current account connection.</p>
+              </div>
+            </aside>
+
+            <section class="workspace">
+              <div class="workspace-grid" id="accounts">
+                <article class="dashboard-card span-7">
+                  <div class="account-summary">
+                    <div>
+                      <span class="eyebrow">Account overview</span>
+                      <h3>Connected TikTok account</h3>
+                      <p>One managed account is linked to the publishing workspace for scheduled content release.</p>
+                    </div>
+                    <span class="status-pill">Connected</span>
+                  </div>
+                  <div class="meta-list" style="margin-top: 18px">
+                    <div class="meta-item">
+                      <span>Account</span>
+                      <strong>@demo_account</strong>
+                    </div>
+                    <div class="meta-item">
+                      <span>API access</span>
+                      <strong>Active</strong>
+                    </div>
+                    <div class="meta-item">
+                      <span>Last sync time</span>
+                      <strong>April 22, 2026 18:40 UTC+3</strong>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="dashboard-card span-5" id="settings">
+                  <div class="account-summary">
+                    <div>
+                      <span class="eyebrow">Activity</span>
+                      <h3>Publishing status</h3>
+                    </div>
+                    <span class="status-pill">Healthy</span>
+                  </div>
+                  <div class="timeline" style="margin-top: 16px">
+                    <div class="timeline-row">
+                      <span class="dot"></span>
+                      <div>
+                        <strong>Queue status</strong>
+                        <span>3 posts scheduled, 1 post published today</span>
+                      </div>
+                    </div>
+                    <div class="timeline-row">
+                      <span class="dot"></span>
+                      <div>
+                        <strong>Latest publish result</strong>
+                        <span>Video content published successfully through the official API</span>
+                      </div>
+                    </div>
+                    <div class="timeline-row">
+                      <span class="dot"></span>
+                      <div>
+                        <strong>Authorization health</strong>
+                        <span>Access token valid, sync completed without errors</span>
+                      </div>
+                    </div>
+                  </div>
+                </article>
+              </div>
+
+              <div class="workspace-grid" id="upload">
+                <article class="upload-card span-7">
+                  <span class="eyebrow">Upload video</span>
+                  <h3 style="margin-top: 10px">Prepare a new publishing item</h3>
+                  <p>Use the publishing form to organize content metadata and release timing for the connected account.</p>
+                  <div class="upload-form" style="margin-top: 18px">
+                    <div class="dropzone">
+                      <div>
+                        <strong>Drop video file here</strong>
+                        <span>MP4, MOV, or selected media upload</span>
+                      </div>
+                    </div>
+                    <div class="field-grid">
+                      <div class="field">
+                        <label for="video-title">Video title</label>
+                        <input id="video-title" type="text" value="How we structure content workflows" />
+                      </div>
+                      <div class="field">
+                        <label for="publish-date">Publish date</label>
+                        <input id="publish-date" type="text" value="2026-04-24 11:30" />
+                      </div>
+                      <div class="field">
+                        <label for="publish-status">Status</label>
+                        <select id="publish-status">
+                          <option>Scheduled</option>
+                          <option>Draft</option>
+                          <option>Published</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="action-row">
+                      <a class="btn btn-secondary" href="./autoposter-dashboard.html#scheduled">Save draft</a>
+                      <a class="btn btn-primary" href="./autoposter-dashboard.html#scheduled">Schedule post</a>
+                      <a class="btn btn-ghost" href="./autoposter-login.html">Reauthorize TikTok</a>
+                    </div>
+                  </div>
+                </article>
+
+                <article class="status-card span-5">
+                  <span class="eyebrow">Service health</span>
+                  <h3 style="margin-top: 10px">Publishing and sync overview</h3>
+                  <div class="status-grid" style="margin-top: 18px">
+                    <div class="metric">
+                      <span>Sync rate</span>
+                      <strong>98%</strong>
+                    </div>
+                    <div class="metric">
+                      <span>Next queue slot</span>
+                      <strong>Tomorrow 09:00</strong>
+                    </div>
+                    <div class="metric">
+                      <span>Approval state</span>
+                      <strong>Ready</strong>
+                    </div>
+                  </div>
+                  <div style="margin-top: 16px" class="panel">
+                    <div class="screen-title" style="margin-bottom: 10px">
+                      <strong>System note</strong>
+                      <span>Managed publishing workflow with account authorization and status tracking.</span>
+                    </div>
+                    <p>
+                      The workspace keeps publishing controls separated from account health indicators so operators can
+                      review content state quickly.
+                    </p>
+                  </div>
+                </article>
+              </div>
+
+              <article class="dashboard-card" id="scheduled">
+                <div class="account-summary">
+                  <div>
+                    <span class="eyebrow">Scheduled posts</span>
+                    <h3 style="margin-top: 10px">Recent publishing queue</h3>
+                  </div>
+                  <span class="badge">Content queue</span>
+                </div>
+                <div class="post-list" style="margin-top: 18px">
+                  <article class="post-card">
+                    <div class="thumb"></div>
+                    <div class="post-meta">
+                      <div class="post-head">
+                        <h3>Agency workflow overview</h3>
+                        <span class="pill scheduled">Scheduled</span>
+                      </div>
+                      <p>@demo_account · April 24, 2026 11:30</p>
+                      <p>Caption preview: A short release on how the team manages connected publishing and content ops.</p>
+                    </div>
+                  </article>
+
+                  <article class="post-card">
+                    <div class="thumb alt"></div>
+                    <div class="post-meta">
+                      <div class="post-head">
+                        <h3>Product operations snapshot</h3>
+                        <span class="pill published">Published</span>
+                      </div>
+                      <p>@demo_account · April 22, 2026 18:10</p>
+                      <p>Caption preview: Published successfully after API confirmation and final workflow review.</p>
+                    </div>
+                  </article>
+
+                  <article class="post-card">
+                    <div class="thumb alt-2"></div>
+                    <div class="post-meta">
+                      <div class="post-head">
+                        <h3>Publishing checklist clip</h3>
+                        <span class="pill scheduled">Scheduled</span>
+                      </div>
+                      <p>@demo_account · April 25, 2026 09:00</p>
+                      <p>Caption preview: A content piece prepared for the next release window with a clean approval state.</p>
+                    </div>
+                  </article>
+                </div>
+              </article>
+            </section>
+          </div>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
