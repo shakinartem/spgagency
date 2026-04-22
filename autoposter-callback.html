@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Autoposter Callback</title>
+    <meta
+      name="description"
+      content="OAuth callback page for Autoposter by SPG Agency. Receives TikTok authorization code and redirects to the dashboard flow."
+    />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#080706" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page login-wrap">
+      <div class="container">
+        <main class="panel login-card">
+          <span class="eyebrow">Authorization callback</span>
+          <h1>TikTok authorization received</h1>
+          <p id="callback-message">
+            Processing the callback parameters and preparing the connected workspace.
+          </p>
+
+          <div class="info-list" id="callback-details" style="margin-top: 6px"></div>
+
+          <div class="login-actions">
+            <a class="btn btn-primary" href="./autoposter-dashboard.html">Continue to Dashboard</a>
+            <a class="btn btn-secondary" href="./autoposter-login.html">Back to Login</a>
+          </div>
+
+          <p class="login-note">
+            In production, the server should exchange the authorization code for access and refresh tokens, create or
+            update the internal user record, and then redirect the user here or directly into the dashboard.
+          </p>
+        </main>
+      </div>
+    </div>
+
+    <script>
+      (function () {
+        const params = new URLSearchParams(window.location.search);
+        const message = document.getElementById("callback-message");
+        const details = document.getElementById("callback-details");
+        const code = params.get("code");
+        const state = params.get("state");
+        const error = params.get("error");
+        const errorDescription = params.get("error_description");
+
+        const rows = [];
+
+        if (error) {
+          message.textContent = "TikTok returned an authorization error.";
+          rows.push(["Status", "Authorization failed"]);
+          rows.push(["Error", error]);
+          if (errorDescription) {
+            rows.push(["Details", errorDescription]);
+          }
+        } else {
+          message.textContent = code
+            ? "Authorization code received. The next step is server-side token exchange and account registration."
+            : "No authorization code is present yet. Use this page as the registered redirect URI.";
+          rows.push(["Status", code ? "Authorization code present" : "Waiting for callback"]);
+          rows.push(["Code", code ? "Present" : "Missing"]);
+          rows.push(["State", state || "Not provided"]);
+        }
+
+        rows.forEach(([label, value]) => {
+          const row = document.createElement("div");
+          row.className = "info-row";
+
+          const dot = document.createElement("span");
+          dot.className = "dot";
+
+          const wrap = document.createElement("div");
+          const title = document.createElement("strong");
+          title.textContent = label;
+          const text = document.createElement("p");
+          text.textContent = value;
+
+          wrap.appendChild(title);
+          wrap.appendChild(text);
+          row.appendChild(dot);
+          row.appendChild(wrap);
+          details.appendChild(row);
+        });
+      })();
+    </script>
+  </body>
+</html>

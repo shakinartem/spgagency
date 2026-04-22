@@ -13,6 +13,7 @@ export default defineConfig({
         main: resolve(__dirname, "index.html"),
         autoposter: resolve(__dirname, "autoposter.html"),
         autoposterLogin: resolve(__dirname, "autoposter-login.html"),
+        autoposterCallback: resolve(__dirname, "autoposter-callback.html"),
         autoposterDashboard: resolve(__dirname, "autoposter-dashboard.html"),
         autoposterPrivacy: resolve(__dirname, "autoposter-privacy-policy.html"),
         autoposterTerms: resolve(__dirname, "autoposter-terms-of-service.html"),
