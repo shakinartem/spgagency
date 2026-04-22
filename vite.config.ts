@@ -11,6 +11,11 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, "index.html"),
+        autoposter: resolve(__dirname, "autoposter.html"),
+        autoposterLogin: resolve(__dirname, "autoposter-login.html"),
+        autoposterDashboard: resolve(__dirname, "autoposter-dashboard.html"),
+        autoposterPrivacy: resolve(__dirname, "autoposter-privacy-policy.html"),
+        autoposterTerms: resolve(__dirname, "autoposter-terms-of-service.html"),
         materials: resolve(__dirname, "materialy.html"),
         dental: resolve(__dirname, "marketing-dlya-stomatologii.html"),
         medical: resolve(__dirname, "marketing-dlya-meditsiny.html"),
