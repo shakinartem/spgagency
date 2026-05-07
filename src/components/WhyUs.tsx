@@ -27,7 +27,7 @@ export function WhyUs({ items }: WhyUsProps) {
               className="impact-card panel-card p-6"
             >
               <div className="impact-scan" />
-              <p className="relative z-10 text-base leading-7 text-paper/88">{item}</p>
+              <p className="relative z-10 text-base leading-7 text-ink/90">{item}</p>
             </motion.div>
           ))}
         </div>

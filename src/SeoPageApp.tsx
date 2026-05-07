@@ -43,10 +43,10 @@ function SeoHeader({ basePath, page }: { basePath: string; page: SeoPageConfig }
           <p className="text-sm text-paper">Материалы и SEO-страницы</p>
         </a>
         <nav className="hidden items-center gap-6 lg:flex">
-          <a href={homeHref} className="text-sm uppercase tracking-[0.18em] text-sand/72 transition hover:text-paper">Главная</a>
-          <a href={relatedCasesHref} className="text-sm uppercase tracking-[0.18em] text-sand/72 transition hover:text-paper">Кейсы</a>
-          <a href={`${basePath}materialy.html`} className="text-sm uppercase tracking-[0.18em] text-sand/72 transition hover:text-paper">Архив</a>
-          <a href={auditHref} className="text-sm uppercase tracking-[0.18em] text-sand/72 transition hover:text-paper">Аудит</a>
+          <a href={homeHref} className="text-sm uppercase tracking-[0.18em] text-sand/70 transition hover:text-paper">Главная</a>
+          <a href={relatedCasesHref} className="text-sm uppercase tracking-[0.18em] text-sand/70 transition hover:text-paper">Кейсы</a>
+          <a href={`${basePath}materialy.html`} className="text-sm uppercase tracking-[0.18em] text-sand/70 transition hover:text-paper">Архив</a>
+          <a href={auditHref} className="text-sm uppercase tracking-[0.18em] text-sand/70 transition hover:text-paper">Аудит</a>
         </nav>
         <a href={auditHref} className="liquid-glass-button liquid-glass-button--compact">
           {page.primaryLabel}
@@ -91,7 +91,7 @@ function RelatedCases({ basePath, caseIds }: { basePath: string; caseIds: string
               Проекты, где уже видно, как эта логика работает на практике.
             </h2>
           </div>
-          <p className="hidden max-w-sm text-right text-sm leading-6 text-sand/72 sm:block">
+          <p className="hidden max-w-sm text-right text-sm leading-6 text-sand/70 sm:block">
             По клику открывается тот же подробный кейс, что и на главной: с отзывом, цифрами и полной разборкой.
           </p>
         </div>
@@ -105,16 +105,16 @@ function RelatedCases({ basePath, caseIds }: { basePath: string; caseIds: string
             >
               <div className="flex items-start justify-between gap-3">
                 <RelatedCaseLogo item={item} basePath={basePath} />
-                <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[0.56rem] uppercase tracking-[0.18em] text-sand/65">
+                <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[0.56rem] uppercase tracking-[0.18em] text-sand/60">
                   {item.category}
                 </span>
               </div>
               <h3 className="mt-5 font-display text-3xl text-paper">{item.name}</h3>
-              <p className="mt-3 text-sm leading-6 text-sand/78">{item.summary}</p>
+              <p className="mt-3 text-sm leading-6 text-sand/80">{item.summary}</p>
               <div className="mt-4 grid grid-cols-2 gap-2">
                 {item.metrics.slice(0, 2).map((metric) => (
                   <div key={metric.label} className="rounded-2xl border border-white/10 bg-white/5 p-3">
-                    <p className="text-[0.55rem] uppercase tracking-[0.18em] text-sand/55">{metric.label}</p>
+                    <p className="text-[0.55rem] uppercase tracking-[0.18em] text-sand/50">{metric.label}</p>
                     <p className="mt-1 text-sm text-paper">{metric.value}</p>
                   </div>
                 ))}
@@ -169,7 +169,7 @@ export function SeoPageApp({ page, basePath }: SeoPageAppProps) {
                 {page.heroTitle}
               </h1>
               <p className="mt-6 max-w-3xl text-lg leading-8 text-sand/80">{page.heroText}</p>
-              <p className="mt-4 max-w-2xl text-sm uppercase tracking-[0.18em] text-sand/58">{page.heroNote}</p>
+              <p className="mt-4 max-w-2xl text-sm uppercase tracking-[0.18em] text-sand/60">{page.heroNote}</p>
               <div className="mt-8 flex flex-wrap gap-3">
                 <a href={`${basePath}#audit-form`} className="liquid-glass-button">{page.primaryLabel}</a>
                 <a href="#related-cases" className="btn-secondary">{page.secondaryLabel}</a>
@@ -190,7 +190,7 @@ export function SeoPageApp({ page, basePath }: SeoPageAppProps) {
 
               <motion.div className="flex items-start justify-between gap-4 border-b border-white/8 pb-5" {...dossierMotion(0)}>
                 <div>
-                  <p className="text-[0.62rem] uppercase tracking-[0.24em] text-sand/55">Оперативное досье</p>
+                  <p className="text-[0.62rem] uppercase tracking-[0.24em] text-sand/50">Оперативное досье</p>
                   <h2 className="mt-3 font-display text-[2.05rem] leading-none text-paper sm:text-[2.45rem]">Профиль задачи</h2>
                 </div>
                 <div className="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-[0.58rem] uppercase tracking-[0.22em] text-emerald-200">
@@ -200,13 +200,13 @@ export function SeoPageApp({ page, basePath }: SeoPageAppProps) {
 
               <div className="mt-6 grid gap-4 sm:grid-cols-[1.1fr_0.9fr]">
                 <motion.div className="rounded-[1.5rem] border border-ember/25 bg-ember/8 p-5 sm:p-6" {...dossierMotion(1)}>
-                  <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/55">Ключевой вывод</p>
+                  <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/50">Ключевой вывод</p>
                   <p className="mt-3 text-[1.08rem] leading-8 text-paper/90">
                     Сильнее всего эта страница работает там, где бизнесу нужна не активность ради отчета, а управляемая система роста с понятной логикой.
                   </p>
                 </motion.div>
                 <motion.div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-5" {...dossierMotion(2)}>
-                  <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/55">Контур задачи</p>
+                  <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/50">Контур задачи</p>
                   <div className="mt-4 space-y-3 text-sm leading-6 text-paper/84">
                     <div className="rounded-[1rem] border border-white/8 bg-black/15 px-4 py-3">
                       Спрос должен приходить без хаоса, случайных подрядчиков и разрозненных площадок.
@@ -220,12 +220,12 @@ export function SeoPageApp({ page, basePath }: SeoPageAppProps) {
 
               <motion.div className="mt-5 rounded-[1.55rem] border border-white/10 bg-white/5 p-5 sm:p-6" {...dossierMotion(3)}>
                 <div className="flex items-center justify-between gap-4">
-                  <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/55">Кому подходит</p>
+                  <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/50">Кому подходит</p>
                   <p className="text-[0.58rem] uppercase tracking-[0.2em] text-sand/42">field access</p>
                 </div>
                 <div className="mt-4 grid gap-3 sm:grid-cols-2">
                   {page.audience.map((item) => (
-                    <div key={item} className="rounded-[1.15rem] border border-white/10 bg-black/15 px-4 py-4 text-[0.95rem] text-paper/88">
+                    <div key={item} className="rounded-[1.15rem] border border-white/10 bg-black/15 px-4 py-4 text-[0.95rem] text-paper/90">
                       {item}
                     </div>
                   ))}
@@ -233,8 +233,8 @@ export function SeoPageApp({ page, basePath }: SeoPageAppProps) {
               </motion.div>
 
               <motion.div className="mt-5 rounded-[1.7rem] border border-ember/30 bg-ember/8 p-5 sm:p-6" {...dossierMotion(4)}>
-                <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/55">Формат работы</p>
-                <p className="mt-3 text-[1.02rem] leading-8 text-paper/86">
+                <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/50">Формат работы</p>
+                <p className="mt-3 text-[1.02rem] leading-8 text-paper/90">
                   Базовая единица работ начинается от 35 000 ₽, но сильнее всего SPG работает через пакет связок:
                   аналитика, упаковка, контент, сайт, репутация и воронка.
                 </p>
@@ -248,9 +248,9 @@ export function SeoPageApp({ page, basePath }: SeoPageAppProps) {
             <div className="grid gap-4 lg:grid-cols-3">
               {page.problems.map((problem) => (
                 <article key={problem.title} className="panel-card p-6">
-                  <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/55">Задача</p>
+                  <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/50">Задача</p>
                   <h2 className="mt-4 font-display text-3xl leading-tight text-paper">{problem.title}</h2>
-                  <p className="mt-4 text-base leading-7 text-sand/78">{problem.text}</p>
+                  <p className="mt-4 text-base leading-7 text-sand/80">{problem.text}</p>
                 </article>
               ))}
             </div>
@@ -270,17 +270,17 @@ export function SeoPageApp({ page, basePath }: SeoPageAppProps) {
                     {String(index + 1).padStart(2, "0")}
                   </div>
                   <h3 className="font-display text-3xl leading-tight text-paper">{step.title}</h3>
-                  <p className="mt-4 text-base leading-7 text-sand/78">{step.text}</p>
+                  <p className="mt-4 text-base leading-7 text-sand/80">{step.text}</p>
                 </article>
               ))}
             </div>
             <div className="mt-8 panel-card p-6">
-              <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/55">Что может войти в работу</p>
+              <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/50">Что может войти в работу</p>
               <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
                 {page.deliverables.map((item) => (
                   <div key={item} className="flex items-start gap-3 rounded-[1.35rem] border border-white/10 bg-white/5 px-4 py-4">
                     <Check size={16} className="mt-1 text-ember" />
-                    <span className="text-sm leading-6 text-paper/88">{item}</span>
+                    <span className="text-sm leading-6 text-paper/90">{item}</span>
                   </div>
                 ))}
               </div>
@@ -299,9 +299,9 @@ export function SeoPageApp({ page, basePath }: SeoPageAppProps) {
             <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
               {relatedMaterials.map((item) => (
                 <a key={item.key} href={`${basePath}${item.slug}`} className="panel-card p-5 transition hover:-translate-y-1">
-                  <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/55">{item.eyebrow}</p>
+                  <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/50">{item.eyebrow}</p>
                   <h3 className="mt-3 max-w-[16rem] font-display text-[2rem] leading-tight text-paper">{item.title.replace(" | SPG", "")}</h3>
-                  <p className="mt-3 text-sm leading-6 text-sand/78">{item.description}</p>
+                  <p className="mt-3 text-sm leading-6 text-sand/80">{item.description}</p>
                   <span className="mt-5 inline-flex items-center gap-2 text-[0.68rem] uppercase tracking-[0.2em] text-paper">
                     Открыть материал
                   </span>
@@ -321,7 +321,7 @@ export function SeoPageApp({ page, basePath }: SeoPageAppProps) {
                     <ChevronRight size={16} className="mt-1 text-ember" />
                     <div>
                       <h3 className="text-lg leading-7 text-paper">{item.question}</h3>
-                      <p className="mt-3 text-base leading-7 text-sand/78">{item.answer}</p>
+                      <p className="mt-3 text-base leading-7 text-sand/80">{item.answer}</p>
                     </div>
                   </div>
                 </article>

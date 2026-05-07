@@ -1,4 +1,4 @@
-﻿export type CaseCategory =
+export type CaseCategory =
   | "Стоматологии"
   | "Медицина"
   | "Недвижимость"

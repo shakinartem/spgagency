@@ -14,12 +14,12 @@ export function SectionHeading({
   const alignment = align === "center" ? "mx-auto text-center" : "";
 
   return (
-    <div className={`max-w-3xl ${alignment}`}>
+    <div className={`max-w-5xl ${alignment}`}>
       <div className="label-chip">{eyebrow}</div>
-      <h2 className="mt-5 max-w-3xl font-display text-4xl leading-none text-paper sm:text-5xl lg:text-6xl">
+      <h2 className="editorial-title mt-5 max-w-5xl text-5xl text-paper sm:text-6xl lg:text-7xl">
         {title}
       </h2>
-      <p className="mt-5 text-base leading-7 text-sand/80 sm:text-lg">{description}</p>
+      <p className="mt-5 max-w-3xl text-base leading-7 text-sand/75 sm:text-lg">{description}</p>
     </div>
   );
 }

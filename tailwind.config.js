@@ -4,24 +4,26 @@ export default {
   theme: {
     extend: {
       colors: {
-        ink: "#090909",
-        paper: "#f4ede2",
+        ink: "#080706",
+        paper: "#f5eee4",
         ember: "#f07a1f",
-        sand: "#d7c5ab",
-        shell: "#f8f2e8",
-        graphite: "#171717",
+        sand: "#c8b8a0",
+        shell: "#17120f",
+        graphite: "#27201b",
+        oxblood: "#7a3510",
+        bronze: "#b8895f",
       },
       fontFamily: {
-        display: ['"Old Standard TT"', "serif"],
-        ui: ['"Roboto Condensed"', "sans-serif"],
+        display: ['"Oswald"', "sans-serif"],
+        ui: ['"Manrope"', "sans-serif"],
       },
       boxShadow: {
-        glow: "0 0 80px rgba(240, 122, 31, 0.18)",
-        panel: "0 25px 80px rgba(0, 0, 0, 0.35)",
+        glow: "0 36px 120px rgba(240, 122, 31, 0.18)",
+        panel: "0 28px 90px rgba(0, 0, 0, 0.42)",
       },
       backgroundImage: {
         noise:
-          "radial-gradient(circle at 20% 20%, rgba(255,255,255,0.045) 0, transparent 30%), radial-gradient(circle at 80% 0%, rgba(240,122,31,0.12) 0, transparent 28%), radial-gradient(circle at 50% 100%, rgba(255,255,255,0.03) 0, transparent 35%)",
+          "radial-gradient(circle at 12% 10%, rgba(240,122,31,0.18) 0, transparent 28%), radial-gradient(circle at 82% 0%, rgba(184,137,95,0.12) 0, transparent 30%), linear-gradient(180deg, rgba(255,255,255,0.035), transparent 34%)",
       },
     },
   },

@@ -17,9 +17,9 @@ function MaterialsHeader({ basePath }: { basePath: string }) {
           <p className="text-sm text-paper">Материалы дел SPG</p>
         </a>
         <nav className="hidden items-center gap-6 lg:flex">
-          <a href={`${basePath}#top`} className="text-sm uppercase tracking-[0.18em] text-sand/72 transition hover:text-paper">Главная</a>
-          <a href="#materials-archive" className="text-sm uppercase tracking-[0.18em] text-sand/72 transition hover:text-paper">Архив</a>
-          <a href={`${basePath}#cta`} className="text-sm uppercase tracking-[0.18em] text-sand/72 transition hover:text-paper">Контакты</a>
+          <a href={`${basePath}#top`} className="text-sm uppercase tracking-[0.18em] text-sand/70 transition hover:text-paper">Главная</a>
+          <a href="#materials-archive" className="text-sm uppercase tracking-[0.18em] text-sand/70 transition hover:text-paper">Архив</a>
+          <a href={`${basePath}#cta`} className="text-sm uppercase tracking-[0.18em] text-sand/70 transition hover:text-paper">Контакты</a>
         </nav>
         <a href={`${basePath}#audit-form`} className="liquid-glass-button liquid-glass-button--compact">
           Получить аудит
@@ -60,25 +60,25 @@ export function MaterialsPageApp({ basePath }: MaterialsPageAppProps) {
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(240,122,31,0.18),transparent_34%)]" />
               <div className="relative grid gap-4 sm:grid-cols-2">
                 <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-4">
-                  <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/55">Зачем это собрано</p>
-                  <p className="mt-3 text-sm leading-6 text-paper/88">
+                  <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/50">Зачем это собрано</p>
+                  <p className="mt-3 text-sm leading-6 text-paper/90">
                     Чтобы сайт работал не только как презентация, но и как сеть входных страниц под конкретные поисковые запросы.
                   </p>
                 </div>
                 <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-4">
-                  <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/55">Что внутри</p>
-                  <p className="mt-3 text-sm leading-6 text-paper/88">
+                  <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/50">Что внутри</p>
+                  <p className="mt-3 text-sm leading-6 text-paper/90">
                     Посадочные по нишам, страницы услуг, практические разборы и связки материалов, которые усиливают друг друга.
                   </p>
                 </div>
                 <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-4">
-                  <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/55">Как использовать</p>
-                  <p className="mt-3 text-sm leading-6 text-paper/88">
+                  <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/50">Как использовать</p>
+                  <p className="mt-3 text-sm leading-6 text-paper/90">
                     Вести трафик можно не только на главную, но и на отдельные входы, а внутри уже направлять человека по связанным материалам.
                   </p>
                 </div>
                 <div className="rounded-[1.5rem] border border-ember/30 bg-ember/8 p-4">
-                  <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/55">Текущий этап</p>
+                  <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/50">Текущий этап</p>
                   <p className="mt-3 text-sm leading-6 text-paper/90">
                     Архив уже собран как рабочая структура: его можно выводить в прод и дальше наращивать статьями без слома логики сайта.
                   </p>

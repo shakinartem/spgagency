@@ -26,7 +26,7 @@ export function SocialProof({ brands, notes }: SocialProofProps) {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true, amount: 0.2 }}
                   transition={{ duration: 0.4, delay: index * 0.03 }}
-                  className="flex min-h-[92px] items-center justify-center rounded-3xl border border-white/10 bg-white/5 p-4 text-center font-display text-2xl text-paper"
+                  className="flex min-h-[92px] items-center justify-center rounded-3xl border border-ink/10 bg-white p-4 text-center font-display text-2xl text-ink"
                 >
                   {brand}
                 </motion.div>
@@ -44,8 +44,8 @@ export function SocialProof({ brands, notes }: SocialProofProps) {
                 transition={{ duration: 0.5, delay: index * 0.06 }}
                 className="panel-card p-6"
               >
-                <p className="text-xs uppercase tracking-[0.28em] text-sand/55">Факт</p>
-                <p className="mt-3 text-base leading-7 text-paper/88">{note}</p>
+                <p className="text-xs uppercase tracking-[0.28em] text-graphite/50">Факт</p>
+                <p className="mt-3 text-base leading-7 text-ink/90">{note}</p>
               </motion.div>
             ))}
           </div>

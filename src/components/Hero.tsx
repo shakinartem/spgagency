@@ -1,137 +1,130 @@
 import { motion } from "framer-motion";
-import { ArrowDownRight, ArrowRight, ScanSearch, ShieldCheck, Siren, Sparkles } from "lucide-react";
+import { ArrowDownRight, ArrowRight, BarChart3, Crosshair, ShieldCheck } from "lucide-react";
 
 type HeroProps = {
   facts: string[];
-  materialsHref: string;
+  casesHref: string;
 };
 
-export function Hero({ facts, materialsHref }: HeroProps) {
+const heroSignals = [
+  { label: "ниша", value: "стоматологии", note: "работаем только с dental-проектами" },
+  { label: "система", value: "рост", note: "стратегия, заявки, инфраструктура" },
+  { label: "старт", value: "3 дня", note: "до первичной карты роста" },
+];
+
+export function Hero({ facts, casesHref }: HeroProps) {
   return (
-    <section id="top" className="relative overflow-hidden px-4 pb-12 pt-32 sm:pt-36">
+    <section id="top" className="relative min-h-screen overflow-hidden px-4 pb-16 pt-32 sm:pt-36 lg:pb-24">
       <div className="spotlight" />
-      <div className="mx-auto grid max-w-6xl gap-6 lg:grid-cols-[minmax(0,1.28fr)_360px] lg:items-start">
-        <div className="max-w-4xl">
-          <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="label-chip">
-            Social Programming Group
-          </motion.div>
+      <div className="absolute inset-x-4 top-28 -z-10 h-px bg-gradient-to-r from-transparent via-ember/50 to-transparent" />
 
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.08 }}
-            className="mt-6 max-w-4xl font-display text-[3.3rem] leading-[0.9] text-paper sm:text-[4.5rem] lg:text-[5.4rem]"
-          >
-            Подключаемся
-            <br />
-            как
-            <span className="block text-ember">внешний штаб роста,</span>
-            когда нужен
-            <br />
-            не шум, а управляемый результат.
-          </motion.h1>
+      <div className="mx-auto max-w-7xl">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1.1fr)_minmax(340px,0.9fr)] lg:items-end">
+          <div>
+            <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="label-chip">
+              Маркетинговая система роста для стоматологий
+            </motion.div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.16 }}
-            className="mt-7 max-w-2xl text-lg leading-8 text-sand/82 sm:text-xl"
-          >
-            SPG собирает для бизнеса взрослую digital-систему: контент, соцсети, сайты, воронки, карты, отзывы,
-            аналитику и лидогенерацию. Мы усиливаем то, что уже работает, и убираем всё, что тормозит конверсию,
-            разрывает каналы и делает рост случайным.
-          </motion.p>
+            <motion.h1
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.85, delay: 0.08 }}
+              className="editorial-title mt-7 max-w-6xl text-[4.35rem] text-paper sm:text-[7rem] lg:text-[9.2rem]"
+            >
+              Рост
+              <span className="block text-ember">стоматологий</span>
+              без хаоса
+            </motion.h1>
 
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.24 }}
-            className="mt-10 flex flex-col gap-4 sm:flex-row"
-          >
-            <a href="#cta" className="btn-primary">
-              Обсудить задачу
-              <ArrowRight size={18} />
-            </a>
-            <a href="#cases" className="btn-secondary">
-              Смотреть кейсы и цифры
-              <ArrowDownRight size={18} />
-            </a>
-            <a href={materialsHref} className="btn-secondary">
-              Материалы и разборы
-              <ArrowRight size={18} />
-            </a>
-          </motion.div>
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.16 }}
+              className="mt-8 grid gap-6 border-y border-paper/10 py-6 lg:grid-cols-[0.9fr_1.1fr]"
+            >
+              <p className="text-xl font-semibold leading-8 text-paper sm:text-2xl">
+                SPG работает только со стоматологиями и собирает систему, которая приводит пациентов без скидочной гонки.
+              </p>
+              <p className="text-base leading-8 text-sand/75 sm:text-lg">
+                Мы соединяем стратегию, сайт, контент, карты, отзывы, репутацию и лидогенерацию в один понятный маршрут:
+                от первого касания до записи пациента.
+              </p>
+            </motion.div>
 
-          <div className="mt-10 grid gap-3 sm:max-w-3xl sm:grid-cols-3">
-            {facts.map((fact, index) => (
-              <motion.div
-                key={fact}
-                initial={{ opacity: 0, y: 18 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.7, delay: 0.18 + index * 0.08 }}
-                className="rounded-3xl border border-white/10 bg-white/5 px-5 py-4 text-sm leading-6 text-sand/80"
-              >
-                {fact}
-              </motion.div>
-            ))}
+            <motion.div
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.24 }}
+              className="mt-8 flex flex-col gap-4 sm:flex-row"
+            >
+              <a href="#cta" className="btn-primary">
+                Обсудить рост стоматологии
+                <ArrowRight size={18} />
+              </a>
+              <a href={casesHref} className="btn-secondary">
+                Смотреть кейсы
+                <ArrowDownRight size={18} />
+              </a>
+            </motion.div>
           </div>
 
-          <div className="mt-8 flex flex-wrap gap-3 text-xs uppercase tracking-[0.22em] text-sand/55">
-            <span className="agent-marker">briefing</span>
-            <span className="agent-marker">intel</span>
-            <span className="agent-marker">control room</span>
-          </div>
-        </div>
-
-        <motion.div
-          initial={{ opacity: 0, x: 18, scale: 0.98 }}
-          animate={{ opacity: 1, x: 0, scale: 1 }}
-          transition={{ duration: 0.9, delay: 0.16 }}
-          className="relative lg:mt-20"
-        >
-          <div className="panel-card dossier-card relative overflow-hidden p-6 sm:p-7">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(240,122,31,0.24),transparent_34%)]" />
-            <div className="agent-corner agent-corner-top" />
-            <div className="agent-corner agent-corner-bottom" />
-
-            <div className="relative flex items-start justify-between gap-4">
-              <div>
-                <p className="text-xs uppercase tracking-[0.3em] text-sand/65">Статус операции</p>
-                <p className="mt-2 max-w-[14rem] font-display text-3xl leading-tight text-paper">Собранный рост вместо разрозненных подрядчиков</p>
-              </div>
-              <div className="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-xs uppercase tracking-[0.24em] text-emerald-200">
-                online
-              </div>
-            </div>
-
-            <div className="mt-8 grid gap-4">
-              {[
-                { icon: ScanSearch, title: "Диагностика", text: "Находим не только ошибки, но и точки роста, где уже можно быстро усилить результат." },
-                { icon: ShieldCheck, title: "Система", text: "Собираем связки, которые выдерживают нагрузку и не ломаются при росте." },
-                { icon: Sparkles, title: "Присутствие", text: "Усиливаем образ бренда так, чтобы он выглядел дороже, чище и убедительнее." },
-                { icon: Siren, title: "Контроль", text: "Смотрим на цифры и подрубаем только то, что уже даёт заявки и движение к сделке." },
-              ].map((item) => (
-                <div key={item.title} className="grid grid-cols-[auto_1fr] gap-4 rounded-3xl border border-white/10 bg-black/28 p-4">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-ember/30 bg-ember/10 text-ember">
-                    <item.icon size={18} />
-                  </div>
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.28em] text-sand/60">{item.title}</p>
-                    <p className="mt-2 text-sm leading-6 text-paper/88">{item.text}</p>
+          <motion.aside
+            initial={{ opacity: 0, x: 20, scale: 0.98 }}
+            animate={{ opacity: 1, x: 0, scale: 1 }}
+            transition={{ duration: 0.9, delay: 0.16 }}
+            className="relative"
+          >
+            <div className="overflow-hidden rounded-[1.9rem] border border-paper/10 bg-paper/[0.06] shadow-panel backdrop-blur-sm">
+              <div className="relative min-h-[32rem]">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_32%_18%,rgba(178,13,16,0.36),transparent_34%),linear-gradient(145deg,rgba(99,8,10,0.86),rgba(8,7,6,0.92)_58%)]" />
+                <div className="relative p-7 sm:p-8">
+                  <p className="text-xs font-bold uppercase tracking-[0.28em] text-sand/70">досье роста</p>
+                  <h2 className="editorial-title mt-6 max-w-md text-5xl text-paper sm:text-6xl">
+                    От доверия к записи пациента
+                  </h2>
+                  <div className="mt-8 grid gap-3">
+                    {[
+                      { icon: Crosshair, text: "Определяем, где стоматология теряет доверие, заявки и маржинальность." },
+                      { icon: ShieldCheck, text: "Собираем маршрут пациента до записи без скидочной гонки." },
+                      { icon: BarChart3, text: "Даем владельцу контроль цифр, а не красивую активность." },
+                    ].map((item) => (
+                      <div key={item.text} className="grid grid-cols-[auto_1fr] gap-3 rounded-2xl border border-paper/10 bg-paper/[0.07] p-4">
+                        <div className="flex h-10 w-10 items-center justify-center rounded-full bg-paper text-ember">
+                          <item.icon size={17} />
+                        </div>
+                        <p className="text-sm font-semibold leading-6 text-paper/90">{item.text}</p>
+                      </div>
+                    ))}
                   </div>
                 </div>
-              ))}
-            </div>
 
-            <div className="mt-8 rounded-3xl border border-dashed border-ember/35 bg-ember/8 p-5">
-              <p className="text-xs uppercase tracking-[0.28em] text-sand/65">Фокус сейчас</p>
-              <p className="mt-3 text-base leading-7 text-paper/90">
-                Стоматологии, медицина, локальные сервисы и экспертные проекты, которым нужен не подрядчик на один канал,
-                а собранная система привлечения и доверия.
-              </p>
+                <div className="absolute inset-x-0 bottom-0 grid grid-cols-3 border-t border-paper/10 bg-ink/35 backdrop-blur-sm">
+                  {heroSignals.map((signal) => (
+                    <div key={signal.label} className="border-r border-paper/10 p-4 last:border-r-0">
+                      <p className="text-[0.58rem] font-bold uppercase tracking-[0.22em] text-sand/50">{signal.label}</p>
+                      <p className="mt-3 font-display text-3xl uppercase leading-none text-paper">{signal.value}</p>
+                      <p className="mt-2 text-xs leading-5 text-sand/60">{signal.note}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.aside>
+        </div>
+
+        <div className="mt-10 grid gap-3 md:grid-cols-3">
+          {facts.map((fact, index) => (
+            <motion.div
+              key={fact}
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.18 + index * 0.08 }}
+              className="rounded-[1.35rem] border border-paper/10 bg-paper/[0.055] px-5 py-4 text-sm font-semibold leading-6 text-sand/80 backdrop-blur-sm"
+            >
+              {fact}
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );

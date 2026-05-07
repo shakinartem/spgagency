@@ -8,7 +8,7 @@ import { FallbackImage } from "./FallbackImage";
 import { SectionHeading } from "./SectionHeading";
 
 type CasesProps = { items: CaseStudy[] };
-const caseCategories = ["Все", "Стоматологии", "Медицина", "Недвижимость", "Авто", "Эксперты", "B2B", "Другое"] as const;
+const caseCategories = ["Все", "Стоматологии", "Медицина"] as const;
 
 function CaseLogo({ item }: { item: CaseStudy }) {
   const basePath = import.meta.env.BASE_URL;
@@ -40,12 +40,12 @@ export function Cases({ items }: CasesProps) {
       <div className="mx-auto max-w-7xl">
         <SectionHeading
           eyebrow="Кейсы"
-          title="Кейсы, где видно не только эстетику, но и собранную логику роста."
-          description="На карточке только суть и быстрые цифры. Полный кейс, отзыв и артефакты открываются уже внутри."
+          title="Показываем только стоматологию и медицину."
+          description="В витрине остались профильные кейсы: запись пациентов, карты, отзывы, сайт, контент и понятная система доверия."
         />
 
         <div className="mt-8 flex flex-wrap items-center gap-3">
-          <div className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.24em] text-sand/65">
+          <div className="flex items-center gap-2 rounded-full border border-paper/10 bg-paper/[0.055] px-4 py-2 text-xs uppercase tracking-[0.24em] text-sand/60">
             <Filter size={14} />
             фильтр
           </div>
@@ -54,7 +54,7 @@ export function Cases({ items }: CasesProps) {
               key={category}
               type="button"
               onClick={() => setActiveCategory(category)}
-              className={`rounded-full border px-4 py-2 text-sm transition ${activeCategory === category ? "border-ember/40 bg-ember/12 text-paper" : "border-white/10 bg-white/5 text-sand/70 hover:text-paper"}`}
+              className={`rounded-full border px-4 py-2 text-sm transition ${activeCategory === category ? "border-ember/40 bg-ember/15 text-paper" : "border-paper/10 bg-paper/[0.055] text-sand/70 hover:text-paper"}`}
             >
               {category}
             </button>
@@ -63,7 +63,7 @@ export function Cases({ items }: CasesProps) {
 
         <motion.div layout className="mt-6 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
           <AnimatePresence mode="popLayout">
-            {filteredCases.map((item) => (
+            {filteredCases.map((item, index) => (
               <motion.article
                 key={item.id}
                 layout
@@ -71,24 +71,24 @@ export function Cases({ items }: CasesProps) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 20 }}
                 transition={{ duration: 0.28 }}
-                className="group panel-card relative flex h-full flex-col p-4"
+                className={`group panel-card relative flex h-full flex-col p-4 ${index < 2 ? "xl:col-span-2" : ""}`}
               >
                 <div className="flex items-start justify-between gap-3">
                   <CaseLogo item={item} />
-                  <span className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[0.56rem] uppercase tracking-[0.18em] text-sand/65">
+                  <span className="rounded-full border border-paper/10 bg-paper/[0.055] px-3 py-1 text-[0.56rem] uppercase tracking-[0.18em] text-sand/60">
                     {item.category}
                   </span>
                 </div>
 
                 <div className="mt-4">
-                  <p className="text-[0.62rem] uppercase tracking-[0.18em] text-sand/55">{item.niche}</p>
-                  <h3 className="mt-2 font-display text-[1.8rem] leading-none text-paper">{item.name}</h3>
+                  <p className="text-[0.62rem] uppercase tracking-[0.18em] text-sand/50">{item.niche}</p>
+                  <h3 className={`mt-2 font-display uppercase leading-none text-paper ${index < 2 ? "text-4xl sm:text-5xl" : "text-[1.8rem]"}`}>{item.name}</h3>
                 </div>
 
                 <div className="mt-4 grid grid-cols-2 gap-2">
                   {item.metrics.slice(0, 2).map((metric) => (
-                    <div key={metric.label} className="rounded-2xl border border-white/10 bg-white/5 p-3">
-                      <p className="text-[0.54rem] uppercase tracking-[0.18em] text-sand/55">{metric.label}</p>
+                    <div key={metric.label} className="rounded-2xl border border-paper/10 bg-ink/35 p-3">
+                      <p className="text-[0.54rem] uppercase tracking-[0.18em] text-sand/50">{metric.label}</p>
                       <p className="mt-1 text-[0.95rem] text-paper">{metric.value}</p>
                     </div>
                   ))}
