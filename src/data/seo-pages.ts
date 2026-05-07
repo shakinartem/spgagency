@@ -1,4 +1,4 @@
-export type SeoPageSection = {
+﻿export type SeoPageSection = {
   title: string;
   text: string;
 };
@@ -82,7 +82,7 @@ export const seoPages: Record<string, SeoPageConfig> = {
     relatedCases: ["eurodent", "biomed-salavat", "interdent-neftekamsk", "dental-pro-ufa", "ibradent-ufa"],
     faq: [
       {
-        question: "Вы работаете только со стоматологиями?",
+        question: "Вы работаете только с клиниками?",
         answer: "Нет, но стоматологии и медицина сейчас одна из самых сильных специализаций SPG, поэтому для этой ниши у нас особенно точная логика работы.",
       },
       {

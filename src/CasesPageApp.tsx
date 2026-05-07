@@ -4,6 +4,7 @@ import { CookieBanner } from "./components/CookieBanner";
 import { CustomCursor } from "./components/CustomCursor";
 import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
+import { Preloader } from "./components/Preloader";
 import { ScrollToTopButton } from "./components/ScrollToTopButton";
 import { getEnrichedCaseStudies } from "./data/enriched-cases";
 import { createBrandLogoSources } from "./lib/assets";
@@ -23,6 +24,7 @@ export function CasesPageApp({ basePath }: CasesPageAppProps) {
     <div className="grain-layer relative min-h-screen bg-ink text-paper">
       <div className="fixed inset-0 -z-20 bg-noise opacity-100" />
       <div className="grid-overlay fixed inset-0 -z-10" />
+      <Preloader />
       <CustomCursor />
       <Header
         links={[

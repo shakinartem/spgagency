@@ -8,6 +8,7 @@ import { Footer } from "./components/Footer";
 import { Header } from "./components/Header";
 import { Hero } from "./components/Hero";
 import { MetricsResults } from "./components/MetricsResults";
+import { Preloader } from "./components/Preloader";
 import { Process } from "./components/Process";
 import { ScrollToTopButton } from "./components/ScrollToTopButton";
 import { Services } from "./components/Services";
@@ -59,6 +60,7 @@ function App() {
     <div className="grain-layer relative min-h-screen bg-ink text-paper">
       <div className="fixed inset-0 -z-20 bg-noise opacity-100" />
       <div className="grid-overlay fixed inset-0 -z-10" />
+      <Preloader />
       <CustomCursor />
       <Header links={navigationWithCases} primaryHref="#cta" logoPaths={brandLogoPaths} />
       <main>

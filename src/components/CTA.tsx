@@ -9,31 +9,31 @@ export function CTA({ contacts }: CTAProps) {
     <section id="cta" className="section-shell px-4 pb-28">
       <div className="mx-auto max-w-7xl">
         <div className="relative overflow-hidden rounded-[1.8rem] border border-paper/10 bg-paper/[0.06] p-7 text-white shadow-panel sm:p-10 lg:p-12">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_12%,rgba(157,116,81,0.22),transparent_30%),linear-gradient(120deg,rgba(99,8,10,0.92),rgba(8,7,6,0.94)_48%,rgba(8,7,6,1))]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_12%,rgba(181,13,19,0.12),transparent_32%),linear-gradient(120deg,rgba(34,25,20,0.92),rgba(8,7,6,0.96)_52%,rgba(8,7,6,1))]" />
           <div className="relative grid gap-8 lg:grid-cols-[0.95fr_1.05fr]">
             <div>
-              <div className="inline-flex items-center rounded-full border border-white/[0.15] bg-white/10 px-4 py-2 text-[0.66rem] font-bold uppercase tracking-[0.28em] text-white/70">Финальный брифинг</div>
+              <div className="inline-flex items-center rounded-full border border-white/[0.15] bg-white/10 px-4 py-2 text-[0.66rem] font-bold uppercase tracking-[0.2em] text-white/70">Разбор роста</div>
               <h2 className="editorial-title mt-6 max-w-3xl text-5xl text-white sm:text-7xl">
-                Соберем карту
-                <span className="block text-white/70">роста стоматологии.</span>
+                Поймем, где
+                <span className="block text-white/70">теряются записи.</span>
               </h2>
               <div className="mt-8 space-y-5 text-base leading-7 text-white/75 sm:text-lg">
-                <p>Если у вас стоматология, покажем, где сейчас теряются заявки, доверие и маржинальность.</p>
-                <p>Дальше соберем рабочую систему: позиционирование, сайт, карты, отзывы, контент, лидогенерация и контроль цифр.</p>
+                <p>Посмотрим на текущий путь пациента: посадочные страницы, реклама, карты, отзывы, оффер, CRM и обработка обращений.</p>
+                <p>После этого предложим понятный план: что исправить первым, какие каналы усилить и какие метрики отслеживать владельцу клиники.</p>
               </div>
               <div className="mt-6 rounded-[1.45rem] border border-white/[0.15] bg-white/[0.08] p-5">
-                <p className="text-xs uppercase tracking-[0.28em] text-white/50">Формат и бюджет</p>
+                <p className="text-xs uppercase tracking-[0.2em] text-white/50">Формат</p>
                 <p className="mt-3 text-base leading-7 text-white/90">
-                  Ориентир для отдельной единицы работы начинается от 35 000 ₽. Чаще мы собираем не разовую услугу,
-                  а стратегическую связку, которая делает маркетинг стоматологии управляемой инфраструктурой.
+                  Можно начать с аудита или отдельного участка. Чаще всего мы собираем связку работ, чтобы маркетинг клиники
+                  стал управляемой системой, а не набором подрядчиков.
                 </p>
               </div>
               <div className="mt-8 flex flex-col gap-4 sm:flex-row">
                 <a href="https://t.me/spg_marketing" className="btn-primary">
-                  Написать стратегу
+                  Написать в Telegram
                   <Send size={18} />
                 </a>
-                <a href="#audit-form" className="btn-secondary">Перейти к форме аудита</a>
+                <a href="#audit-form" className="btn-secondary">Заполнить форму</a>
               </div>
               <div className="mt-8 grid gap-4">
                 {contacts.map((contact) => (

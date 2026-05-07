@@ -26,7 +26,6 @@ export function WhyUs({ items }: WhyUsProps) {
               transition={{ duration: 0.55, delay: index * 0.05 }}
               className="impact-card panel-card p-6"
             >
-              <div className="impact-scan" />
               <p className="relative z-10 text-base leading-7 text-ink/90">{item}</p>
             </motion.div>
           ))}

@@ -27,8 +27,8 @@ export function MetricsResults({ stats, dentalClients }: MetricsResultsProps) {
       <div className="mx-auto max-w-7xl">
         <SectionHeading
           eyebrow="Результаты"
-          title="Рост стоматологии должен выглядеть дорого и управляться цифрами."
-          description="Пациент выбирает врача долго и осторожно. Поэтому рост строится не на одном канале, а на связке доверия, упаковки, заявки, карт, отзывов и аналитики."
+          title="Рост клиники должен выглядеть дорого и управляться цифрами."
+          description="Пациент выбирает врача долго и осторожно. Поэтому рост строится не на одном канале, а на связке доверия, упаковки, заявки, CRM, отзывов и аналитики."
         />
 
         <div className="mt-12 grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
@@ -52,10 +52,10 @@ export function MetricsResults({ stats, dentalClients }: MetricsResultsProps) {
           </div>
 
           <div className="panel-card overflow-hidden p-6">
-            <p className="text-xs uppercase tracking-[0.28em] text-sand/60">Стоматологии в фокусе</p>
+            <p className="text-xs uppercase tracking-[0.28em] text-sand/60">Клиники в фокусе</p>
             <h3 className="editorial-title mt-4 text-4xl text-paper sm:text-5xl">Слой доверия</h3>
             <p className="mt-5 text-base leading-7 text-sand/75">
-              Усиливаем стоматологии, где путь пациента зависит от локального поиска, карт, отзывов, врача,
+              Усиливаем клиники, где путь пациента зависит от локального поиска, карт, отзывов, врача,
               эстетики бренда и спокойного объяснения стоимости.
             </p>
             <div className="mt-6 grid gap-3">

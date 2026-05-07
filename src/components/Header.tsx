@@ -11,7 +11,7 @@ type HeaderProps = {
 export function Header({ links, primaryHref, logoPaths = [] }: HeaderProps) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const getLinkClassName = () => "text-sm font-bold uppercase tracking-[0.1em] text-sand/70 transition hover:text-white";
+  const getLinkClassName = () => "text-sm font-semibold text-sand/75 transition hover:text-paper";
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 18);
@@ -45,9 +45,9 @@ export function Header({ links, primaryHref, logoPaths = [] }: HeaderProps) {
               <div className="liquid-orb flex h-16 w-16 items-center justify-center rounded-full text-base font-bold tracking-[0.25em] text-white shadow-glow">SPG</div>
             )}
             <div className="min-w-0">
-              <p className="text-lg font-extrabold uppercase tracking-[0.24em] text-paper">SPG</p>
-              <p className="hidden whitespace-nowrap text-[0.62rem] font-bold uppercase tracking-[0.16em] text-sand/60 xl:block">
-                рост стоматологий
+              <p className="text-lg font-extrabold uppercase tracking-[0.2em] text-paper">SPG</p>
+              <p className="hidden whitespace-nowrap text-[0.68rem] font-semibold text-sand/65 xl:block">
+                рост клиник
               </p>
             </div>
           </a>
@@ -62,7 +62,7 @@ export function Header({ links, primaryHref, logoPaths = [] }: HeaderProps) {
 
           <div className="hidden items-center gap-4 lg:flex">
             <a href={primaryHref} className="liquid-glass-button liquid-glass-button--orange">
-              Обсудить стоматологию
+              Обсудить проект
             </a>
           </div>
 
@@ -83,7 +83,7 @@ export function Header({ links, primaryHref, logoPaths = [] }: HeaderProps) {
                 <a
                   key={link.href}
                   href={link.href}
-                  className={`text-sm uppercase tracking-[0.18em] transition hover:text-ember ${
+                  className={`text-sm font-semibold transition hover:text-ember ${
                     "rounded-2xl px-3 py-3 text-sand/75 hover:bg-paper/[0.06]"
                   }`}
                   onClick={() => setOpen(false)}
@@ -92,7 +92,7 @@ export function Header({ links, primaryHref, logoPaths = [] }: HeaderProps) {
                 </a>
               ))}
               <a href={primaryHref} className="liquid-glass-button liquid-glass-button--orange mt-2 w-full justify-center text-center" onClick={() => setOpen(false)}>
-                Обсудить стоматологию
+                Обсудить проект
               </a>
             </nav>
           </div>

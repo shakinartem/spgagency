@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+﻿import { motion } from "framer-motion";
 import { Check, ChevronRight } from "lucide-react";
 import { useMemo, useState } from "react";
 import { CaseModal } from "./components/CaseModal";
@@ -190,7 +190,7 @@ export function SeoPageApp({ page, basePath }: SeoPageAppProps) {
 
               <motion.div className="flex items-start justify-between gap-4 border-b border-white/8 pb-5" {...dossierMotion(0)}>
                 <div>
-                  <p className="text-[0.62rem] uppercase tracking-[0.24em] text-sand/50">Оперативное досье</p>
+                  <p className="text-[0.62rem] uppercase tracking-[0.24em] text-sand/50">Профиль задачи</p>
                   <h2 className="mt-3 font-display text-[2.05rem] leading-none text-paper sm:text-[2.45rem]">Профиль задачи</h2>
                 </div>
                 <div className="rounded-full border border-emerald-400/30 bg-emerald-400/10 px-3 py-1 text-[0.58rem] uppercase tracking-[0.22em] text-emerald-200">
