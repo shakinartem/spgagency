@@ -44,7 +44,7 @@ function SeoHeader({ basePath, page }: { basePath: string; page: SeoPageConfig }
         </a>
         <nav className="hidden items-center gap-6 lg:flex">
           <a href={homeHref} className="text-sm uppercase tracking-[0.18em] text-sand/70 transition hover:text-paper">Главная</a>
-          <a href={relatedCasesHref} className="text-sm uppercase tracking-[0.18em] text-sand/70 transition hover:text-paper">Кейсы</a>
+          <a href={relatedCasesHref} className="text-sm uppercase tracking-[0.18em] text-sand/70 transition hover:text-paper">Проекты</a>
           <a href={`${basePath}materialy.html`} className="text-sm uppercase tracking-[0.18em] text-sand/70 transition hover:text-paper">Архив</a>
           <a href={auditHref} className="text-sm uppercase tracking-[0.18em] text-sand/70 transition hover:text-paper">Аудит</a>
         </nav>

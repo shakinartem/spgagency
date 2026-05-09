@@ -54,7 +54,7 @@ export function About({ stats, dentalClients }: AboutProps) {
             </div>
 
             <div className="mt-5 grid gap-4 sm:grid-cols-[1.15fr_0.85fr]">
-              <div className="rounded-[1.8rem] border border-dashed border-ember/30 bg-[linear-gradient(135deg,rgba(185,8,8,0.08),rgba(255,255,255,0.4))] p-5">
+              <div className="rounded-[1.8rem] border border-dashed border-ember/30 bg-[linear-gradient(135deg,rgba(198,106,61,0.08),rgba(255,255,255,0.4))] p-5">
                 <p className="text-xs uppercase tracking-[0.28em] text-graphite/50">Сейчас сильнее всего</p>
                 <p className="mt-3 font-display text-3xl leading-tight text-ink">Стоматология, медицина, локальные сервисы, эксперты и B2B с длинным циклом решения.</p>
               </div>

@@ -38,7 +38,7 @@ export function Header({ links, primaryHref, logoPaths = [] }: HeaderProps) {
               <FallbackImage
                 sources={logoPaths}
                 alt="SPG"
-                className="h-16 w-16 rounded-full border border-paper/10 bg-paper object-contain p-2 shadow-glow"
+                className="h-16 w-16 scale-[1.08] rounded-full border border-paper/10 bg-paper object-contain p-0.5 shadow-glow"
                 fallback={<div className="liquid-orb flex h-16 w-16 items-center justify-center rounded-full text-base font-bold tracking-[0.25em] text-white shadow-glow">SPG</div>}
               />
             ) : (

@@ -15,10 +15,7 @@ type CasesPageAppProps = {
 
 export function CasesPageApp({ basePath }: CasesPageAppProps) {
   const brandLogoPaths = createBrandLogoSources(basePath);
-  const clinicCases = useMemo(
-    () => getEnrichedCaseStudies().filter((item) => item.category === "Стоматологии" || item.category === "Медицина"),
-    [],
-  );
+  const allCases = useMemo(() => getEnrichedCaseStudies(), []);
 
   return (
     <div className="grain-layer relative min-h-screen bg-ink text-paper">
@@ -29,8 +26,9 @@ export function CasesPageApp({ basePath }: CasesPageAppProps) {
       <Header
         links={[
           { label: "Главная", href: `${basePath}#top` },
-          { label: "Услуги", href: `${basePath}#services` },
+          { label: "Экспертиза", href: `${basePath}#expertise` },
           { label: "Процесс", href: `${basePath}#process` },
+          { label: "Калькулятор", href: `${basePath}#calculator` },
           { label: "Контакты", href: `${basePath}#cta` },
         ]}
         primaryHref={`${basePath}#cta`}
@@ -40,20 +38,30 @@ export function CasesPageApp({ basePath }: CasesPageAppProps) {
         <section className="relative overflow-hidden px-4 pb-8 pt-16">
           <div className="spotlight" />
           <div className="mx-auto max-w-7xl">
-            <div className="label-chip">Кейсы SPG</div>
-            <h1 className="editorial-title mt-7 max-w-6xl text-[4.2rem] text-paper sm:text-[6.5rem] lg:text-[8rem]">
-              Стоматология
-              <span className="block text-ember">и медицина</span>
+            <h1 className="editorial-title max-w-6xl text-[4.2rem] text-paper sm:text-[6.5rem] lg:text-[8rem]">
+              Все проекты
+              <span className="block text-ember">SPG</span>
             </h1>
             <p className="mt-8 max-w-3xl text-lg leading-8 text-sand/75">
-              Оставили только профильные кейсы: стоматологии и медицинские проекты, где важны доверие, запись пациента,
-              карты, отзывы, сайт и управляемый маркетинг.
+              Здесь собраны все проекты SPG: стоматологии, медицина, локальный сервис, экспертные и коммерческие направления с разной глубиной работ.
             </p>
           </div>
         </section>
-        <Cases items={clinicCases} />
+        <Cases
+          items={allCases}
+          limit={0}
+          heading="Все проекты SPG."
+          description="Каждая карточка ведет на отдельную страницу проекта с задачей, контекстом, решениями и результатом."
+        />
       </main>
-      <Footer privacyHref={`${basePath}privacy.html`} termsHref={`${basePath}terms.html`} extraLinks={[{ label: "Главная", href: basePath }]} />
+      <Footer
+        privacyHref={`${basePath}privacy.html`}
+        termsHref={`${basePath}terms.html`}
+        extraLinks={[
+          { label: "Главная", href: basePath },
+          { label: "Все проекты", href: `${basePath}cases.html` },
+        ]}
+      />
       <CookieBanner />
       <ScrollToTopButton />
     </div>

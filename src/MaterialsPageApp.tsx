@@ -57,7 +57,7 @@ export function MaterialsPageApp({ basePath }: MaterialsPageAppProps) {
             <div className="panel-card dossier-card relative overflow-hidden p-6 sm:p-7">
               <div className="agent-corner agent-corner-top" />
               <div className="agent-corner agent-corner-bottom" />
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(181,13,19,0.14),transparent_34%)]" />
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(198,106,61,0.14),transparent_34%)]" />
               <div className="relative grid gap-4 sm:grid-cols-2">
                 <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-4">
                   <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/50">Зачем это собрано</p>

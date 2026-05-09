@@ -19,7 +19,7 @@ export function Process({ items }: ProcessProps) {
               key={item.code}
               initial={{ opacity: 0, x: index % 2 === 0 ? -18 : 18, rotate: index % 2 === 0 ? -1 : 1 }}
               whileInView={{ opacity: 1, x: 0, rotate: 0 }}
-              whileHover={{ y: -8, boxShadow: "0 24px 60px rgba(185,8,8,0.08)" }}
+              whileHover={{ y: -8, boxShadow: "0 24px 60px rgba(198,106,61,0.08)" }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: index * 0.05 }}
               className="panel-card grid gap-4 p-6 sm:grid-cols-[auto_1fr]"

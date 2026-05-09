@@ -6,24 +6,24 @@ export default {
       colors: {
         ink: "#080706",
         paper: "#f5eee4",
-        ember: "#b50d13",
+        ember: "#c66a3d",
         sand: "#c8b8a0",
         shell: "#17120f",
         graphite: "#27201b",
-        oxblood: "#6d090d",
-        bronze: "#b88770",
+        oxblood: "#8f3f28",
+        bronze: "#c48a68",
       },
       fontFamily: {
         display: ['"Oswald"', "sans-serif"],
         ui: ['"Manrope"', "sans-serif"],
       },
       boxShadow: {
-        glow: "0 36px 120px rgba(181, 13, 19, 0.18)",
+        glow: "0 32px 100px rgba(198, 106, 61, 0.16)",
         panel: "0 28px 90px rgba(0, 0, 0, 0.42)",
       },
       backgroundImage: {
         noise:
-          "radial-gradient(circle at 12% 10%, rgba(181,13,19,0.18) 0, transparent 28%), radial-gradient(circle at 82% 0%, rgba(184,135,112,0.12) 0, transparent 30%), linear-gradient(180deg, rgba(255,255,255,0.035), transparent 34%)",
+          "radial-gradient(circle at 12% 10%, rgba(198,106,61,0.14) 0, transparent 28%), radial-gradient(circle at 82% 0%, rgba(196,138,104,0.12) 0, transparent 30%), linear-gradient(180deg, rgba(255,255,255,0.035), transparent 34%)",
       },
     },
   },
