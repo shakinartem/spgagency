@@ -32,7 +32,7 @@ jobs:
 
       - name: Build static site
         env:
-          VITE_BASE_PATH: /
+          VITE_BASE_PATH: /spgagency/
         run: npm run build
 
       - name: Configure Pages
