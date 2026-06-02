@@ -40,7 +40,7 @@ const contractorItems = [
   "не работает с доверием и картами",
 ];
 
-const spgItems = [
+const systemItems = [
   "собираем систему от первого касания до записи",
   "проверяем сайт, оффер, формы, мессенджеры и CRM",
   "смотрим на стоимость заявки и качество обращения",
@@ -267,10 +267,10 @@ export function DifferenceBlock() {
   return (
     <section id="difference" className="section-shell border-y border-paper/10 bg-paper/[0.025] px-4">
       <div className="mx-auto max-w-7xl">
-        <h2 className="editorial-title max-w-5xl text-5xl text-paper sm:text-7xl">Обычный подрядчик vs SPG.</h2>
+        <h2 className="editorial-title max-w-5xl text-5xl text-paper sm:text-7xl">Обычный подрядчик vs системный digital-подход.</h2>
         <div className="mt-12 grid gap-4 lg:grid-cols-2">
           <CompareColumn title="Обычный подрядчик" items={contractorItems} muted />
-          <CompareColumn title="SPG" items={spgItems} />
+          <CompareColumn title="ШАРиК digital" items={systemItems} />
         </div>
       </div>
     </section>
@@ -511,3 +511,4 @@ export function CalculatorLeadBlock() {
     </section>
   );
 }
+

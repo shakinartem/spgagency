@@ -1,8 +1,8 @@
-# SPG Agency Redesign Brief
+﻿# ШАРиК digital Redesign Brief
 
 ## Goal
 
-Transform the current SPG Agency website into a premium medical growth agency website.
+Transform the current ШАРиК digital website into a premium medical growth agency website.
 
 The website should feel:
 - premium
@@ -29,7 +29,7 @@ NOT:
 
 ## Positioning
 
-SPG is a growth systems agency for modern clinics.
+ШАРиК digital is a growth systems agency for modern clinics.
 
 Focus:
 - patient acquisition

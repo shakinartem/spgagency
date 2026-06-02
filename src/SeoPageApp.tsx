@@ -39,7 +39,7 @@ function SeoHeader({ basePath, page }: { basePath: string; page: SeoPageConfig }
     <header className="sticky top-0 z-50 px-4 pt-4">
       <div className="glass-nav mx-auto flex max-w-7xl items-center justify-between gap-4 rounded-[1.8rem] px-4 py-3 sm:px-6">
         <a href={homeHref} className="min-w-0">
-          <p className="text-[0.65rem] uppercase tracking-[0.28em] text-sand/70">SPG</p>
+          <p className="text-[0.65rem] uppercase tracking-[0.28em] text-sand/70">ШАРиК digital</p>
           <p className="text-sm text-paper">Материалы и SEO-страницы</p>
         </a>
         <nav className="hidden items-center gap-6 lg:flex">
@@ -92,7 +92,7 @@ function RelatedCases({ basePath, caseIds }: { basePath: string; caseIds: string
             </h2>
           </div>
           <p className="hidden max-w-sm text-right text-sm leading-6 text-sand/70 sm:block">
-            По клику открывается тот же подробный кейс, что и на главной: с отзывом, цифрами и полной разборкой.
+            По клику открывается подробный разбор проекта: задача, решение, рабочие акценты и общий подход.
           </p>
         </div>
         <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -111,12 +111,11 @@ function RelatedCases({ basePath, caseIds }: { basePath: string; caseIds: string
               </div>
               <h3 className="mt-5 font-display text-3xl text-paper">{item.name}</h3>
               <p className="mt-3 text-sm leading-6 text-sand/80">{item.summary}</p>
-              <div className="mt-4 grid grid-cols-2 gap-2">
-                {item.metrics.slice(0, 2).map((metric) => (
-                  <div key={metric.label} className="rounded-2xl border border-white/10 bg-white/5 p-3">
-                    <p className="text-[0.55rem] uppercase tracking-[0.18em] text-sand/50">{metric.label}</p>
-                    <p className="mt-1 text-sm text-paper">{metric.value}</p>
-                  </div>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {item.tools.slice(0, 3).map((tool) => (
+                  <span key={tool} className="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-[0.62rem] uppercase tracking-[0.18em] text-sand/60">
+                    {tool}
+                  </span>
                 ))}
               </div>
               <span className="mt-4 inline-flex text-[0.68rem] uppercase tracking-[0.2em] text-paper transition hover:text-ember">
@@ -235,7 +234,7 @@ export function SeoPageApp({ page, basePath }: SeoPageAppProps) {
               <motion.div className="mt-5 rounded-[1.7rem] border border-ember/30 bg-ember/8 p-5 sm:p-6" {...dossierMotion(4)}>
                 <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/50">Формат работы</p>
                 <p className="mt-3 text-[1.02rem] leading-8 text-paper/90">
-                  Базовая единица работ начинается от 35 000 ₽, но сильнее всего SPG работает через пакет связок:
+                  Базовая единица работ начинается от 35 000 ₽, но сильнее всего ШАРиК digital работает через пакет связок:
                   аналитика, упаковка, контент, сайт, репутация и воронка.
                 </p>
               </motion.div>
@@ -300,7 +299,7 @@ export function SeoPageApp({ page, basePath }: SeoPageAppProps) {
               {relatedMaterials.map((item) => (
                 <a key={item.key} href={`${basePath}${item.slug}`} className="panel-card p-5 transition hover:-translate-y-1">
                   <p className="text-[0.62rem] uppercase tracking-[0.22em] text-sand/50">{item.eyebrow}</p>
-                  <h3 className="mt-3 max-w-[16rem] font-display text-[2rem] leading-tight text-paper">{item.title.replace(" | SPG", "")}</h3>
+                  <h3 className="mt-3 max-w-[16rem] font-display text-[2rem] leading-tight text-paper">{item.title.replace(" | ШАРиК digital", "")}</h3>
                   <p className="mt-3 text-sm leading-6 text-sand/80">{item.description}</p>
                   <span className="mt-5 inline-flex items-center gap-2 text-[0.68rem] uppercase tracking-[0.2em] text-paper">
                     Открыть материал
@@ -340,7 +339,7 @@ export function SeoPageApp({ page, basePath }: SeoPageAppProps) {
                   <p className="mt-5 max-w-2xl text-lg leading-8 text-sand/80">{page.ctaText}</p>
                   <div className="mt-7 flex flex-wrap gap-3">
                     <a href={`${basePath}#audit-form`} className="liquid-glass-button">Получить аудит</a>
-                    <a href="https://t.me/spg_marketing" className="btn-secondary">Написать в Telegram</a>
+                    <a href={`${basePath}#cta`} className="btn-secondary">Оставить контакт</a>
                   </div>
                 </div>
                 <div className="space-y-4">
@@ -362,7 +361,7 @@ export function SeoPageApp({ page, basePath }: SeoPageAppProps) {
           { label: "Маркетинг для медицины", href: `${basePath}marketing-dlya-meditsiny.html` },
           { label: "Маркетинг для экспертов", href: `${basePath}marketing-dlya-ekspertov.html` },
           { label: "Маркетинг для недвижимости", href: `${basePath}marketing-dlya-nedvizhimosti.html` },
-          { label: "Материалы дел", href: `${basePath}materialy.html` },
+          { label: "Материалы", href: `${basePath}materialy.html` },
         ]}
       />
       <CookieBanner />
@@ -370,3 +369,4 @@ export function SeoPageApp({ page, basePath }: SeoPageAppProps) {
     </div>
   );
 }
+

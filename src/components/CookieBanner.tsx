@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const STORAGE_KEY = "spgsite-cookie-consent";
+const STORAGE_KEY = "sharik-cookie-consent";
 
 export function CookieBanner() {
   const [visible, setVisible] = useState(false);

@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://spgagency.ru/sitemap.xml
+Sitemap: https://sharik.digital/sitemap.xml
+

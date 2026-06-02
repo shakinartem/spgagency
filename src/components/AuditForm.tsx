@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "framer-motion";
+﻿import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 import { FormEvent, useMemo, useState } from "react";
 import { siteConfig } from "../data/site-config";
@@ -70,7 +70,7 @@ export function AuditForm({
 
   const message = useMemo(() => {
     const lines = [
-      `Новая заявка с сайта SPG (${isShort ? "короткая форма" : "полная анкета"})`,
+      `Новая заявка с сайта ШАРиК digital (${isShort ? "короткая форма" : "полная анкета"})`,
       `Имя: ${form.name || "не указано"}`,
       `Telegram: ${form.telegram || "не указан"}`,
     ];
@@ -87,10 +87,6 @@ export function AuditForm({
 
     return lines.join("\n");
   }, [form, isShort]);
-
-  const openTelegram = () => {
-    window.open(`https://t.me/${siteConfig.telegramUsername}`, "_blank", "noopener,noreferrer");
-  };
 
   const showSuccess = () => {
     setSubmitted(true);
@@ -128,7 +124,7 @@ export function AuditForm({
             ...form,
             mode,
             message,
-            source: "spgagency-site",
+            source: "sharik-digital-site",
             createdAt: new Date().toISOString(),
           }),
         });
@@ -137,7 +133,6 @@ export function AuditForm({
 
         setForm(initialState);
         showSuccess();
-        openTelegram();
         return;
       } catch {
         setError("Не удалось отправить заявку через webhook. Можно написать нам напрямую в Telegram.");
@@ -156,7 +151,6 @@ export function AuditForm({
     }
 
     showSuccess();
-    openTelegram();
   };
 
   return (
@@ -296,3 +290,4 @@ export function AuditForm({
     </>
   );
 }
+

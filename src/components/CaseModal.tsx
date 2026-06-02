@@ -137,13 +137,15 @@ export function CaseModal({ caseItem, onClose }: CaseModalProps) {
                   <p className="text-xs uppercase tracking-[0.24em] text-sand/60">Ключевой акцент</p>
                   <p className="mt-3 text-base leading-7 text-paper/90">{caseItem.spotlight}</p>
                 </div>
-                <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
-                  {caseItem.metrics.map((metric) => (
-                    <div key={metric.label} className="rounded-[1.5rem] border border-paper/10 bg-paper/[0.07] p-4">
-                      <p className="text-[0.65rem] uppercase tracking-[0.24em] text-sand/50">{metric.label}</p>
-                      <p className="mt-2 text-xl text-paper">{metric.value}</p>
-                    </div>
-                  ))}
+                <div className="rounded-[1.5rem] border border-paper/10 bg-paper/[0.07] p-4">
+                  <p className="text-[0.65rem] uppercase tracking-[0.24em] text-sand/50">Что усиливали</p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {caseItem.tools.map((tool) => (
+                      <span key={tool} className="rounded-full border border-paper/10 bg-paper/[0.07] px-3 py-2 text-xs uppercase tracking-[0.16em] text-sand/70">
+                        {tool}
+                      </span>
+                    ))}
+                  </div>
                 </div>
                 <ReviewPreview item={caseItem} />
               </div>

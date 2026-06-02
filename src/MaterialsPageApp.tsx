@@ -13,8 +13,8 @@ function MaterialsHeader({ basePath }: { basePath: string }) {
     <header className="sticky top-0 z-50 px-4 pt-4">
       <div className="glass-nav mx-auto flex max-w-7xl items-center justify-between gap-4 rounded-[1.8rem] px-4 py-3 sm:px-6">
         <a href={`${basePath}#top`} className="min-w-0">
-          <p className="text-[0.65rem] uppercase tracking-[0.28em] text-sand/70">Social Programming Group</p>
-          <p className="text-sm text-paper">Материалы дел SPG</p>
+          <p className="text-[0.65rem] uppercase tracking-[0.28em] text-sand/70">ШАРиК digital</p>
+          <p className="text-sm text-paper">Материалы и разборы</p>
         </a>
         <nav className="hidden items-center gap-6 lg:flex">
           <a href={`${basePath}#top`} className="text-sm uppercase tracking-[0.18em] text-sand/70 transition hover:text-paper">Главная</a>
@@ -40,9 +40,9 @@ export function MaterialsPageApp({ basePath }: MaterialsPageAppProps) {
         <section className="section-shell px-4 pb-10">
           <div className="mx-auto grid max-w-7xl gap-6 lg:grid-cols-[0.86fr_1.14fr] lg:items-start">
             <div className="max-w-2xl">
-              <div className="label-chip">Материалы дел</div>
+              <div className="label-chip">Материалы</div>
               <h1 className="mt-6 font-display text-[3rem] leading-[0.94] text-paper sm:text-[3.7rem] lg:text-[4.4rem]">
-                Все страницы, разборы и рабочие материалы SPG для органического спроса.
+                Все страницы, разборы и рабочие материалы для органического спроса.
               </h1>
               <p className="mt-5 max-w-xl text-base leading-7 text-sand/80 sm:text-lg">
                 Здесь собран многостраничный слой сайта: посадочные по нишам и услугам, а также практические материалы
@@ -97,10 +97,11 @@ export function MaterialsPageApp({ basePath }: MaterialsPageAppProps) {
         termsHref={`${basePath}terms.html`}
         homeHref={`${basePath}#top`}
         contactHref={`${basePath}#cta`}
-        extraLinks={[{ label: "Материалы дел", href: `${basePath}materialy.html` }]}
+        extraLinks={[{ label: "Материалы", href: `${basePath}materialy.html` }]}
       />
       <CookieBanner />
       <ScrollToTopButton />
     </div>
   );
 }
+

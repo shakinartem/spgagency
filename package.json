@@ -1,5 +1,5 @@
 {
-  "name": "spgsite",
+  "name": "sharik-digital-site",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -28,3 +28,4 @@
     "vite": "^5.4.8"
   }
 }
+

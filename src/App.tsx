@@ -1,4 +1,3 @@
-import { useMemo } from "react";
 import { Cases } from "./components/Cases";
 import { CTA } from "./components/CTA";
 import { CookieBanner } from "./components/CookieBanner";
@@ -21,29 +20,18 @@ import {
 import { Preloader } from "./components/Preloader";
 import { Problems } from "./components/Problems";
 import { ScrollToTopButton } from "./components/ScrollToTopButton";
-import { getEnrichedCaseStudies } from "./data/enriched-cases";
 import { contacts, heroFacts } from "./data/site-content";
 import { createBrandLogoSources } from "./lib/assets";
 
 function App() {
   const basePath = import.meta.env.BASE_URL;
-  const enrichedCaseStudies = useMemo(() => getEnrichedCaseStudies(), []);
-  const clinicCaseStudies = useMemo(
-    () =>
-      enrichedCaseStudies.filter((item) => {
-        const category = String(item.category).toLowerCase();
-        return category.includes("стомат") || category.includes("мед") || category.includes("clinic");
-      }),
-    [enrichedCaseStudies],
-  );
-
   const brandLogoPaths = createBrandLogoSources(basePath);
-  const casesHref = `${basePath}cases.html`;
+  const casesHref = "#cases";
   const navigationWithCases = [
     { label: "Экспертиза", href: "#expertise" },
     { label: "Проблемы", href: "#problems" },
     { label: "Процесс", href: "#process" },
-    { label: "Проекты", href: "#cases" },
+    { label: "Кейсы", href: "#cases" },
     { label: "Калькулятор", href: "#calculator" },
     { label: "FAQ", href: "#faq" },
   ];
@@ -63,7 +51,7 @@ function App() {
         <WhyUsBlock />
         <WorkProcessBlock />
         <DifferenceBlock />
-        <Cases items={clinicCaseStudies.slice(0, 4)} />
+        <Cases />
         <DealApproachBlock />
         <TeamPlaceholderBlock />
         <PricingBlock />
@@ -78,7 +66,7 @@ function App() {
           { label: "Экспертиза", href: "#expertise" },
           { label: "Проблемы", href: "#problems" },
           { label: "Процесс", href: "#process" },
-          { label: "Все проекты", href: casesHref },
+          { label: "Кейсы", href: casesHref },
           { label: "Калькулятор", href: "#calculator" },
           { label: "FAQ", href: "#faq" },
         ]}

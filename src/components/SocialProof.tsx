@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+﻿import { motion } from "framer-motion";
 import { SectionHeading } from "./SectionHeading";
 
 type SocialProofProps = {
@@ -12,7 +12,7 @@ export function SocialProof({ brands, notes }: SocialProofProps) {
       <div className="mx-auto max-w-7xl">
         <SectionHeading
           eyebrow="Соцдоказательство"
-          title="Проекты и ниши, с которыми SPG уже работал предметно."
+          title="Проекты и ниши, с которыми мы уже работали предметно."
           description="Мы не добавляли выдуманные отзывы. Вместо этого показываем реальные названия, направления и несколько коротких фактов о том, как именно выглядела наша работа."
         />
 
@@ -54,3 +54,4 @@ export function SocialProof({ brands, notes }: SocialProofProps) {
     </section>
   );
 }
+

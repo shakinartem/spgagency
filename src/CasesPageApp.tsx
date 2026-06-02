@@ -39,19 +39,19 @@ export function CasesPageApp({ basePath }: CasesPageAppProps) {
           <div className="spotlight" />
           <div className="mx-auto max-w-7xl">
             <h1 className="editorial-title max-w-6xl text-[4.2rem] text-paper sm:text-[6.5rem] lg:text-[8rem]">
-              Все проекты
-              <span className="block text-ember">SPG</span>
+              Кейсы и
+              <span className="block text-ember">направления</span>
             </h1>
             <p className="mt-8 max-w-3xl text-lg leading-8 text-sand/75">
-              Здесь собраны все проекты SPG: стоматологии, медицина, локальный сервис, экспертные и коммерческие направления с разной глубиной работ.
+              Здесь собраны проекты и направления работы для стоматологий, медицины, локального сервиса и других ниш, где особенно важны доверие, запись и понятная digital-система.
             </p>
           </div>
         </section>
         <Cases
           items={allCases}
           limit={0}
-          heading="Все проекты SPG."
-          description="Каждая карточка ведет на отдельную страницу проекта с задачей, контекстом, решениями и результатом."
+          heading="Все проекты"
+          description="Каждая карточка ведет на отдельную страницу проекта с задачей, контекстом, решениями и рабочими материалами."
         />
       </main>
       <Footer

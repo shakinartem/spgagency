@@ -24,7 +24,7 @@ export function Preloader() {
               transition={{ duration: 1.1, repeat: Infinity, ease: "easeInOut" }}
             >
             </motion.div>
-            <p className="mt-5 text-xs font-bold uppercase tracking-[0.24em] text-sand/70">SPG Agency</p>
+            <p className="mt-5 text-xs font-bold uppercase tracking-[0.24em] text-sand/70">ШАРиК digital</p>
           </div>
         </motion.div>
       ) : null}

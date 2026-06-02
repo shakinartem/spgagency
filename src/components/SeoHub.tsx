@@ -1,4 +1,4 @@
-import { ArrowUpRight, FileText, LocateFixed, MonitorSmartphone, Send } from "lucide-react";
+﻿import { ArrowUpRight, FileText, LocateFixed, MonitorSmartphone, Send } from "lucide-react";
 import { getSeoCollection, getSeoCollections } from "../data/seo-helpers";
 import { seoPages } from "../data/seo-pages";
 import { SectionHeading } from "./SectionHeading";
@@ -49,7 +49,7 @@ export function SeoHub({
         </div>
         <p className="text-[0.62rem] uppercase tracking-[0.22em] text-graphite/50">{collection}</p>
         <h3 className={`mt-3 font-display leading-tight text-ink ${compact ? "max-w-[15rem] text-[1.65rem]" : "max-w-[20rem] text-[2.2rem]"}`}>
-          {item.title.replace(" | SPG", "")}
+          {item.title.replace(" | ШАРиК digital", "")}
         </h3>
         <p className="mt-3 text-sm leading-6 text-graphite/80">{item.description}</p>
         <div className="mt-5 inline-flex items-center gap-2 text-[0.68rem] uppercase tracking-[0.2em] text-ink transition group-hover:text-ember">
@@ -65,8 +65,8 @@ export function SeoHub({
       <div className="mx-auto max-w-7xl">
         {showHeading ? (
           <SectionHeading
-            eyebrow="Материалы дел"
-            title={title ?? "Отдельные страницы и разборы, которые помогают находить SPG не только по бренду, но и по реальному спросу."}
+            eyebrow="Материалы"
+            title={title ?? "Отдельные страницы и разборы, которые помогают находить нас не только по бренду, но и по реальному спросу."}
             description={
               description ??
               "Это не просто набор статей, а рабочая архитектура контента: посадочные под ниши и услуги, разборы под конкретные вопросы и внутренняя сеть материалов, которая усиливает доверие и органический вход."
@@ -81,11 +81,11 @@ export function SeoHub({
               <div className="agent-corner agent-corner-bottom" />
               <p className="text-[0.62rem] uppercase tracking-[0.22em] text-graphite/50">Рекомендуемый вход</p>
               <h3 className="mt-4 max-w-[18rem] font-display text-[2.7rem] leading-[0.95] text-ink">
-                {featured.title.replace(" | SPG", "")}
+                {featured.title.replace(" | ШАРиК digital", "")}
               </h3>
               <p className="mt-4 max-w-xl text-base leading-7 text-graphite/80">{featured.description}</p>
               <div className="mt-6 flex flex-wrap gap-3 text-[0.62rem] uppercase tracking-[0.18em] text-graphite/60">
-                <span className="rounded-full border border-ink/10 bg-white px-3 py-2">Материалы дел</span>
+                <span className="rounded-full border border-ink/10 bg-white px-3 py-2">Материалы</span>
                 <span className="rounded-full border border-ink/10 bg-white px-3 py-2">SEO-вход</span>
                 <span className="rounded-full border border-ink/10 bg-white px-3 py-2">
                   {getSeoCollection(featured.key) === "article" ? "Разбор" : "Страница услуги"}
@@ -145,3 +145,4 @@ export function SeoHub({
     </section>
   );
 }
+

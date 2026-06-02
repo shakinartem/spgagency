@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+﻿import { motion } from "framer-motion";
 import { SectionHeading } from "./SectionHeading";
 
 type NicheItem = { title: string; note: string; problem: string; result: string };
@@ -21,7 +21,7 @@ export function Niches({ items }: NichesProps) {
         <SectionHeading
           eyebrow="С кем мы сильнее всего"
           title="Лучше всего работаем там, где маркетинг должен внушать доверие, а не шуметь."
-          description="У SPG особенно сильная экспертиза в стоматологиях и медицинских проектах, но наша система хорошо работает и в других нишах, где важны экспертность, прозрачность и длинный цикл принятия решения."
+          description="Особенно предметно работаем со стоматологиями и медицинскими проектами, но эта система так же хорошо подходит нишам, где важны экспертность, прозрачность и длинный цикл принятия решения."
         />
 
         <div className="niche-swarm mt-12 grid auto-rows-fr gap-4 md:grid-cols-2 xl:grid-cols-12">
@@ -59,3 +59,4 @@ export function Niches({ items }: NichesProps) {
     </section>
   );
 }
+

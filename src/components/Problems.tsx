@@ -122,7 +122,7 @@ export function Problems() {
                         <p className={`mt-2 text-sm font-semibold leading-6 ${highlighted ? "text-white/80" : "text-sand/72"}`}>{item.problem}</p>
                       </div>
                       <div>
-                        <p className={`text-[0.58rem] font-bold uppercase tracking-[0.18em] ${highlighted ? "text-white/55" : "text-sand/45"}`}>Решение SPG</p>
+                        <p className={`text-[0.58rem] font-bold uppercase tracking-[0.18em] ${highlighted ? "text-white/55" : "text-sand/45"}`}>Что усиливаем</p>
                         <p className={`mt-2 text-sm font-semibold leading-6 ${highlighted ? "text-white/88" : "text-paper/86"}`}>{item.solution}</p>
                       </div>
                     </div>

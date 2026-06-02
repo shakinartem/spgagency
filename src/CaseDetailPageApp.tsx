@@ -1,4 +1,4 @@
-import { ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react";
+﻿import { ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react";
 import { useMemo } from "react";
 import { CookieBanner } from "./components/CookieBanner";
 import { CustomCursor } from "./components/CustomCursor";
@@ -53,13 +53,12 @@ export function CaseDetailPageApp({ basePath, caseId }: CaseDetailPageAppProps) 
                 <p className="mt-7 max-w-3xl text-xl font-semibold leading-8 text-sand/80">{item.summary}</p>
               </div>
               <div className="rounded-[1.35rem] border border-dashed border-paper/15 bg-[linear-gradient(145deg,rgba(198,106,61,0.16),rgba(8,7,6,0.78))] p-6 shadow-panel">
-                <p className="text-xs uppercase tracking-[0.22em] text-sand/55">место под мокап</p>
-                <div className="mt-16 grid grid-cols-2 gap-3">
-                  {item.metrics.slice(0, 4).map((metric) => (
-                    <div key={metric.label} className="rounded-[1rem] border border-paper/10 bg-ink/35 p-4">
-                      <p className="text-[0.58rem] uppercase tracking-[0.18em] text-sand/50">{metric.label}</p>
-                      <p className="mt-2 font-display text-3xl uppercase text-paper">{metric.value}</p>
-                    </div>
+                <p className="text-xs uppercase tracking-[0.22em] text-sand/55">рабочие акценты</p>
+                <div className="mt-10 flex flex-wrap gap-3">
+                  {item.tools.slice(0, 6).map((tool) => (
+                    <span key={tool} className="rounded-full border border-paper/10 bg-ink/35 px-4 py-3 text-[0.62rem] uppercase tracking-[0.18em] text-sand/65">
+                      {tool}
+                    </span>
                   ))}
                 </div>
               </div>
@@ -81,7 +80,7 @@ export function CaseDetailPageApp({ basePath, caseId }: CaseDetailPageAppProps) 
             <div>
               <h2 className="editorial-title text-5xl text-paper sm:text-7xl">Вывод.</h2>
               <p className="mt-6 text-lg leading-8 text-sand/75">
-                Проект показывает подход SPG: сначала находим слабые места в доверии и маршруте пациента, затем собираем связку каналов, контента и аналитики под реальную запись.
+                Проект показывает наш подход: сначала находим слабые места в доверии и маршруте пациента, затем собираем связку каналов, контента и аналитики под реальную запись.
               </p>
             </div>
             <div className="grid gap-3 md:grid-cols-2">
@@ -130,3 +129,4 @@ function CaseArticleCard({ title, text }: { title: string; text: string }) {
     </article>
   );
 }
+

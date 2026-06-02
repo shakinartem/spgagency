@@ -10,7 +10,7 @@ export function WhyUs({ items }: WhyUsProps) {
     <section id="why" className="section-shell px-4">
       <div className="mx-auto max-w-7xl">
         <SectionHeading
-          eyebrow="Почему SPG"
+          eyebrow="Почему ШАРиК digital"
           title="Подключаемся как сильный внешний отдел роста, а не как декоративная активность."
           description="Здесь собраны причины, по которым бизнесу спокойнее и выгоднее работать со зрелой спецгруппой: без хаоса, лишнего шума и раздувания задач."
         />

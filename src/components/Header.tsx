@@ -37,17 +37,17 @@ export function Header({ links, primaryHref, logoPaths = [] }: HeaderProps) {
             {logoPaths.length > 0 ? (
               <FallbackImage
                 sources={logoPaths}
-                alt="SPG"
+                alt="ШАРиК digital"
                 className="h-16 w-16 scale-[1.08] rounded-full border border-paper/10 bg-paper object-contain p-0.5 shadow-glow"
-                fallback={<div className="liquid-orb flex h-16 w-16 items-center justify-center rounded-full text-base font-bold tracking-[0.25em] text-white shadow-glow">SPG</div>}
+                fallback={<div className="liquid-orb flex h-16 w-16 items-center justify-center rounded-full text-base font-bold tracking-[0.18em] text-white shadow-glow">ШАР</div>}
               />
             ) : (
-              <div className="liquid-orb flex h-16 w-16 items-center justify-center rounded-full text-base font-bold tracking-[0.25em] text-white shadow-glow">SPG</div>
+              <div className="liquid-orb flex h-16 w-16 items-center justify-center rounded-full text-base font-bold tracking-[0.18em] text-white shadow-glow">ШАР</div>
             )}
             <div className="min-w-0">
-              <p className="text-lg font-extrabold uppercase tracking-[0.2em] text-paper">SPG</p>
+              <p className="text-lg font-extrabold uppercase tracking-[0.14em] text-paper">ШАРиК digital</p>
               <p className="hidden whitespace-nowrap text-[0.68rem] font-semibold text-sand/65 xl:block">
-                рост клиник
+                сайт, доверие и запись
               </p>
             </div>
           </a>

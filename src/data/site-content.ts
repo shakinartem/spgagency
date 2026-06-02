@@ -1,4 +1,4 @@
-import {
+﻿import {
   Activity,
   Crosshair,
   FileSearch,
@@ -168,6 +168,7 @@ export const reasons = [
 ];
 
 export const contacts: ContactLink[] = [
-  { label: "Telegram", href: "https://t.me/spg_marketing", note: "@spg_marketing" },
+  { label: "Форма связи", href: "#audit-form", note: "Оставить заявку" },
   { label: "Телефон", href: "tel:+79873576071", note: "+7 (987) 357-60-71" },
 ];
+

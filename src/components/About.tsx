@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+﻿import { motion } from "framer-motion";
 import { AnimatedNumber } from "./AnimatedNumber";
 import { SectionHeading } from "./SectionHeading";
 
@@ -28,7 +28,7 @@ export function About({ stats, dentalClients }: AboutProps) {
         <SectionHeading
           eyebrow="О нас"
           title="Небольшая, но очень собранная команда, которая мыслит системой, а не списком задач."
-          description="SPG работает как внешний маркетинговый штаб роста. Мы не размазываемся по декоративной активности, а собираем рабочие связки под конкретный бизнес, конкретный цикл сделки и конкретный уровень доверия на рынке."
+          description="ШАРиК digital работает как внешний маркетинговый штаб роста. Мы не размазываемся по декоративной активности, а собираем рабочие связки под конкретный бизнес, конкретный цикл сделки и конкретный уровень доверия на рынке."
         />
 
         <div className="mt-12 grid gap-6 lg:grid-cols-[1.08fr_0.92fr]">
@@ -131,3 +131,4 @@ export function About({ stats, dentalClients }: AboutProps) {
     </section>
   );
 }
+
