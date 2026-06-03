@@ -69,6 +69,10 @@ export function CTAFooterSection() {
                 <img src={assetPath("щит 1.svg")} alt="" className="h-5 w-5" />
                 <span>Политика конфиденциальности</span>
               </a>
+              <a href={`${import.meta.env.BASE_URL}terms.html`} className="footer-link">
+                <img src={assetPath("Щит.svg")} alt="" className="h-5 w-5" />
+                <span>Пользовательское соглашение</span>
+              </a>
             </div>
           </div>
         </footer>

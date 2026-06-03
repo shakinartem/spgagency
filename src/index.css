@@ -297,6 +297,33 @@ input {
   top: 2rem;
 }
 
+.section-watermark {
+  pointer-events: none;
+  position: absolute;
+  opacity: 0.11;
+}
+
+.section-watermark-right {
+  right: -5rem;
+  top: 5rem;
+  width: min(36rem, 42vw);
+}
+
+.section-watermark-top {
+  right: 3rem;
+  top: 0;
+  width: min(22rem, 30vw);
+}
+
+.section-watermark-bottom {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  width: min(76rem, 100%);
+  opacity: 0.18;
+}
+
 @media (min-width: 640px) {
   .cta-band,
   .result-band {
@@ -315,5 +342,10 @@ input {
   .illustration-panel,
   .hero-illustration {
     padding: 1rem;
+  }
+
+  .section-watermark-right,
+  .section-watermark-top {
+    width: min(18rem, 44vw);
   }
 }

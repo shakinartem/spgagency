@@ -4,6 +4,9 @@ import { assetPath, Container, SectionTitle } from "./shared";
 export function ProcessSection() {
   return (
     <section id="process" className="section-shell relative overflow-hidden">
+      <div className="section-watermark section-watermark-top">
+        <img src={assetPath("logo-white-no-chars 2.svg")} alt="" className="h-full w-full object-contain" />
+      </div>
       <Container>
         <SectionTitle
           className="mx-auto max-w-5xl text-center"

@@ -4,6 +4,9 @@ import { assetPath, Button, Container, SectionTitle } from "./shared";
 export function ServicesSection() {
   return (
     <section id="services" className="section-shell relative overflow-hidden">
+      <div className="section-watermark section-watermark-right">
+        <img src={assetPath("logo-white-no-chars 1.svg")} alt="" className="h-full w-full object-contain" />
+      </div>
       <Container>
         <div className="grid gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(540px,1.2fr)]">
           <div>
