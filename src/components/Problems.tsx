@@ -17,7 +17,7 @@ const problems = [
   },
   {
     icon: MapPinned,
-    title: "Репутация не продает",
+    title: "Репутация не помогает выбору",
     problem: "Отзывы, карты и профили врачей существуют отдельно и не складываются в цельную картину доверия.",
     solution: "Упаковываем отзывы, карты и страницы услуг в единый спокойный слой выбора клиники и врача.",
   },
@@ -31,7 +31,7 @@ const problems = [
     icon: UsersRound,
     title: "Нет контроля над заявками",
     problem: "Команда отвечает на обращения, но не понимает, откуда пришел пациент и что ему обещали.",
-    solution: "Подключаем метки, статусы и понятную передачу заявки в CRM или мессенджеры, чтобы владелец видел картину целиком.",
+    solution: "Подключаем метки, статусы и понятную передачу заявки в CRM, чтобы владелец видел картину целиком.",
   },
 ];
 
@@ -68,9 +68,10 @@ export function Problems() {
     <section id="problems" className="section-shell border-y border-paper/10 bg-paper/[0.025] px-4 lg:h-[190vh]">
       <div className="mx-auto max-w-7xl lg:sticky lg:top-20">
         <div className="grid gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-end">
-          <h2 className="editorial-title max-w-3xl text-5xl text-paper sm:text-7xl">Закрываем точки, где клиника теряет заявки.</h2>
+          <h2 className="editorial-title max-w-3xl text-5xl text-paper sm:text-7xl">Где клиника теряет пациентов?</h2>
           <p className="max-w-3xl text-lg font-semibold leading-8 text-sand/75">
-            Пять типовых узких мест: путь пациента до записи, потеря лида после клика, слабая репутационная упаковка, неокупаемая реклама и отсутствие контроля по заявкам.
+            Часто проблема не в одной рекламе. Пациент может потеряться на сайте, в картах, отзывах, переписке, звонке
+            или CRM. Ниже собраны точки, которые чаще всего мешают записи и создают ощущение хаоса.
           </p>
         </div>
 
@@ -122,7 +123,7 @@ export function Problems() {
                         <p className={`mt-2 text-sm font-semibold leading-6 ${highlighted ? "text-white/80" : "text-sand/72"}`}>{item.problem}</p>
                       </div>
                       <div>
-                        <p className={`text-[0.58rem] font-bold uppercase tracking-[0.18em] ${highlighted ? "text-white/55" : "text-sand/45"}`}>Что усиливаем</p>
+                        <p className={`text-[0.58rem] font-bold uppercase tracking-[0.18em] ${highlighted ? "text-white/55" : "text-sand/45"}`}>Что усиливали</p>
                         <p className={`mt-2 text-sm font-semibold leading-6 ${highlighted ? "text-white/88" : "text-paper/86"}`}>{item.solution}</p>
                       </div>
                     </div>

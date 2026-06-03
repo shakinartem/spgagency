@@ -1,109 +1,120 @@
 import { motion } from "framer-motion";
-import { ArrowRight, MapPin } from "lucide-react";
-import { useMemo, useRef, useState, type PointerEvent } from "react";
+import { MapPin } from "lucide-react";
+import { useMemo, useState } from "react";
 import { AuditForm } from "./AuditForm";
 import { SectionHeading } from "./SectionHeading";
 
 const cities = ["Уфа", "Салават", "Нефтекамск", "Казань", "Москва", "Санкт-Петербург", "Екатеринбург", "Самара"];
 
 const expertiseStats = [
-  { value: "6", label: "месяцев активной работы", note: "Проверяем связки и оставляем то, что влияет на заявки." },
-  { value: "10+", label: "клиник по России", note: "Стоматологии, медицина, эстетика и локальные проекты." },
-  { value: "Регионы", label: "города России", note: "Учитываем карты, отзывы, локальный спрос и доверие." },
-];
-
-const whyCards = [
-  ["Держим сроки", "Работа идет по этапам, с понятными контрольными точками."],
-  ["Не требуем сложное ТЗ", "Помогаем быстро сформулировать задачу и собрать нужные вводные."],
-  ["Даем понятные этапы", "Владелец видит, что делаем сейчас и зачем это влияет на заявки."],
-  ["На связи в течение недели", "Не пропадаем между созвонами, согласованиями и запуском."],
-  ["Не бросаем после запуска", "Смотрим, как система работает после публикации и трафика."],
-  ["Показываем цифры", "Оцениваем заявки, стоимость обращения, каналы и качество лидов."],
-  ["Не просто красиво", "Дизайн и тексты работают на доверие, запись и экономику проекта."],
-  ["Старт с одной услуги", "Можно начать с сайта, карт, SMM, CRM или аудита."],
-];
-
-const processSteps = [
-  ["01", "Разбираем текущий маркетинг", "Сайт, рекламу, карты, отзывы, CRM, контент и путь пациента до записи."],
-  ["02", "Находим потери заявок", "Фиксируем, где пациент сомневается, где форма не работает и где лид теряется."],
-  ["03", "Собираем стратегию", "Определяем услуги, оффер, посадочные, каналы и метрики для владельца."],
-  ["04", "Запускаем этапы", "Делаем страницы, рекламу, контент, SMM, карты, формы и интеграции."],
-  ["05", "Подключаем CRM и аналитику", "Настраиваем метки, статусы, отчеты и контроль обработки заявок."],
-  ["06", "Улучшаем систему", "Оставляем рабочие связки и усиливаем то, что приводит пациентов."],
+  { value: "Доверие", label: "до обращения", note: "Усиливаем сайт, отзывы, карты и подачу клиники так, чтобы пациенту было проще принять решение о записи." },
+  { value: "Путь", label: "до записи", note: "Смотрим, где пациент теряется в касаниях, и убираем лишние шаги между интересом, вопросом и обращением." },
+  { value: "Контроль", label: "по заявкам", note: "Подключаем понятную аналитику и статусы, чтобы владелец видел, какие каналы действительно приводят пациентов." },
 ];
 
 const contractorItems = [
-  "делает сайт и исчезает",
-  "запускает рекламу без проверки посадочной",
-  "смотрит только клики",
-  "не связывает заявки с CRM",
-  "не работает с доверием и картами",
+  "сайт существует отдельно от карт, отзывов и обработки заявки",
+  "реклама запускается без проверки маршрута пациента до записи",
+  "контент живет сам по себе и не подводит к обращению",
+  "никто не видит, где именно теряются заявки после первого касания",
+  "цифры собираются разрозненно и не помогают принимать решения",
 ];
 
 const systemItems = [
-  "собираем систему от первого касания до записи",
-  "проверяем сайт, оффер, формы, мессенджеры и CRM",
-  "смотрим на стоимость заявки и качество обращения",
-  "связываем рекламу, контент, карты, CRM и отчеты",
-  "усиливаем доверие до момента записи",
+  "собираем путь пациента от первого касания до записи в одну систему",
+  "усиливаем сайт, карточки услуг, карты, отзывы и локальное доверие",
+  "подключаем контент, который объясняет и прогревает без лишнего шума",
+  "связываем заявки, CRM и аналитику, чтобы не терять обращения",
+  "показываем владельцу точки роста, а не просто красивые отчеты",
+];
+
+const processSteps = [
+  ["01", "Аудит", "Смотрим сайт, карты, отзывы, контент, заявки и аналитику, чтобы понять, где клиника теряет пациентов."],
+  ["02", "Стратегия", "Определяем, какие точки дадут быстрый эффект: упаковка, локальное доверие, контент, CRM или аналитика."],
+  ["03", "Упаковка", "Усиливаем смысл, страницы, карточки услуг, офферы и доверие к клинике и врачам."],
+  ["04", "Внедрение", "Запускаем сайт, контент, карты, CRM, автоматизацию и прозрачную работу с заявками."],
+  ["05", "Рост", "Оставляем рабочие связки и усиливаем то, что реально влияет на запись и доверие."],
 ];
 
 const dealSteps = [
   "Оставляете заявку",
   "Быстрый разбор",
-  "Предлагаем стратегию",
-  "Согласовываем объем",
+  "Собираем приоритеты",
   "Запускаем этапы",
-  "Показываем результаты",
+  "Показываем выводы",
+  "Усиливаем рабочее",
 ];
 
-const team = [
-  ["Артём", "Директор", "Стратегия, продажи, упаковка и контроль проекта"],
-  ["Максим", "Копирайтер", "Тексты, офферы, статьи, сценарии и контент"],
-  ["Маргарита", "Дизайнер", "Визуальная система, макеты, соцсети и посадочные"],
-  ["Настя", "Разработчик", "Сайт, формы, интеграции и техническая сборка"],
-  ["Миша", "Тим-лид", "Контроль задач, сроки, качество и связка команды"],
+const whyCards = [
+  ["Смотрим шире рекламы", "Разбираем не только трафик, но и сайт, карты, репутацию, обработку заявок и аналитику."],
+  ["Спокойная подача", "Работаем взрослым тоном без громких обещаний и фейковых процентов, особенно в медицине и стоматологии."],
+  ["Контроль цифр", "Показываем, какие каналы, этапы и точки реально влияют на запись и доверие."],
+  ["Система вместо хаоса", "Соединяем посадочные, контент, карты, CRM и отчеты так, чтобы они работали вместе, а не спорили друг с другом."],
 ];
 
 const services = [
-  { name: "Сайт", price: "от 80 000 ₽", note: "Страница под услугу, врача, акцию или направление." },
-  { name: "Рекламная связка", price: "от 60 000 ₽", note: "Гипотезы, креативы, запуск и первичная оптимизация." },
-  { name: "SMM и контент", price: "от 70 000 ₽", note: "Соцсети, рубрики, визуал, посты и сторис." },
-  { name: "SEO / SERM / карты", price: "по запросу", note: "Поиск, отзывы, рейтинги, Яндекс, Google и 2ГИС." },
-  { name: "CRM / аналитика", price: "по запросу", note: "Метки, статусы, источники заявок и контроль обработки." },
-  { name: "Ведение и сопровождение", price: "от 100 000 ₽", note: "Ежемесячная работа с каналами, гипотезами и цифрами." },
+  { name: "Сайт и посадочные", price: "от 80 000 ₽", note: "Страницы услуг, врачей и направлений, которые объясняют ценность и ведут пациента к записи." },
+  { name: "Локальное доверие", price: "по запросу", note: "Карты, отзывы, карточки, рейтинги и визуальная подача клиники в локальном поиске." },
+  { name: "Контент и прогрев", price: "от 70 000 ₽", note: "Система материалов, которая отвечает на вопросы пациента и подводит к осознанному обращению." },
+  { name: "CRM и аналитика", price: "по запросу", note: "Статусы, источники, контроль обработки заявок и базовая управленческая аналитика." },
+  { name: "Рекламная связка", price: "от 60 000 ₽", note: "Запуск трафика только там, где уже понятны оффер, посадочная и путь пациента до записи." },
+  { name: "Сопровождение", price: "от 100 000 ₽", note: "Внешний digital-контур клиники: развитие системы, контента, доверия и рабочих каналов роста." },
 ];
 
-function useDragTrack() {
-  const scrollRef = useRef<HTMLDivElement | null>(null);
-  const dragState = useRef({ active: false, startX: 0, startScrollLeft: 0 });
+function CompareColumn({ title, items, muted = false }: { title: string; items: string[]; muted?: boolean }) {
+  return (
+    <div className={`rounded-[1.35rem] border p-5 ${muted ? "border-paper/10 bg-paper/[0.04]" : "border-ember/45 bg-ember/12"}`}>
+      <h3 className="font-display text-4xl uppercase text-paper">{title}</h3>
+      <div className="mt-6 grid gap-3">
+        {items.map((item, index) => (
+          <div key={item} className="grid grid-cols-[auto_1fr] gap-4 border-t border-paper/10 pt-4">
+            <span className="font-display text-2xl text-ember">{String(index + 1).padStart(2, "0")}</span>
+            <p className="text-lg font-semibold leading-7 text-paper/90">{item}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
-  const handlePointerDown = (event: PointerEvent<HTMLDivElement>) => {
-    const node = scrollRef.current;
-    if (!node) return;
-    dragState.current = {
-      active: true,
-      startX: event.clientX,
-      startScrollLeft: node.scrollLeft,
-    };
-    node.setPointerCapture(event.pointerId);
-  };
+export function DifferenceBlock() {
+  return (
+    <section id="difference" className="section-shell border-y border-paper/10 bg-paper/[0.025] px-4">
+      <div className="mx-auto max-w-7xl">
+        <h2 className="editorial-title max-w-5xl text-5xl text-paper sm:text-7xl">Собираем digital-систему для роста записей.</h2>
+        <p className="mt-6 max-w-3xl text-lg leading-8 text-sand/75">
+          Берем не отдельный инструмент, а всю цепочку: от первого касания пациента до записи и повторного визита.
+        </p>
+        <div className="mt-12 grid gap-4 lg:grid-cols-2">
+          <CompareColumn title="Разрозненные действия" items={contractorItems} muted />
+          <CompareColumn title="ШАРиК digital" items={systemItems} />
+        </div>
+      </div>
+    </section>
+  );
+}
 
-  const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
-    const node = scrollRef.current;
-    if (!node || !dragState.current.active) return;
-    node.scrollLeft = dragState.current.startScrollLeft - (event.clientX - dragState.current.startX);
-  };
-
-  const stopDragging = (event?: PointerEvent<HTMLDivElement>) => {
-    const node = scrollRef.current;
-    if (node && event && node.hasPointerCapture(event.pointerId)) {
-      node.releasePointerCapture(event.pointerId);
-    }
-    dragState.current.active = false;
-  };
-
-  return { scrollRef, handlePointerDown, handlePointerMove, stopDragging };
+export function WorkProcessBlock() {
+  return (
+    <section id="process" className="section-shell px-4">
+      <div className="mx-auto max-w-7xl">
+        <SectionHeading
+          eyebrow=""
+          title="Как мы выстраиваем поток пациентов."
+          description="Сначала разбираем систему, потом усиливаем точки, которые реально влияют на запись: упаковку, доверие, обработку обращения и прозрачность цифр."
+        />
+        <div className="mt-12 grid gap-px overflow-hidden rounded-[1.35rem] border border-paper/10 bg-paper/10 md:grid-cols-2 lg:grid-cols-5">
+          {processSteps.map(([code, title, text]) => (
+            <div key={code} className="bg-ink p-6 transition hover:bg-paper/[0.055]">
+              <p className="font-display text-5xl leading-none text-ember">{code}</p>
+              <h3 className="mt-6 font-display text-3xl uppercase leading-tight text-paper">{title}</h3>
+              <p className="mt-4 text-sm leading-6 text-sand/70">{text}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }
 
 export function ExpertiseBlock() {
@@ -111,9 +122,10 @@ export function ExpertiseBlock() {
     <section id="expertise" className="border-y border-paper/10 bg-paper/[0.025] px-4 py-10">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-6 lg:grid-cols-[0.85fr_1.15fr] lg:items-end">
-          <h2 className="editorial-title text-4xl text-paper sm:text-5xl">За полгода мы поработали с клиниками из разных городов России.</h2>
+          <h2 className="editorial-title text-4xl text-paper sm:text-5xl">Показываем не красивые отчеты, а точки роста клиники.</h2>
           <p className="max-w-3xl text-lg font-semibold leading-8 text-sand/75">
-            Стоматологии, медицинские центры, эстетика и локальные проекты, где доверие влияет на запись сильнее скидки.
+            На разборе видно, какие элементы мешают пациенту дойти до записи, где проседает доверие и какие направления
+            стоит усиливать в первую очередь: сайт, карты, отзывы, обработку заявок или аналитику.
           </p>
         </div>
 
@@ -149,67 +161,14 @@ export function ExpertiseBlock() {
   );
 }
 
-export function SummerPromo() {
-  const promoItems = ["Сайт", "Реклама", "SMM", "SEO", "SERM", "CRM", "Карты", "Контент", "Аналитика"];
-
-  return (
-    <section id="summer" className="section-shell px-4">
-      <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-stretch">
-        <motion.div
-          initial={{ opacity: 0, y: 22 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: 0.55 }}
-          className="flex flex-col justify-between border-y border-paper/10 py-8"
-        >
-          <div>
-            <div className="mb-6 inline-flex rounded-full border border-ember/35 bg-ember/12 px-4 py-2 text-sm font-bold text-paper">
-              Скидка 15% до начала летнего сезона
-            </div>
-            <h2 className="editorial-title text-5xl text-paper sm:text-7xl">Подготовьте маркетинг клиники до летнего сезона.</h2>
-          </div>
-          <p className="mt-8 max-w-2xl text-lg leading-8 text-sand/75">
-            Пока конкуренты ждут, можно собрать сайт, рекламу, SMM, SEO, SERM, карты, CRM, контент и аналитику в одну систему заявок.
-          </p>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 22 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.25 }}
-          transition={{ duration: 0.55, delay: 0.08 }}
-          className="relative overflow-hidden rounded-[1.6rem] border border-paper/10 bg-paper/[0.06] p-5 shadow-panel"
-        >
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_18%,rgba(198,106,61,0.16),transparent_30%),linear-gradient(145deg,rgba(26,21,18,0.95),rgba(8,7,6,0.98))]" />
-          <div className="relative grid min-h-[26rem] content-between gap-6">
-            <h3 className="font-display text-4xl uppercase leading-tight text-paper">Маркетинг-контур до сезона</h3>
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {promoItems.map((item, index) => (
-                <div key={item} className="rounded-[1.15rem] border border-paper/10 bg-ink/40 p-4 transition hover:border-ember/45 hover:bg-ember/12">
-                  <p className="text-xs uppercase tracking-[0.18em] text-sand/55">{String(index + 1).padStart(2, "0")}</p>
-                  <p className="mt-5 font-display text-3xl uppercase text-paper">{item}</p>
-                </div>
-              ))}
-            </div>
-            <a href="#calculator" className="btn-primary w-fit">
-              Собрать пакет
-              <ArrowRight size={18} />
-            </a>
-          </div>
-        </motion.div>
-      </div>
-    </section>
-  );
-}
-
 export function WhyUsBlock() {
   return (
     <section id="why-us" className="section-shell relative overflow-hidden px-4">
       <div className="pointer-events-none absolute left-1/2 top-8 -z-0 -translate-x-1/2 whitespace-nowrap font-display text-[8rem] uppercase leading-none text-paper/[0.035] sm:text-[12rem] lg:text-[17rem]">
-        Спокойнее
+        Система
       </div>
       <div className="relative mx-auto max-w-7xl">
-        <h2 className="editorial-title max-w-5xl text-5xl text-paper sm:text-7xl">Почему с нами спокойнее запускать маркетинг клиники.</h2>
+        <h2 className="editorial-title max-w-5xl text-5xl text-paper sm:text-7xl">Работаем как внешний digital-контур клиники.</h2>
         <div className="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
           {whyCards.map(([title, text], index) => {
             const tone = index % 4;
@@ -240,66 +199,13 @@ export function WhyUsBlock() {
   );
 }
 
-export function WorkProcessBlock() {
-  return (
-    <section id="process" className="section-shell px-4">
-      <div className="mx-auto max-w-7xl">
-        <SectionHeading
-          eyebrow=""
-          title="От аудита до управляемой системы заявок."
-          description="Работа идет этапами: сначала понимаем, где клиника теряет пациентов, затем собираем связки и ежемесячно улучшаем то, что влияет на запись."
-        />
-        <div className="mt-12 grid gap-px overflow-hidden rounded-[1.35rem] border border-paper/10 bg-paper/10 md:grid-cols-2 lg:grid-cols-3">
-          {processSteps.map(([code, title, text]) => (
-            <div key={code} className="bg-ink p-6 transition hover:bg-paper/[0.055]">
-              <p className="font-display text-5xl leading-none text-ember">{code}</p>
-              <h3 className="mt-6 font-display text-3xl uppercase leading-tight text-paper">{title}</h3>
-              <p className="mt-4 text-sm leading-6 text-sand/70">{text}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-export function DifferenceBlock() {
-  return (
-    <section id="difference" className="section-shell border-y border-paper/10 bg-paper/[0.025] px-4">
-      <div className="mx-auto max-w-7xl">
-        <h2 className="editorial-title max-w-5xl text-5xl text-paper sm:text-7xl">Обычный подрядчик vs системный digital-подход.</h2>
-        <div className="mt-12 grid gap-4 lg:grid-cols-2">
-          <CompareColumn title="Обычный подрядчик" items={contractorItems} muted />
-          <CompareColumn title="ШАРиК digital" items={systemItems} />
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function CompareColumn({ title, items, muted = false }: { title: string; items: string[]; muted?: boolean }) {
-  return (
-    <div className={`rounded-[1.35rem] border p-5 ${muted ? "border-paper/10 bg-paper/[0.04]" : "border-ember/45 bg-ember/12"}`}>
-      <h3 className="font-display text-4xl uppercase text-paper">{title}</h3>
-      <div className="mt-6 grid gap-3">
-        {items.map((item, index) => (
-          <div key={item} className="grid grid-cols-[auto_1fr] gap-4 border-t border-paper/10 pt-4">
-            <span className="font-display text-2xl text-ember">{String(index + 1).padStart(2, "0")}</span>
-            <p className="text-lg font-semibold leading-7 text-paper/90">{item}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 export function DealApproachBlock() {
   return (
     <section id="approach" className="section-shell px-4">
       <div className="mx-auto max-w-7xl text-center">
         <h2 className="editorial-title mx-auto max-w-5xl text-5xl text-paper sm:text-7xl">Гибкий и прозрачный подход в работе.</h2>
         <p className="mx-auto mt-6 max-w-3xl text-lg leading-8 text-sand/75">
-          Сначала вы оставляете заявку, затем мы быстро собираем стратегию или пакет под задачу клиники.
+          Сначала вы оставляете заявку, затем мы быстро собираем приоритеты и показываем, какие точки стоит усиливать в первую очередь.
         </p>
         <div className="mt-12 grid gap-3 text-left md:grid-cols-2 lg:grid-cols-3">
           {dealSteps.map((step, index) => {
@@ -321,50 +227,6 @@ export function DealApproachBlock() {
   );
 }
 
-export function TeamPlaceholderBlock() {
-  const { scrollRef, handlePointerDown, handlePointerMove, stopDragging } = useDragTrack();
-
-  return (
-    <section id="team" className="section-shell border-y border-paper/10 bg-paper/[0.025] px-4">
-      <div className="mx-auto max-w-7xl">
-        <SectionHeading
-          eyebrow=""
-          title="Команда под задачи клиники."
-          description="Пока без реальных фото: карточки готовы для замены на съемку, а роли уже собраны так, чтобы их было удобно просмотреть на любом экране."
-        />
-        <div className="mt-6">
-          <p className="max-w-2xl text-sm leading-6 text-sand/70">Пять ролей в одной связке: стратегия, тексты, визуал, разработка и контроль проекта.</p>
-        </div>
-        <div className="relative mt-8 overflow-hidden">
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 hidden w-10 bg-gradient-to-r from-ink via-ink/70 to-transparent lg:block" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 hidden w-16 bg-gradient-to-l from-ink via-ink/70 to-transparent lg:block" />
-          <div
-            ref={scrollRef}
-            onPointerDown={handlePointerDown}
-            onPointerMove={handlePointerMove}
-            onPointerUp={stopDragging}
-            onPointerCancel={stopDragging}
-            className="flex snap-x snap-mandatory gap-4 overflow-x-auto pb-5 pr-16 pt-1 touch-pan-x [scrollbar-width:none] [&::-webkit-scrollbar]:hidden lg:cursor-grab active:lg:cursor-grabbing"
-          >
-            {team.map(([name, role, area]) => (
-              <div key={name} className="aspect-square w-[17rem] shrink-0 snap-start rounded-[1.15rem] border border-paper/10 bg-paper/[0.055] p-5 sm:w-[17.5rem] lg:w-[17.25rem]">
-                <div className="flex h-full flex-col">
-                  <div className="flex h-20 w-20 items-center justify-center rounded-full border border-ember/35 bg-ember/12 font-display text-4xl uppercase text-ember">
-                    {name[0]}
-                  </div>
-                  <p className="mt-6 font-display text-[2.3rem] uppercase leading-[0.92] text-paper">{name}</p>
-                  <p className="mt-2 text-sm font-bold uppercase tracking-[0.18em] text-sand/55">{role}</p>
-                  <p className="mt-auto text-sm leading-6 text-sand/75">{area}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
 export function PricingBlock() {
   return (
     <section id="pricing" className="section-shell px-4">
@@ -372,7 +234,7 @@ export function PricingBlock() {
         <SectionHeading
           eyebrow=""
           title="Можно собрать проект по частям."
-          description="Цены указаны как ориентир. Итоговый объем зависит от города, конкуренции, текущего сайта, CRM и каналов продвижения."
+          description="Цены ниже остаются ориентиром для MVP. Итоговый объем зависит от города, конкуренции, текущего сайта, CRM и уровня проработки digital-системы."
         />
         <div className="mt-12 grid gap-3 md:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => (
@@ -391,29 +253,17 @@ export function PricingBlock() {
 export function CalculatorLeadBlock() {
   const serviceOptions = [
     { label: "Сайт", value: 80000 },
-    { label: "Реклама", value: 60000 },
-    { label: "SMM", value: 70000 },
-    { label: "SEO", value: 50000 },
-    { label: "SERM", value: 60000 },
     { label: "Карты", value: 30000 },
+    { label: "Контент", value: 45000 },
     { label: "CRM", value: 50000 },
     { label: "Аналитика", value: 35000 },
-    { label: "Контент", value: 45000 },
-    { label: "Сопровождение", value: 100000 },
+    { label: "Реклама", value: 60000 },
   ];
 
   const presetPackages = [
-    { name: "База присутствия", price: "100 000 ₽ / мес", preset: ["SMM", "Карты", "Контент"] },
-    { name: "Активный поток", price: "150 000 ₽ / мес", preset: ["SMM", "Реклама", "Карты", "Контент"] },
-    { name: "Стабильный поток", price: "200 000 ₽ / мес", preset: ["SMM", "Реклама", "CRM", "Контент"] },
-    { name: "Маркетинг под контролем", price: "250 000 ₽ / мес", preset: ["SMM", "Реклама", "Аналитика", "CRM", "Контент"] },
-    { name: "Система привлечения", price: "300 000 ₽ / мес", preset: ["SMM", "Реклама", "CRM", "Аналитика", "Контент", "Сопровождение"] },
-    { name: "Репутация и рост доверия", price: "350 000 ₽ / мес", preset: ["SMM", "Реклама", "SERM", "Карты", "Контент"] },
-    {
-      name: "Масштабирование клиники",
-      price: "от 500 000 ₽ / мес",
-      preset: ["SMM", "Реклама", "SEO", "SERM", "Карты", "CRM", "Аналитика", "Контент", "Сопровождение"],
-    },
+    { name: "База доверия", price: "от 100 000 ₽", preset: ["Сайт", "Карты", "Контент"] },
+    { name: "Поток обращений", price: "от 150 000 ₽", preset: ["Сайт", "Реклама", "Карты", "Контент"] },
+    { name: "Контроль заявок", price: "от 200 000 ₽", preset: ["Сайт", "CRM", "Аналитика", "Контент"] },
   ];
 
   const [selected, setSelected] = useState<string[]>(presetPackages[0].preset);
@@ -441,12 +291,12 @@ export function CalculatorLeadBlock() {
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_21rem] xl:grid-cols-[minmax(0,1fr)_23rem]">
           <div className="panel-card p-5 sm:p-6 lg:p-7">
-            <h2 className="font-display text-4xl uppercase leading-tight text-paper sm:text-5xl">Калькулятор услуг и пакетных решений.</h2>
+            <h2 className="font-display text-4xl uppercase leading-tight text-paper sm:text-5xl">Хотите понять, где клиника теряет пациентов?</h2>
             <p className="mt-3 max-w-3xl text-sm leading-6 text-sand/70">
-              Выберите отдельные услуги сверху или переключитесь на готовый пакет. Пакет сразу подсветит пресет и покажет ориентир по стоимости.
+              Выберите направления, которые хотите разобрать в первую очередь, или используйте готовый пакет. Это ориентир для разговора, а не жесткое коммерческое предложение.
             </p>
 
-            <div className="mt-5 grid gap-2 sm:grid-cols-2 lg:grid-cols-5">
+            <div className="mt-5 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
               {serviceOptions.map((option) => {
                 const active = selected.includes(option.label);
                 return (
@@ -464,7 +314,7 @@ export function CalculatorLeadBlock() {
               })}
             </div>
 
-            <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-4">
+            <div className="mt-5 grid gap-3 md:grid-cols-3">
               {presetPackages.map((item, index) => (
                 <button
                   key={item.name}
@@ -482,7 +332,7 @@ export function CalculatorLeadBlock() {
 
             <div className="mt-5 grid gap-4 rounded-[1.15rem] border border-paper/10 bg-ink/45 p-4 md:grid-cols-[0.74fr_1.26fr] md:items-end">
               <div>
-                <p className="text-xs uppercase tracking-[0.22em] text-sand/50">Стоимость</p>
+                <p className="text-xs uppercase tracking-[0.22em] text-sand/50">Ориентир</p>
                 <p className="mt-3 font-display text-4xl uppercase text-paper sm:text-5xl">{activePack ? activePack.price : `от ${total.toLocaleString("ru-RU")} ₽`}</p>
               </div>
               <div>
@@ -496,15 +346,17 @@ export function CalculatorLeadBlock() {
                   ))}
                 </div>
               </div>
-              <p className="text-sm leading-6 text-sand/72 md:col-span-2">Это ориентир. Финальный пакет соберем после короткого разбора клиники.</p>
+              <p className="text-sm leading-6 text-sand/72 md:col-span-2">
+                Финальный формат собираем после короткого разбора клиники: где проседает доверие, где теряются заявки и что даст самый быстрый эффект.
+              </p>
             </div>
           </div>
 
           <AuditForm
             mode="short"
-            title="Оставьте имя и Telegram"
-            description="Оставьте имя и Telegram — обсудим выбранный пакет и подскажем, с чего начать."
-            buttonLabel="Получить расчет"
+            title="Оставьте имя и контакт"
+            description="Проведем первичный разбор digital-системы и покажем, какие точки стоит усилить в первую очередь."
+            buttonLabel="Получить разбор"
           />
         </div>
       </div>
@@ -512,3 +364,10 @@ export function CalculatorLeadBlock() {
   );
 }
 
+export function SummerPromo() {
+  return null;
+}
+
+export function TeamPlaceholderBlock() {
+  return null;
+}
