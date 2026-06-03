@@ -34,6 +34,7 @@ export function CasesPageApp({ basePath }: CasesPageAppProps) {
         primaryHref={`${basePath}#cta`}
         logoPaths={brandLogoPaths}
       />
+
       <main className="pt-28">
         <section className="relative overflow-hidden px-4 pb-8 pt-16">
           <div className="spotlight" />
@@ -43,17 +44,20 @@ export function CasesPageApp({ basePath }: CasesPageAppProps) {
               <span className="block text-ember">направления</span>
             </h1>
             <p className="mt-8 max-w-3xl text-lg leading-8 text-sand/75">
-              Здесь собраны проекты и направления работы для стоматологий, медицины, локального сервиса и других ниш, где особенно важны доверие, запись и понятная digital-система.
+              Здесь собраны проекты и рабочие digital-связки для стоматологий, медицины, локального сервиса и других ниш,
+              где особенно важны доверие, запись и понятная система обработки обращений.
             </p>
           </div>
         </section>
+
         <Cases
           items={allCases}
           limit={0}
           heading="Все проекты"
-          description="Каждая карточка ведет на отдельную страницу проекта с задачей, контекстом, решениями и рабочими материалами."
+          description="Открывайте карточку и смотрите задачу, контекст, рабочие направления и digital-контур проекта без громких неподтвержденных обещаний."
         />
       </main>
+
       <Footer
         privacyHref={`${basePath}privacy.html`}
         termsHref={`${basePath}terms.html`}

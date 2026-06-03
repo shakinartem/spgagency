@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { ImagePlus, X } from "lucide-react";
-import { useState } from "react";
+import { type ReactNode, useState } from "react";
 import { createCaseReviewSources } from "../lib/assets";
 import type { CaseStudy } from "../types";
 import { FallbackImage } from "./FallbackImage";
@@ -40,6 +40,7 @@ function ReviewPreview({ item }: { item: CaseStudy }) {
           </p>
         ) : null}
       </div>
+
       <AnimatePresence>
         {isZoomed ? (
           <motion.button
@@ -75,6 +76,15 @@ function ReviewPreview({ item }: { item: CaseStudy }) {
   );
 }
 
+function Section({ label, children }: { label: string; children: ReactNode }) {
+  return (
+    <div>
+      <p className="text-xs uppercase tracking-[0.26em] text-sand/50">{label}</p>
+      <div className="mt-3 text-base leading-7 text-paper/90">{children}</div>
+    </div>
+  );
+}
+
 export function CaseModal({ caseItem, onClose }: CaseModalProps) {
   return (
     <AnimatePresence>
@@ -102,51 +112,65 @@ export function CaseModal({ caseItem, onClose }: CaseModalProps) {
             >
               <X size={18} />
             </button>
+
             <div className="pr-14">
               <p className="text-xs uppercase tracking-[0.28em] text-sand/50">{caseItem.category}</p>
               <h3 className="mt-3 font-display text-5xl text-paper">{caseItem.name}</h3>
               <p className="mt-3 text-lg text-sand/80">{caseItem.summary}</p>
             </div>
+
             <div className="mt-8 grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
               <div className="space-y-6">
-                <div>
-                  <p className="text-xs uppercase tracking-[0.26em] text-sand/50">Задача</p>
-                  <p className="mt-3 text-base leading-7 text-paper/90">{caseItem.task}</p>
-                </div>
-                <div>
-                  <p className="text-xs uppercase tracking-[0.26em] text-sand/50">Решение</p>
-                  <p className="mt-3 text-base leading-7 text-paper/90">{caseItem.solution}</p>
-                </div>
-                <div>
-                  <p className="text-xs uppercase tracking-[0.26em] text-sand/50">Результат</p>
-                  <p className="mt-3 text-base leading-7 text-paper/90">{caseItem.results}</p>
-                </div>
-                <div>
-                  <p className="text-xs uppercase tracking-[0.26em] text-sand/50">Что сделали</p>
-                  <div className="mt-3 flex flex-wrap gap-2">
+                <Section label="Ниша">
+                  <p>{caseItem.niche}</p>
+                </Section>
+
+                <Section label="Задача">
+                  <p>{caseItem.task}</p>
+                </Section>
+
+                <Section label="Что усиливали">
+                  <p>{caseItem.solution}</p>
+                </Section>
+
+                <Section label="На что это влияет">
+                  <p>{caseItem.results}</p>
+                </Section>
+
+                <Section label="Рабочие направления">
+                  <div className="flex flex-wrap gap-2">
                     {caseItem.artifacts.map((artifact) => (
-                      <span key={artifact} className="rounded-full border border-paper/10 bg-paper/[0.07] px-3 py-2 text-xs uppercase tracking-[0.16em] text-sand/70">
+                      <span
+                        key={artifact}
+                        className="rounded-full border border-paper/10 bg-paper/[0.07] px-3 py-2 text-xs uppercase tracking-[0.16em] text-sand/70"
+                      >
                         {artifact}
                       </span>
                     ))}
                   </div>
-                </div>
+                </Section>
               </div>
+
               <div className="space-y-4">
                 <div className="rounded-[1.75rem] border border-ember/25 bg-ember/10 p-5">
-                  <p className="text-xs uppercase tracking-[0.24em] text-sand/60">Ключевой акцент</p>
+                  <p className="text-xs uppercase tracking-[0.24em] text-sand/60">Фокус проекта</p>
                   <p className="mt-3 text-base leading-7 text-paper/90">{caseItem.spotlight}</p>
                 </div>
+
                 <div className="rounded-[1.5rem] border border-paper/10 bg-paper/[0.07] p-4">
-                  <p className="text-[0.65rem] uppercase tracking-[0.24em] text-sand/50">Что усиливали</p>
+                  <p className="text-[0.65rem] uppercase tracking-[0.24em] text-sand/50">Инструменты и контур</p>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {caseItem.tools.map((tool) => (
-                      <span key={tool} className="rounded-full border border-paper/10 bg-paper/[0.07] px-3 py-2 text-xs uppercase tracking-[0.16em] text-sand/70">
+                      <span
+                        key={tool}
+                        className="rounded-full border border-paper/10 bg-paper/[0.07] px-3 py-2 text-xs uppercase tracking-[0.16em] text-sand/70"
+                      >
                         {tool}
                       </span>
                     ))}
                   </div>
                 </div>
+
                 <ReviewPreview item={caseItem} />
               </div>
             </div>
