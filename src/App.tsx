@@ -12,8 +12,6 @@ import {
   DifferenceBlock,
   ExpertiseBlock,
   PricingBlock,
-  SummerPromo,
-  TeamPlaceholderBlock,
   WhyUsBlock,
   WorkProcessBlock,
 } from "./components/LandingBlocks";
@@ -45,15 +43,13 @@ function App() {
       <Header links={navigationWithCases} primaryHref="#cta" logoPaths={brandLogoPaths} />
       <main>
         <Hero facts={heroFacts} casesHref={casesHref} />
-        <ExpertiseBlock />
-        <SummerPromo />
         <Problems />
-        <WhyUsBlock />
-        <WorkProcessBlock />
         <DifferenceBlock />
+        <WorkProcessBlock />
+        <ExpertiseBlock />
         <Cases />
         <DealApproachBlock />
-        <TeamPlaceholderBlock />
+        <WhyUsBlock />
         <PricingBlock />
         <CalculatorLeadBlock />
         <FAQ />
