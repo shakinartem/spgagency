@@ -1,53 +1,35 @@
-import { heroAdvantages, heroMetrics } from "../../data/sharik-content";
-import { assetPath, Button, Container } from "./shared";
+import { ReferenceImageSection } from "./shared";
+
+const heroLayers = [
+  { src: "compiled/hero-title.svg", x: 68, y: 46, w: 473, h: 206, alt: "Маркетинг для стоматологий, который приводит пациентов" },
+  { src: "compiled/hero-desc.svg", x: 69, y: 276, w: 363, h: 78 },
+  { src: "Хиро/Кнопка.svg", x: 68, y: 376, w: 235, h: 44 },
+  { src: "Хиро/Кнопка-1.svg", x: 334, y: 376, w: 184, h: 44 },
+  { src: "Хиро/Увидел клинику.svg", x: 611, y: 28, w: 64, h: 130 },
+  { src: "Хиро/Изучил услуги.svg", x: 746, y: 28, w: 64, h: 130 },
+  { src: "Хиро/Поверил отзывам.svg", x: 873, y: 28, w: 64, h: 180 },
+  { src: "Хиро/Оставил заявку.svg", x: 997, y: 28, w: 64, h: 130 },
+  { src: "Хиро/Записался на прием.svg", x: 1119, y: 28, w: 68, h: 130 },
+  { src: "Хиро/линия между глазом и зубом.svg", x: 676, y: 96, w: 60, h: 10 },
+  { src: "Хиро/Линия между зубом и отзывом.svg", x: 808, y: 96, w: 62, h: 10 },
+  { src: "Хиро/Линия между отзывом и заявкой.svg", x: 936, y: 96, w: 58, h: 10 },
+  { src: "Хиро/Линия между заявкой и записью.svg", x: 1061, y: 96, w: 58, h: 10 },
+  { src: "Хиро/Логотип.svg", x: 858, y: 198, w: 75, h: 106 },
+  { src: "Хиро/Заявки.svg", x: 598, y: 347, w: 163, h: 74 },
+  { src: "Хиро/Конверсия в запись.svg", x: 817, y: 347, w: 185, h: 74 },
+  { src: "Хиро/Снижаем стоимость.svg", x: 1075, y: 347, w: 203, h: 74 },
+  { src: "Хиро/Стратегия.svg", x: 68, y: 478, w: 285, h: 77 },
+  { src: "Хиро/Система.svg", x: 391, y: 478, w: 263, h: 77 },
+  { src: "Хиро/Прозрачность.svg", x: 690, y: 478, w: 266, h: 77 },
+  { src: "Хиро/Рост заявок.svg", x: 986, y: 478, w: 228, h: 77 },
+];
 
 export function HeroSection() {
   return (
-    <section id="top" className="section-shell relative overflow-hidden pt-10">
-      <div className="hero-grid absolute inset-0 opacity-50" />
-      <Container>
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,0.94fr)_minmax(480px,1.06fr)] lg:items-start">
-          <div className="relative z-10">
-            <h1 className="max-w-[11ch] font-display text-[clamp(3rem,7vw,5.9rem)] font-semibold leading-[0.93] tracking-[-0.04em] text-brand-ink">
-              Маркетинг для стоматологий, который <span className="text-brand-accent">приводит пациентов</span>
-            </h1>
-            <p className="mt-6 max-w-[37rem] text-lg leading-8 text-brand-copy">
-              Строим системный digital-маркетинг для клиник: сайт, карты, репутация, контент, CRM, аналитика и автоматизация —
-              чтобы пациент не терялся по пути к записи.
-            </p>
-            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <Button href="#cta">Получить стратегический разбор</Button>
-              <Button href="#services" variant="secondary">
-                Посмотреть решения
-              </Button>
-            </div>
-          </div>
-
-          <div className="relative">
-            <div className="hero-illustration">
-              <img src={assetPath("hero-patient-tree.svg")} alt="Схема пути пациента и ключевых метрик." className="h-auto w-full" />
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-10 grid gap-5 border-t border-brand-line pt-8 lg:grid-cols-4">
-          {heroAdvantages.map((item, index) => (
-            <article key={item.title} className={`feature-inline ${index > 0 ? "lg:border-l lg:border-brand-line lg:pl-5" : ""}`}>
-              <h3 className="feature-inline-title">{item.title}</h3>
-              <p className="feature-inline-text">{item.text}</p>
-            </article>
-          ))}
-        </div>
-
-        <div className="mt-8 grid gap-4 lg:grid-cols-3">
-          {heroMetrics.map((metric) => (
-            <article key={metric.title} className="metric-card">
-              <h3 className="metric-card-title">{metric.title}</h3>
-              <p className="metric-card-text">{metric.text}</p>
-            </article>
-          ))}
-        </div>
-      </Container>
-    </section>
+    <ReferenceImageSection id="top" ratio="1280 / 606" baseHeight={606} figmaBackground="Хиро/фон.svg" figmaLayers={heroLayers}>
+      <h1 className="sr-only">Маркетинг для стоматологий, который приводит пациентов</h1>
+      <a href="#cta" className="reference-hotspot hero-hotspot-primary" aria-label="Получить стратегический разбор" />
+      <a href="#services" className="reference-hotspot hero-hotspot-secondary" aria-label="Посмотреть решения" />
+    </ReferenceImageSection>
   );
 }

@@ -1,5 +1,4 @@
 import { CTAFooterSection } from "./components/sharik/CTAFooterSection";
-import { CasesSection } from "./components/sharik/CasesSection";
 import { DiagnosticSection } from "./components/sharik/DiagnosticSection";
 import { Header } from "./components/sharik/Header";
 import { HeroSection } from "./components/sharik/HeroSection";
@@ -16,7 +15,6 @@ function App() {
         <DiagnosticSection />
         <ServicesSection />
         <ProcessSection />
-        <CasesSection />
         <ResultsSection />
         <CTAFooterSection />
       </main>

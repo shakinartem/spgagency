@@ -1,42 +1,24 @@
-import { processSteps } from "../../data/sharik-content";
-import { assetPath, Container, SectionTitle } from "./shared";
+import { ReferenceImageSection } from "./shared";
+
+const processLayers = [
+  { src: "compiled/process-title.svg", x: 218, y: 52, w: 845, h: 40, alt: "Как мы выстраиваем поток пациентов" },
+  { src: "compiled/process-desc.svg", x: 406, y: 116, w: 467, h: 44 },
+  { src: "поток пациентов/Аудит.svg", x: 70, y: 273, w: 142, h: 133 },
+  { src: "поток пациентов/Стратегия.svg", x: 280, y: 273, w: 154, h: 133 },
+  { src: "поток пациентов/Упаковка.svg", x: 492, y: 273, w: 155, h: 134 },
+  { src: "поток пациентов/Внедрение.svg", x: 706, y: 273, w: 170, h: 135 },
+  { src: "поток пациентов/Рост.svg", x: 986, y: 273, w: 171, h: 134 },
+  { src: "поток пациентов/logo-clear 3.svg", x: 602, y: 488, w: 75, h: 106 },
+];
 
 export function ProcessSection() {
   return (
-    <section id="process" className="section-shell relative overflow-hidden">
-      <div className="section-watermark section-watermark-top">
-        <img src={assetPath("logo-white-no-chars 2.svg")} alt="" className="h-full w-full object-contain" />
-      </div>
-      <Container>
-        <SectionTitle
-          className="mx-auto max-w-5xl text-center"
-          title={
-            <>
-              Как мы выстраиваем <span className="text-brand-accent">поток пациентов</span>
-            </>
-          }
-          description="Сначала разбираем систему, потом усиливаем точки, которые реально влияют на запись."
-        />
-
-        <div className="mt-10 hidden lg:block">
-          <img src={assetPath("Иконки поток пациентов.svg")} alt="" className="mx-auto w-full max-w-[980px]" />
-        </div>
-
-        <div className="mt-10 grid gap-5 lg:grid-cols-5">
-          {processSteps.map((item) => (
-            <article key={item.step} className="process-card">
-              <p className="process-step">{item.step}</p>
-              <h3 className="process-title">{item.title}</h3>
-              <div className="dotted-divider" />
-              <p className="process-text">{item.text}</p>
-            </article>
-          ))}
-        </div>
-
-        <div className="mt-8 flex justify-center">
-          <img src={assetPath("Под шаром.svg")} alt="" className="h-36 w-auto opacity-95" />
-        </div>
-      </Container>
-    </section>
+    <ReferenceImageSection
+      id="process"
+      ratio="1280 / 619"
+      baseHeight={619}
+      figmaBackground="поток пациентов/фон.svg"
+      figmaLayers={processLayers}
+    />
   );
 }

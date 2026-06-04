@@ -1,50 +1,31 @@
-import { diagnosticItems } from "../../data/sharik-content";
-import { assetPath, Button, Container, SectionTitle } from "./shared";
+import { ReferenceImageSection } from "./shared";
+
+const diagnosticLayers = [
+  { src: "compiled/diagnostic-title.svg", x: 68, y: 18, w: 473, h: 100, alt: "Где клиника теряет пациентов" },
+  { src: "compiled/diagnostic-desc.svg", x: 68, y: 143, w: 290, h: 72 },
+  { src: "Где теряет/Сайт не объясняет.svg", x: 68, y: 254, w: 145, h: 79 },
+  { src: "Где теряет/Карты не вызывают.svg", x: 262, y: 254, w: 145, h: 82 },
+  { src: "Где теряет/Отзывы не работают.svg", x: 454, y: 254, w: 145, h: 80 },
+  { src: "Где теряет/Контент не прогревает.svg", x: 68, y: 380, w: 153, h: 79 },
+  { src: "Где теряет/Заявки медленно.svg", x: 262, y: 380, w: 153, h: 79 },
+  { src: "Где теряет/Нет аналитики.svg", x: 454, y: 380, w: 145, h: 82 },
+  { src: "Где теряет/Не заметил.svg", x: 649, y: 53, w: 69, h: 235 },
+  { src: "Где теряет/Кривая между глазом и лупой.svg", x: 716, y: 97, w: 80, h: 56 },
+  { src: "Где теряет/Не нашел ответы.svg", x: 795, y: 121, w: 61, h: 250 },
+  { src: "Где теряет/Кривая между лупой и щитом.svg", x: 857, y: 164, w: 78, h: 55 },
+  { src: "Где теряет/Не доверился.svg", x: 936, y: 183, w: 87, h: 226 },
+  { src: "Где теряет/Кривая между щитом и заявкой.svg", x: 1020, y: 247, w: 79, h: 51 },
+  { src: "Где теряет/Не оставил заявку.svg", x: 1098, y: 267, w: 70, h: 202 },
+  { src: "Где теряет/Кривая между заявкой и записью.svg", x: 1168, y: 342, w: 72, h: 20 },
+  { src: "Где теряет/Не пришел.svg", x: 1230, y: 321, w: 70, h: 171 },
+  { src: "compiled/diagnostic-check.svg", x: 96, y: 506, w: 481, h: 70 },
+  { src: "Где теряет/Кнопка.svg", x: 768, y: 526, w: 252, h: 44 },
+];
 
 export function DiagnosticSection() {
   return (
-    <section className="section-shell relative overflow-hidden">
-      <div className="section-blur section-blur-left" />
-      <Container>
-        <div className="grid gap-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(420px,1.05fr)]">
-          <div>
-            <SectionTitle
-              title={
-                <>
-                  Где клиника <span className="text-brand-accent">теряет</span> пациентов?
-                </>
-              }
-              description="Часто проблема не в одной рекламе. Пациент может потеряться на сайте, в карточках, отзывах, переписке, звонке или CRM."
-            />
-
-            <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-              {diagnosticItems.map((item) => (
-                <article key={item.title} className="soft-card">
-                  <h3 className="soft-card-title">{item.title}</h3>
-                  <p className="soft-card-text">{item.text}</p>
-                </article>
-              ))}
-            </div>
-
-            <div className="cta-band mt-8">
-              <div className="flex items-center gap-4">
-                <img src={assetPath("Group 1.svg")} alt="" className="h-14 w-14 flex-none" />
-                <div>
-                  <h3 className="text-2xl font-semibold tracking-[-0.03em] text-brand-ink">Проверьте, где именно вы теряете пациентов</h3>
-                  <p className="mt-1 text-brand-copy">На разборе покажем точки потерь и приоритеты для первой очереди.</p>
-                </div>
-              </div>
-              <Button href="#cta" className="justify-center sm:w-auto">
-                Получить стратегический разбор
-              </Button>
-            </div>
-          </div>
-
-          <div className="illustration-panel">
-            <img src={assetPath("Блоки где теряются.svg")} alt="Карта потерь на пути пациента." className="h-auto w-full" />
-          </div>
-        </div>
-      </Container>
-    </section>
+    <ReferenceImageSection ratio="1280 / 587" baseHeight={587} figmaBackground="Где теряет/фон.svg" figmaLayers={diagnosticLayers}>
+      <a href="#cta" className="reference-hotspot diagnostic-hotspot" aria-label="Получить стратегический разбор" />
+    </ReferenceImageSection>
   );
 }
