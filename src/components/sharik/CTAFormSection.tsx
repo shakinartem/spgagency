@@ -14,7 +14,11 @@ export function CTAFormSection() {
   return (
     <ReferenceCanvas id="cta" height={623} background="СТА/фон.svg" layers={ctaLayers} className="cta-ref">
       <div className="ref-text cta-title">
-        Хотите понять, где клиника <span>теряет пациентов?</span>
+        Хотите понять,
+        <br />
+        где клиника
+        <br />
+        <span>теряет пациентов?</span>
       </div>
       <p className="ref-text cta-copy">
         Оставьте заявку — проведём первичный разбор digital-системы и покажем, какие точки стоит усилить в первую очередь.

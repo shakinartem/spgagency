@@ -146,6 +146,8 @@ export function LeadForm({ exact = false }: { exact?: boolean }) {
         <span>{status === "loading" ? "Отправляем..." : "Получить разбор"}</span>
       </button>
 
+      <p className="lead-form__privacy">Данные не передаются третьим лицам.</p>
+
       <p className={`lead-form__status ${status === "success" ? "is-visible" : ""}`} role="status" aria-live="polite">
         Заявка принята. Мы свяжемся с вами и предложим формат первичного разбора.
       </p>

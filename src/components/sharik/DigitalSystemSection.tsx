@@ -14,7 +14,9 @@ export function DigitalSystemSection() {
   return (
     <ReferenceCanvas id="system" height={627} background="digital система/фон.svg" layers={systemLayers} className="system-ref">
       <div className="ref-text system-title">
-        Собираем digital-систему для <span>роста записей</span>
+        Собираем digital-систему
+        <br />
+        для <span>роста записей</span>
       </div>
       <p className="ref-text system-copy">
         Берём не отдельный инструмент, а всю цепочку: от первого касания пациента до записи и повторного визита.

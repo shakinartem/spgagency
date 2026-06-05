@@ -20,7 +20,11 @@ export function ResultsSection() {
   return (
     <ReferenceCanvas id="results" height={620} background="Результаты/фон.svg" layers={resultsLayers} className="results-ref">
       <div className="ref-text results-title">
-        Показываем не красивые отчёты, а <span>точки роста клиники</span>
+        Показываем не красивые
+        <br />
+        отчёты, а <span>точки роста</span>
+        <br />
+        <span>клиники</span>
       </div>
       <p className="ref-text results-copy">
         На разборе видно, какие элементы мешают пациенту дойти по записи и что стоит усилить в первую очередь.

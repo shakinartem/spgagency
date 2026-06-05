@@ -23,7 +23,9 @@ export function LossMapSection() {
   return (
     <ReferenceCanvas id="loss-map" height={594} background="Где теряет/фон.svg" layers={lossLayers} className="loss-ref">
       <div className="ref-text loss-title">
-        Где клиника <span>теряет</span> пациентов?
+        Где клиника
+        <br />
+        <span>теряет</span> пациентов?
       </div>
       <p className="ref-text loss-copy">
         Часто проблема не в одной рекламе. Пациент может потеряться на сайте, в карточках, отзывах, переписке, звонке или CRM.

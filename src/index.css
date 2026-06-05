@@ -187,15 +187,15 @@ a {
 }
 
 .hero-title {
-  font-size: clamp(30px, 4.32vw, 55px);
+  font-size: clamp(15px, 3.85vw, 49px);
   left: 5.3%;
   line-height: 1.02;
-  top: 7%;
-  width: 41%;
+  top: 7.4%;
+  width: 45%;
 }
 
 .hero-copy {
-  font-size: clamp(9px, 1.18vw, 15px);
+  font-size: clamp(4px, 1.18vw, 15px);
   left: 5.35%;
   line-height: 1.42;
   top: 45.2%;
@@ -209,7 +209,7 @@ a {
   border-radius: 8px;
   color: #fff;
   display: inline-flex;
-  font-size: clamp(9px, 1vw, 14px);
+  font-size: clamp(4px, 1vw, 14px);
   font-weight: 700;
   justify-content: center;
   line-height: 1;
@@ -252,15 +252,15 @@ a {
 }
 
 .system-title {
-  font-size: clamp(26px, 3.55vw, 45px);
+  font-size: clamp(13px, 3.3vw, 42px);
   left: 6.1%;
   line-height: 1.12;
   top: 5.1%;
-  width: 47%;
+  width: 55%;
 }
 
 .system-copy {
-  font-size: clamp(10px, 1.22vw, 16px);
+  font-size: clamp(5px, 1.22vw, 16px);
   left: 6.2%;
   line-height: 1.45;
   top: 22.2%;
@@ -275,15 +275,15 @@ a {
 }
 
 .loss-title {
-  font-size: clamp(30px, 4.55vw, 58px);
+  font-size: clamp(16px, 4.2vw, 54px);
   left: 4.3%;
   line-height: 1.04;
   top: 1.9%;
-  width: 43%;
+  width: 50%;
 }
 
 .loss-copy {
-  font-size: clamp(10px, 1.22vw, 16px);
+  font-size: clamp(5px, 1.22vw, 16px);
   left: 4.35%;
   line-height: 1.35;
   top: 22.5%;
@@ -298,16 +298,16 @@ a {
 }
 
 .process-title {
-  font-size: clamp(28px, 3.75vw, 48px);
-  left: 19.7%;
+  font-size: clamp(13px, 3.35vw, 43px);
+  left: 12.4%;
   line-height: 1.08;
   text-align: center;
   top: 6.1%;
-  width: 68%;
+  width: 78%;
 }
 
 .process-copy {
-  font-size: clamp(12px, 1.5vw, 19px);
+  font-size: clamp(6px, 1.5vw, 19px);
   left: 32%;
   line-height: 1.45;
   text-align: center;
@@ -316,18 +316,18 @@ a {
 }
 
 .results-title {
-  font-size: clamp(30px, 4.28vw, 55px);
+  font-size: clamp(14px, 3.5vw, 45px);
   left: 3.8%;
   line-height: 1.05;
   top: 10.1%;
-  width: 47%;
+  width: 53%;
 }
 
 .results-copy {
-  font-size: clamp(10px, 1.17vw, 15px);
+  font-size: clamp(5px, 1.17vw, 15px);
   left: 3.9%;
   line-height: 1.42;
-  top: 33.3%;
+  top: 34.6%;
   width: 34%;
 }
 
@@ -346,15 +346,15 @@ a {
 }
 
 .cta-title {
-  font-size: clamp(30px, 4.15vw, 53px);
+  font-size: clamp(14px, 3.65vw, 47px);
   left: 6.1%;
   line-height: 1.04;
   top: 3%;
-  width: 38%;
+  width: 43%;
 }
 
 .cta-copy {
-  font-size: clamp(10px, 1.18vw, 15px);
+  font-size: clamp(5px, 1.18vw, 15px);
   left: 6.15%;
   line-height: 1.35;
   top: 26.2%;
@@ -472,13 +472,13 @@ a {
 
 .lead-form--exact .field label {
   display: block;
-  font-size: clamp(9px, 1.05vw, 15px);
+  font-size: clamp(4px, 1.05vw, 15px);
   margin-bottom: 8px;
 }
 
 .lead-form--exact .field input {
-  font-size: clamp(9px, 1vw, 15px);
-  height: clamp(30px, 3.2vw, 41px);
+  font-size: clamp(4px, 1vw, 15px);
+  height: clamp(10px, 3.2vw, 41px);
 }
 
 .lead-form--exact .field:nth-child(1) {
@@ -508,16 +508,40 @@ a {
 }
 
 .lead-form--exact .lead-form__submit {
-  bottom: 5%;
-  font-size: clamp(10px, 1.35vw, 17px);
+  bottom: 10.8%;
+  font-size: clamp(5px, 1.35vw, 17px);
   height: 11.2%;
   left: 0;
   min-height: 0;
   position: absolute;
 }
 
+.lead-form__privacy {
+  align-items: center;
+  color: var(--navy);
+  display: none;
+  font-size: 13px;
+  gap: 10px;
+  line-height: 1;
+  margin: 0;
+}
+
+.lead-form__privacy::before {
+  content: "▣";
+  color: var(--burgundy);
+  font-size: 13px;
+}
+
+.lead-form--exact .lead-form__privacy {
+  bottom: 5.2%;
+  display: inline-flex;
+  font-size: clamp(4px, 1vw, 13px);
+  left: 20%;
+  position: absolute;
+}
+
 .lead-form--exact .lead-form__status {
-  bottom: 0;
+  bottom: 0.5%;
   font-size: clamp(7px, 0.82vw, 12px);
   left: 0;
   position: absolute;
@@ -566,21 +590,23 @@ a {
 }
 
 @media (max-width: 760px) {
-  .ref-header__canvas,
-  .reference-canvas {
-    width: 1280px;
-  }
-
   .ref-header,
   .reference-section {
-    justify-content: flex-start;
-    overflow-x: auto;
-    scrollbar-width: none;
+    justify-content: center;
+    overflow: hidden;
   }
 
-  .ref-header::-webkit-scrollbar,
-  .reference-section::-webkit-scrollbar {
-    display: none;
+  .lead-form--exact .field label {
+    margin-bottom: 2px;
+  }
+
+  .lead-form--exact .field input {
+    border-radius: 3px;
+    padding: 2px 4px;
+  }
+
+  .lead-form--exact .lead-form__submit {
+    border-radius: 3px;
   }
 }
 
