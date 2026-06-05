@@ -1,30 +1,31 @@
-import type { ReactNode } from "react";
+import type { AnchorHTMLAttributes, ReactNode } from "react";
+import { ArrowRight } from "lucide-react";
 
 export function assetPath(path: string) {
   return `${import.meta.env.BASE_URL}assets/sharik/${encodeURIComponent(path)}`;
 }
 
 export function figmaAssetPath(path: string) {
-  return `${import.meta.env.BASE_URL}assets/figma/${path.split("/").map(encodeURIComponent).join("/")}`;
+  return `${import.meta.env.BASE_URL}assets-figma/${path.split("/").map(encodeURIComponent).join("/")}`;
 }
 
 export function Container({ children, className = "" }: { children: ReactNode; className?: string }) {
-  return <div className={`mx-auto w-full max-w-[1280px] px-4 sm:px-6 lg:px-8 ${className}`}>{children}</div>;
+  return <div className={`container ${className}`}>{children}</div>;
 }
 
 export function SectionTitle({
   eyebrow,
   title,
   description,
-  className = "",
+  align = "left",
 }: {
   eyebrow?: string;
   title: ReactNode;
   description?: ReactNode;
-  className?: string;
+  align?: "left" | "center";
 }) {
   return (
-    <div className={className}>
+    <div className={`section-title-block section-title-block--${align}`}>
       {eyebrow ? <p className="section-eyebrow">{eyebrow}</p> : null}
       <h2 className="section-title">{title}</h2>
       {description ? <p className="section-description">{description}</p> : null}
@@ -32,63 +33,32 @@ export function SectionTitle({
   );
 }
 
-export function Button({
-  href,
-  children,
-  variant = "primary",
-  className = "",
-}: {
-  href: string;
+type ButtonProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
   children: ReactNode;
-  variant?: "primary" | "secondary";
-  className?: string;
-}) {
+  variant?: "primary" | "secondary" | "ghost";
+};
+
+export function Button({ children, variant = "primary", className = "", ...props }: ButtonProps) {
   return (
-    <a href={href} className={`${variant === "primary" ? "button-primary" : "button-secondary"} ${className}`}>
-      {children}
+    <a className={`ui-button ui-button--${variant} ${className}`} {...props}>
+      <span>{children}</span>
+      <ArrowRight aria-hidden="true" size={18} strokeWidth={2.2} />
     </a>
   );
 }
 
-export function ReferenceImageSection({
-  id,
-  ratio,
-  baseHeight,
-  figmaBackground,
-  figmaLayers = [],
-  children,
-}: {
-  id?: string;
-  ratio: string;
-  baseHeight: number;
-  figmaBackground?: string;
-  figmaLayers?: Array<{ src: string; x: number; y: number; w: number; h: number; className?: string; alt?: string }>;
-  children?: ReactNode;
-}) {
-  const layerStyle = (layer: { x: number; y: number; w: number; h: number }) =>
-    ({
-      left: `${(layer.x / 1280) * 100}%`,
-      top: `${(layer.y / baseHeight) * 100}%`,
-      width: `${(layer.w / 1280) * 100}%`,
-      height: `${(layer.h / baseHeight) * 100}%`,
-    }) as React.CSSProperties;
+export function Card({ children, className = "" }: { children: ReactNode; className?: string }) {
+  return <article className={`ui-card ${className}`}>{children}</article>;
+}
 
+export function IconBadge({ children, className = "" }: { children: ReactNode; className?: string }) {
+  return <span className={`icon-badge ${className}`}>{children}</span>;
+}
+
+export function Reveal({ children, className = "", id }: { children: ReactNode; className?: string; id?: string }) {
   return (
-    <section id={id} className="reference-screen" style={{ "--reference-ratio": ratio } as React.CSSProperties}>
-      <div className="reference-canvas">
-        {figmaBackground ? <img src={figmaAssetPath(figmaBackground)} alt="" className="reference-figma-background" aria-hidden="true" /> : null}
-        {figmaLayers.map((layer) => (
-          <img
-            key={layer.src}
-            src={figmaAssetPath(layer.src)}
-            alt={layer.alt ?? ""}
-            className={`reference-figma-layer ${layer.className ?? ""}`}
-            style={layerStyle(layer)}
-            aria-hidden={layer.alt ? undefined : true}
-          />
-        ))}
-        {children}
-      </div>
+    <section id={id} className={`section reveal ${className}`}>
+      {children}
     </section>
   );
 }
