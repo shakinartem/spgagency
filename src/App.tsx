@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { CTAFormSection } from "./components/sharik/CTAFormSection";
 import { DigitalSystemSection } from "./components/sharik/DigitalSystemSection";
-import { Footer } from "./components/sharik/Footer";
 import { Header } from "./components/sharik/Header";
 import { HeroSection } from "./components/sharik/HeroSection";
 import { LossMapSection } from "./components/sharik/LossMapSection";
@@ -52,7 +51,6 @@ function App() {
         <ResultsSection />
         <CTAFormSection />
       </main>
-      <Footer />
     </div>
   );
 }

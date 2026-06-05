@@ -1,87 +1,41 @@
-import { CalendarCheck, Eye, MessageCircle, Search, ShieldCheck, Sparkles, TrendingUp } from "lucide-react";
-import { Button, Card, Container, IconBadge, Reveal, figmaAssetPath } from "./shared";
+import { ReferenceCanvas } from "./shared";
 
-const journey = [
-  { label: "Увидел клинику", icon: Eye },
-  { label: "Изучил услуги", icon: Search },
-  { label: "Поверил отзывам", icon: ShieldCheck },
-  { label: "Оставил заявку", icon: MessageCircle },
-  { label: "Записался", icon: CalendarCheck },
-];
-
-const metrics = [
-  { label: "Система", value: "сайт + карты + CRM" },
-  { label: "Фокус", value: "качество записей" },
-  { label: "Отчётность", value: "понятные выводы" },
+const heroLayers = [
+  { src: "Хиро/Увидел клинику.svg", x: 611, y: 28, w: 64, h: 130 },
+  { src: "Хиро/Изучил услуги.svg", x: 746, y: 28, w: 64, h: 130 },
+  { src: "Хиро/Поверил отзывам.svg", x: 873, y: 28, w: 64, h: 180 },
+  { src: "Хиро/Оставил заявку.svg", x: 997, y: 28, w: 64, h: 130 },
+  { src: "Хиро/Записался на прием.svg", x: 1119, y: 28, w: 68, h: 130 },
+  { src: "Хиро/линия между глазом и зубом.svg", x: 676, y: 96, w: 60, h: 10 },
+  { src: "Хиро/Линия между зубом и отзывом.svg", x: 808, y: 96, w: 62, h: 10 },
+  { src: "Хиро/Линия между отзывом и заявкой.svg", x: 936, y: 96, w: 58, h: 10 },
+  { src: "Хиро/Линия между заявкой и записью.svg", x: 1061, y: 96, w: 58, h: 10 },
+  { src: "Хиро/Логотип.svg", x: 858, y: 198, w: 75, h: 106 },
+  { src: "Хиро/Заявки.svg", x: 598, y: 347, w: 163, h: 74 },
+  { src: "Хиро/Конверсия в запись.svg", x: 817, y: 347, w: 185, h: 74 },
+  { src: "Хиро/Снижаем стоимость.svg", x: 1075, y: 347, w: 203, h: 74 },
+  { src: "Хиро/Стратегия.svg", x: 68, y: 478, w: 285, h: 77 },
+  { src: "Хиро/Система.svg", x: 391, y: 478, w: 263, h: 77 },
+  { src: "Хиро/Прозрачность.svg", x: 690, y: 478, w: 266, h: 77 },
+  { src: "Хиро/Рост заявок.svg", x: 986, y: 478, w: 228, h: 77 },
 ];
 
 export function HeroSection() {
   return (
-    <Reveal id="top" className="hero-section">
-      <img src={figmaAssetPath("Хиро/фон.svg")} alt="" className="section-motif section-motif--hero" aria-hidden="true" />
-      <Container className="hero-grid">
-        <div className="hero-copy">
-          <p className="hero-kicker">
-            <Sparkles aria-hidden="true" size={18} />
-            Digital-агентство для стоматологий и клиник
-          </p>
-          <h1>
-            Маркетинг для стоматологий, который ведёт пациента
-            <span> от доверия к записи</span>
-          </h1>
-          <p className="hero-lead">
-            ШАРиК digital находит, где клиника теряет пациентов, заявки, доверие и деньги, а затем собирает digital-систему:
-            сайт, карты, репутация, контент, CRM, автоматизация и аналитика.
-          </p>
-
-          <div className="hero-actions">
-            <Button href="#cta">Получить стратегический разбор</Button>
-            <Button href="#system" variant="secondary">
-              Посмотреть решения
-            </Button>
-          </div>
-
-          <div className="hero-metrics" aria-label="Ключевые акценты">
-            {metrics.map((metric) => (
-              <Card key={metric.label} className="metric-card">
-                <span>{metric.label}</span>
-                <strong>{metric.value}</strong>
-              </Card>
-            ))}
-          </div>
-        </div>
-
-        <div className="hero-visual" aria-label="Путь пациента">
-          <div className="hero-orb" aria-hidden="true">
-            <span />
-          </div>
-          <div className="journey-card">
-            <div className="journey-route" aria-hidden="true" />
-            {journey.map((item, index) => {
-              const Icon = item.icon;
-              return (
-                <div className="journey-step" key={item.label}>
-                  <IconBadge>
-                    <Icon aria-hidden="true" size={22} />
-                  </IconBadge>
-                  <span>{item.label}</span>
-                  {index < journey.length - 1 ? <i aria-hidden="true" /> : null}
-                </div>
-              );
-            })}
-          </div>
-
-          <Card className="hero-insight-card">
-            <IconBadge className="icon-badge--accent">
-              <TrendingUp aria-hidden="true" size={20} />
-            </IconBadge>
-            <div>
-              <span>Разбор показывает</span>
-              <strong>какие элементы мешают пациенту дойти до записи</strong>
-            </div>
-          </Card>
-        </div>
-      </Container>
-    </Reveal>
+    <ReferenceCanvas id="top" height={606} background="Хиро/фон.svg" layers={heroLayers} className="hero-ref">
+      <div className="ref-text hero-title">
+        Маркетинг для стоматологий, который <span>приводит пациентов</span>
+      </div>
+      <p className="ref-text hero-copy">
+        Строим системный digital-маркетинг для клиник: сайт, карты, репутация, контент, CRM, аналитика и автоматизация
+        — чтобы пациент не терялся по пути к записи.
+      </p>
+      <a href="#cta" className="ref-live-button hero-primary">
+        Получить стратегический разбор
+      </a>
+      <a href="#system" className="ref-live-button ref-live-button--light hero-secondary">
+        Посмотреть решения
+      </a>
+    </ReferenceCanvas>
   );
 }

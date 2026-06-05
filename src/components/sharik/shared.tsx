@@ -62,3 +62,55 @@ export function Reveal({ children, className = "", id }: { children: ReactNode; 
     </section>
   );
 }
+
+type FigmaLayer = {
+  src: string;
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+  alt?: string;
+  className?: string;
+};
+
+export function ReferenceCanvas({
+  id,
+  height,
+  background,
+  layers = [],
+  children,
+  className = "",
+}: {
+  id?: string;
+  height: number;
+  background: string;
+  layers?: FigmaLayer[];
+  children?: ReactNode;
+  className?: string;
+}) {
+  return (
+    <section id={id} className={`reference-section ${className}`} style={{ "--reference-height": height } as React.CSSProperties}>
+      <div className="reference-canvas">
+        <img src={figmaAssetPath(background)} alt="" className="reference-bg" aria-hidden="true" />
+        {layers.map((layer) => (
+          <img
+            key={`${layer.src}-${layer.x}-${layer.y}`}
+            src={figmaAssetPath(layer.src)}
+            alt={layer.alt ?? ""}
+            className={`reference-layer ${layer.className ?? ""}`}
+            aria-hidden={layer.alt ? undefined : true}
+            style={
+              {
+                left: `${(layer.x / 1280) * 100}%`,
+                top: `${(layer.y / height) * 100}%`,
+                width: `${(layer.w / 1280) * 100}%`,
+                height: `${(layer.h / height) * 100}%`,
+              } as React.CSSProperties
+            }
+          />
+        ))}
+        {children}
+      </div>
+    </section>
+  );
+}

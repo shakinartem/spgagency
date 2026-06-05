@@ -36,7 +36,7 @@ function validate(values: LeadFormValues) {
   return errors;
 }
 
-export function LeadForm() {
+export function LeadForm({ exact = false }: { exact?: boolean }) {
   const [values, setValues] = useState<LeadFormValues>(initialValues);
   const [errors, setErrors] = useState<FormErrors>({});
   const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
@@ -73,7 +73,7 @@ export function LeadForm() {
   };
 
   return (
-    <form className="lead-form" onSubmit={handleSubmit} noValidate aria-label="Заявка на первичный разбор">
+    <form className={`lead-form ${exact ? "lead-form--exact" : ""}`} onSubmit={handleSubmit} noValidate aria-label="Заявка на первичный разбор">
       <div className="field">
         <label htmlFor="lead-name">Имя</label>
         <input
@@ -131,7 +131,7 @@ export function LeadForm() {
         <input id="lead-city" value={values.city} onChange={(event) => setField("city", event.target.value)} autoComplete="address-level2" />
       </div>
 
-      <div className="field field--wide">
+      <div className="field field--wide field--comment">
         <label htmlFor="lead-comment">Комментарий</label>
         <textarea
           id="lead-comment"

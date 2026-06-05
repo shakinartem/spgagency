@@ -1,53 +1,31 @@
-import { Mail, MessageCircle, Phone } from "lucide-react";
-import { auditChecklist } from "../../data/sharik-reference-content";
-import { Card, Container, Reveal, SectionTitle, figmaAssetPath } from "./shared";
 import { LeadForm } from "./LeadForm";
+import { ReferenceCanvas } from "./shared";
+
+const ctaLayers = [
+  { src: "СТА/Что проверим на разборе.svg", x: 74, y: 238, w: 498, h: 250 },
+  { src: "СТА/Логотип.svg", x: 83, y: 533, w: 244, h: 63 },
+  { src: "СТА/Тг.svg", x: 438, y: 566, w: 86, h: 17 },
+  { src: "СТА/Ватсап.svg", x: 600, y: 566, w: 102, h: 17 },
+  { src: "СТА/Имейл.svg", x: 772, y: 566, w: 67, h: 17 },
+  { src: "СТА/Политика конфиденциальности.svg", x: 920, y: 566, w: 207, h: 17 },
+];
 
 export function CTAFormSection() {
   return (
-    <Reveal id="cta" className="cta-section">
-      <img src={figmaAssetPath("СТА/фон.svg")} alt="" className="section-motif section-motif--cta" aria-hidden="true" />
-      <Container className="cta-grid">
-        <div className="cta-copy">
-          <SectionTitle
-            eyebrow="Первичный разбор"
-            title={
-              <>
-                Хотите понять, где клиника <span>теряет пациентов?</span>
-              </>
-            }
-            description="Оставьте заявку: проведём первичный разбор digital-системы и покажем, какие точки стоит усилить в первую очередь."
-          />
-
-          <Card className="audit-card">
-            <h3>Что проверим на разборе</h3>
-            <ul>
-              {auditChecklist.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </Card>
-
-          <div className="contact-row" aria-label="Контакты">
-            <a href="https://t.me/sharikdigital">
-              <MessageCircle aria-hidden="true" size={18} />
-              Telegram
-            </a>
-            <a href="https://wa.me/79873576071">
-              <Phone aria-hidden="true" size={18} />
-              WhatsApp
-            </a>
-            <a href="mailto:hello@sharik.digital">
-              <Mail aria-hidden="true" size={18} />
-              Email
-            </a>
-          </div>
-        </div>
-
-        <Card className="form-card">
-          <LeadForm />
-        </Card>
-      </Container>
-    </Reveal>
+    <ReferenceCanvas id="cta" height={623} background="СТА/фон.svg" layers={ctaLayers} className="cta-ref">
+      <div className="ref-text cta-title">
+        Хотите понять, где клиника <span>теряет пациентов?</span>
+      </div>
+      <p className="ref-text cta-copy">
+        Оставьте заявку — проведём первичный разбор digital-системы и покажем, какие точки стоит усилить в первую очередь.
+      </p>
+      <div className="cta-form-shell">
+        <LeadForm exact />
+      </div>
+      <a href="https://t.me/sharikdigital" className="ref-hotspot cta-tg" aria-label="Telegram" />
+      <a href="https://wa.me/79873576071" className="ref-hotspot cta-wa" aria-label="WhatsApp" />
+      <a href="mailto:hello@sharik.digital" className="ref-hotspot cta-mail" aria-label="Email" />
+      <a href="/privacy.html" className="ref-hotspot cta-policy" aria-label="Политика конфиденциальности" />
+    </ReferenceCanvas>
   );
 }

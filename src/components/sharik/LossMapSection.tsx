@@ -1,59 +1,36 @@
-import { AlertCircle, ArrowDownRight, CircleDotDashed } from "lucide-react";
-import { lossIssues, patientPath } from "../../data/sharik-reference-content";
-import { Button, Card, Container, IconBadge, Reveal, SectionTitle } from "./shared";
+import { ReferenceCanvas } from "./shared";
+
+const lossLayers = [
+  { src: "Где теряет/Сайт не объясняет.svg", x: 64, y: 246, w: 108, h: 73 },
+  { src: "Где теряет/Карты не вызывают.svg", x: 239, y: 246, w: 116, h: 73 },
+  { src: "Где теряет/Отзывы не работают.svg", x: 399, y: 246, w: 118, h: 73 },
+  { src: "Где теряет/Контент не прогревает.svg", x: 64, y: 358, w: 125, h: 74 },
+  { src: "Где теряет/Заявки медленно.svg", x: 238, y: 358, w: 127, h: 74 },
+  { src: "Где теряет/Нет аналитики.svg", x: 401, y: 358, w: 124, h: 74 },
+  { src: "Где теряет/Проверьте где вы теряете.svg", x: 60, y: 516, w: 310, h: 67 },
+  { src: "Где теряет/Не заметил.svg", x: 615, y: 46, w: 81, h: 218 },
+  { src: "Где теряет/Не нашел ответы.svg", x: 756, y: 96, w: 92, h: 233 },
+  { src: "Где теряет/Не доверился.svg", x: 879, y: 184, w: 118, h: 204 },
+  { src: "Где теряет/Не оставил заявку.svg", x: 1017, y: 230, w: 101, h: 186 },
+  { src: "Где теряет/Не пришел.svg", x: 1146, y: 270, w: 80, h: 153 },
+  { src: "Где теряет/Кривая между глазом и лупой.svg", x: 679, y: 102, w: 80, h: 55 },
+  { src: "Где теряет/Кривая между лупой и щитом.svg", x: 817, y: 172, w: 75, h: 57 },
+  { src: "Где теряет/Кривая между щитом и заявкой.svg", x: 949, y: 239, w: 73, h: 47 },
+  { src: "Где теряет/Кривая между заявкой и записью.svg", x: 1083, y: 300, w: 78, h: 33 },
+];
 
 export function LossMapSection() {
   return (
-    <Reveal id="loss-map" className="loss-section">
-      <Container className="loss-grid">
-        <div>
-          <SectionTitle
-            eyebrow="Где теряет"
-            title={
-              <>
-                Часто проблема не в одной рекламе: пациент теряется <span>между касаниями</span>
-              </>
-            }
-            description="Мы смотрим на весь путь: сайт, карты, отзывы, переписку, звонок, CRM и аналитику."
-          />
-
-          <div className="loss-issues">
-            {lossIssues.map((issue) => (
-              <Card key={issue} className="loss-issue-card">
-                <AlertCircle aria-hidden="true" size={20} />
-                <p>{issue}</p>
-              </Card>
-            ))}
-          </div>
-        </div>
-
-        <Card className="patient-path-card">
-          <div className="patient-path-card__top">
-            <IconBadge className="icon-badge--accent">
-              <CircleDotDashed aria-hidden="true" size={22} />
-            </IconBadge>
-            <div>
-              <span>Карта пути</span>
-              <strong>видим не заявки вообще, а места разрыва</strong>
-            </div>
-          </div>
-
-          <div className="patient-path">
-            {patientPath.map((step, index) => (
-              <div className="patient-path__step" key={step.title}>
-                <span className="patient-path__number">{String(index + 1).padStart(2, "0")}</span>
-                <h3>{step.title}</h3>
-                <p>
-                  <ArrowDownRight aria-hidden="true" size={16} />
-                  {step.loss}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <Button href="#cta">Проверить, где вы теряете</Button>
-        </Card>
-      </Container>
-    </Reveal>
+    <ReferenceCanvas id="loss-map" height={594} background="Где теряет/фон.svg" layers={lossLayers} className="loss-ref">
+      <div className="ref-text loss-title">
+        Где клиника <span>теряет</span> пациентов?
+      </div>
+      <p className="ref-text loss-copy">
+        Часто проблема не в одной рекламе. Пациент может потеряться на сайте, в карточках, отзывах, переписке, звонке или CRM.
+      </p>
+      <a href="#cta" className="ref-live-button loss-button">
+        Получить стратегический разбор
+      </a>
+    </ReferenceCanvas>
   );
 }
